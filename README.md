@@ -29,7 +29,7 @@ Vimに移行したい方
 https://xd.adobe.com/view/63c177c0-1dc8-4174-a374-29546c62c75b-3692
 
 ## ER図
-![VimateER図](https://user-images.githubusercontent.com/68991732/102756400-33ab3f80-43b3-11eb-85dc-7de6b21b5bbd.png)
+![VimateER図](https://user-images.githubusercontent.com/68991732/102824088-7f93ce00-441f-11eb-9a80-57b4e6dfa758.png)
 
 
 ## 機能
