@@ -31,7 +31,6 @@ https://xd.adobe.com/view/63c177c0-1dc8-4174-a374-29546c62c75b-3692
 ## ER図
 ![VimateER図](https://user-images.githubusercontent.com/68991732/102871012-35dbcf80-4481-11eb-83bc-ceb4e1516087.png)
 
-
 ## 機能
 ユーザー登録（メールアドレス、メール送信）
 
