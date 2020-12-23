@@ -1,0 +1,27 @@
+body
+  header
+    nav.navbar.navbar-expand-lg.navigation.navbar-light.bg-light
+      = link_to 'ViMate', root_path, class: 'navbar-brand'
+      button.navbar-toggler aria-controls="navbarSupportedContent" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarSupportedContent" data-toggle="collapse"
+        span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.ml-auto.main-nav.align-items-center
+          li.nav-item.dropdown.dropdown-slide
+            a.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#"
+              | フッター
+            .dropdown-menu.dropdown-menu-right
+              = link_to '利用規約', terms_path, class: 'dropdown-item'
+              = link_to 'プリバシーポリシー', privacy_path, class: 'dropdown-item'
+              = link_to 'お問い合わせ', '#', class: 'dropdown-item'
+          li.nav-item
+            = link_to 'レッスン一覧', '#', class: 'nav-link'
+          li.nav-item
+            = link_to 'ヘルプ', help_path, class: 'nav-link'
+          li.nav-item.dropdown.dropdown-slide
+            a#header-profile.nav-link aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#"
+              = image_pack_tag 'sample.jpg', size: '40x40', class: 'rounded-circle mr15'
+            .dropdown-menu.dropdown-menu-right
+              .dropdown-item らんてっく たろう
+              .dropdown-divider
+              = link_to 'プロフィール', '#', class: 'dropdown-item'
+              = link_to 'ログアウト', '#', class: 'dropdown-item'
