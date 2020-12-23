@@ -1,0 +1,20 @@
+h1.text-center = t('.title')
+.container
+  .row
+    .col-md-10.offset-md-1.col-lg-8.offset-lg-2
+      = form_with model: @user, local: true do |f|
+        = render 'shared/error_messages', model: f.object
+        .form-group
+          =f.label :name
+          =f.text_field :name, class: 'form-control'
+        .form-group
+          =f.label :email
+          =f.email_field :email, class: 'form-control'
+        .form-group
+          =f.label :password
+          =f.password_field :password, class: 'form-control'
+        .form-group
+          =f.label :password_confirmation
+          =f.password_field :password_confirmation, class: 'form-control'
+        .form-group.text-center
+          =f.submit t('defaults.register'), class: 'btn btn-primary'

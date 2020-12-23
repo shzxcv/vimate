@@ -1,0 +1,15 @@
+h1.text-center = t('.title')
+.container
+  .row
+    .col-md-10.offset-md-1.col-lg-8.offset-lg-2
+      = form_with url: login_path, method: :post, local: true do |f|
+        .form-group
+          = f.label :email, User.human_attribute_name(:email)
+          = f.email_field :email, class: 'form-control'
+        .form-group
+          = f.label :password, User.human_attribute_name(:password)
+          = f.password_field :password, class: 'form-control'
+        .form-group.text-center
+          = f.submit t('.title'), class: 'btn btn-primary'
+        .text-right
+          = link_to t('.to_register_page'), new_user_path
