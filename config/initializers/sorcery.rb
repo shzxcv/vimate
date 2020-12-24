@@ -136,9 +136,9 @@ Rails.application.config.sorcery.configure do |config|
   # config.instagram.user_info_mapping = {:email => "username"}
   # config.instagram.access_permissions = ["basic", "public_content", "follower_list", "comments", "relationships", "likes"]
   #
-  config.github.key = Rails.application.credentials.sorcery_dev[:github_key]
-  config.github.secret = Rails.application.credentials.sorcery_dev[:github_secret]
-  config.github.callback_url = "http://localhost:3000/oauth/callback?provider=github"
+  config.github.key = ENV['GITHUB_KEY']
+  config.github.secret = ENV['GITHUB_SECRET']
+  config.github.callback_url = ENV['GITHUB_CALLBACK_URL']
   config.github.user_info_mapping = {email: "email", name: "username"}
   config.github.scope = "user:email username"
   #
@@ -158,9 +158,9 @@ Rails.application.config.sorcery.configure do |config|
   # config.auth0.callback_url = "https://0.0.0.0:3000/oauth/callback?provider=auth0"
   # config.auth0.site = "https://example.auth0.com"
   #
-  config.google.key = Rails.application.credentials.sorcery_dev[:google_key]
-  config.google.secret = Rails.application.credentials.sorcery_dev[:google_secret]
-  config.google.callback_url = "http://localhost:3000/oauth/callback?provider=google"
+  config.google.key = ENV['GOOGLE_KEY']
+  config.google.secret = ENV['GOOGLE_SECRET']
+  config.google.callback_url = ENV['GOOGLE_CALLBACK_URL']
   config.google.user_info_mapping = {email: "email", name: "given_name"}
   config.google.scope = "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
   #
