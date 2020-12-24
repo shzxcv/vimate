@@ -1,3 +1,4 @@
+h1.text-center.mt-4 = t('.title')
 .container.mt-4
   .row
     table.table.table-dark.text-left
@@ -11,4 +12,4 @@
           tr
             td = lesson.decorate.lesson_name
             td = lesson.description
-            td = link_to 'レッスンはこちら', '#', class: 'btn btn-secondary'
+            td = link_to 'レッスンはこちら', lesson_path(lesson), class: 'btn btn-secondary'
