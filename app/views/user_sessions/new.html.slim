@@ -11,9 +11,13 @@ h1.text-center = t('.title')
           = f.password_field :password, class: 'form-control'
         .form-group.text-center
           = f.submit t('.title'), class: 'btn btn-primary'
-        .text-right
-          = link_to 'Googleログイン', auth_at_provider_path(provider: :google)
-        .text-right
-          = link_to 'Githubログイン', auth_at_provider_path(provider: :github)
+        .text-right.mb-1
+          = link_to auth_at_provider_path(provider: :google), class: 'btn btn-light' do
+            i.fab.fa-google style='color: firebrick'
+            span  Googleログイン
+        .text-right.mb-1
+          = link_to auth_at_provider_path(provider: :github), class: 'btn btn-light' do
+            i.fab.fa-github
+            span  Githubログイン&nbsp;
         .text-right
           = link_to t('.to_register_page'), new_user_path
