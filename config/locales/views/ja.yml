@@ -18,3 +18,8 @@ ja:
       fail: 'ログインに失敗しました'
     destroy:
       success: 'ログアウトしました'
+  lessons:
+    index:
+      title: 'レッスン一覧'
+    show:
+      title: 'レッスン'
