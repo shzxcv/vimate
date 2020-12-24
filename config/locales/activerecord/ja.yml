@@ -8,3 +8,7 @@ ja:
         email: 'メールアドレス'
         password: 'パスワード'
         password_confirmation: 'パスワード確認用'
+  enums:
+    lesson:
+      category:
+        Option: 'Vimmer診断'
