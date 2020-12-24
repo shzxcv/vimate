@@ -42,6 +42,10 @@ GEM
       globalid (>= 0.3.6)
     activemodel (6.0.3.4)
       activesupport (= 6.0.3.4)
+    activemodel-serializers-xml (1.0.2)
+      activemodel (> 5.x)
+      activesupport (> 5.x)
+      builder (~> 3.1)
     activerecord (6.0.3.4)
       activemodel (= 6.0.3.4)
       activesupport (= 6.0.3.4)
@@ -89,6 +93,14 @@ GEM
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
       railties (>= 3.2)
+    draper (4.0.1)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
+      activemodel-serializers-xml (>= 1.0)
+      activesupport (>= 5.0)
+      request_store (>= 1.0)
+    enum_help (0.0.17)
+      activesupport (>= 3.0.0)
     erubi (1.10.0)
     faraday (1.1.0)
       multipart-post (>= 1.2, < 3)
@@ -192,6 +204,8 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (1.8.2)
+    request_store (1.5.0)
+      rack (>= 1.4)
     rexml (3.2.4)
     rspec-core (3.10.0)
       rspec-support (~> 3.10.0)
@@ -244,6 +258,9 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    seed-fu (2.3.9)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
@@ -310,6 +327,8 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   dotenv-rails
+  draper
+  enum_help
   html2slim
   jbuilder (~> 2.7)
   listen (~> 3.2)
@@ -328,6 +347,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   sass-rails (>= 6)
+  seed-fu
   selenium-webdriver
   slim-rails
   sorcery

@@ -1,0 +1,14 @@
+.container.mt-4
+  .row
+    table.table.table-dark.text-left
+      thead
+        tr
+          th scope="col" レッスン名
+          th scope="col" 概要
+          th scope="col" リンク
+      - @lessons.each do |lesson|
+        tbody
+          tr
+            td = lesson.decorate.lesson_name
+            td = lesson.description
+            td = link_to 'レッスンはこちら', '#', class: 'btn btn-secondary'

@@ -16,6 +16,9 @@ gem 'slim-rails'
 gem 'html2slim'
 gem 'sorcery'
 gem 'rails-i18n'
+gem 'enum_help'
+gem 'seed-fu'
+gem 'draper'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
