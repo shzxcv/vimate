@@ -23,3 +23,4 @@ test:
 production:
   <<: *default
   database: vimate_production
+  url: <%= ENV['DATABASE_URL'] %>
