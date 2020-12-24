@@ -12,4 +12,8 @@ h1.text-center = t('.title')
         .form-group.text-center
           = f.submit t('.title'), class: 'btn btn-primary'
         .text-right
+          = link_to 'Googleログイン', auth_at_provider_path(provider: :google)
+        .text-right
+          = link_to 'Githubログイン', auth_at_provider_path(provider: :github)
+        .text-right
           = link_to t('.to_register_page'), new_user_path
