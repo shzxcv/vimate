@@ -1,4 +1,6 @@
 class Lesson < ApplicationRecord
+  has_many :commands, dependent: :destroy
+
   validates :name, presence: true, uniqueness: { scope: :category }
   validates :category, presence: true
 
