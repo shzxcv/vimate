@@ -4,6 +4,7 @@ class CreateLessons < ActiveRecord::Migration[6.0]
       t.string :name, null: false
       t.string :description
       t.integer :category, null: false, default: 0
+      t.string :url, null: false, unique: true
 
       t.timestamps
     end
