@@ -29,7 +29,7 @@ Vimに移行したい方
 https://xd.adobe.com/view/63c177c0-1dc8-4174-a374-29546c62c75b-3692
 
 ## ER図
-![VimateER図](https://user-images.githubusercontent.com/68991732/103157163-8cd00480-47f3-11eb-9b24-9dfac0032a8d.png)
+![VimateER図](https://user-images.githubusercontent.com/68991732/103157178-bc7f0c80-47f3-11eb-8318-06ebac3ee09e.png)
 
 ## 機能
 ユーザー登録（メールアドレス、メール送信）
