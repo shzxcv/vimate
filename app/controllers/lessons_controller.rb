@@ -6,7 +6,7 @@ class LessonsController < ApplicationController
   end
 
   def show
-    @lesson = Lesson.find(params[:id])
+    @lesson = Lesson.find_by!(url: params[:url])
     gon.lesson_count = 3
     gon.commands = @lesson.commands.sample(gon.lesson_count)
   end

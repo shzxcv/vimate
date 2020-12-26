@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2020_12_25_041921) do
     t.string "name", null: false
     t.string "description"
     t.integer "category", default: 0, null: false
+    t.string "url", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name", "category"], name: "index_lessons_on_name_and_category", unique: true
