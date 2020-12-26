@@ -11,6 +11,7 @@ capybara-*.html
 *.orig
 rerun.txt
 pickle-email-*.html
+/config/master.key
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -71,4 +72,5 @@ yarn-debug.log*
 # Ignore Vim Settings
 tags
 
-/config/master.key
+# Ignore foreman config
+Procfile
