@@ -2,6 +2,7 @@ ja:
   defaults:
     login: 'ログイン'
     register: '登録'
+    inquiry: '問い合わせ'
     require_login: 'ログインしてください'
   users:
     new:
@@ -23,3 +24,9 @@ ja:
       title: 'レッスン一覧'
     show:
       title: 'レッスン'
+  inquiries:
+    new:
+      title: '問い合わせ'
+    create:
+      success: 'お問い合わせありがとうございます。'
+      fail: '問い合わせに失敗しました'

@@ -2,13 +2,25 @@ ja:
   activerecord:
     models:
       user: 'ユーザー'
+      lesson: 'レッスン'
+      inquiry: 'お問い合わせ'
     attributes:
       user:
         name: 'ユーザー名'
         email: 'メールアドレス'
         password: 'パスワード'
         password_confirmation: 'パスワード確認用'
+      inquiry:
+        category: 'カテゴリ'
+        name: 'お名前'
+        email: 'メールアドレス'
+        body: 'お問い合わせ内容'
   enums:
     lesson:
       category:
         Option: 'Vimmer診断'
+    inquiry:
+      category:
+        bug: 'バグや問題報告'
+        request: '機能追加リクエスト'
+        others: 'その他のお問い合わせ'

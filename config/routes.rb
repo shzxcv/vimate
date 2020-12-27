@@ -15,4 +15,10 @@ Rails.application.routes.draw do
 
   #Lessons
   resources :lessons, only: %i[index show], param: :url
+
+  #Inquiries
+  resources :inquiries, only: %i[new create]
+
+  #Mailer
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
