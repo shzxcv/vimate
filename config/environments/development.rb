@@ -62,4 +62,8 @@ Rails.application.configure do
 
   # http SSL化
   config.force_ssl = true
+
+  #letter opener
+  config.action_mailer.default_url_options = {  host: 'localhost', port: 9292 }
+  config.action_mailer.delivery_method = :letter_opener
 end

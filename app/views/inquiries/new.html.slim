@@ -1,0 +1,25 @@
+h1.text-center.mt-4 = t('.title')
+.container
+  .row
+    .col-md-10.offset-md-1.col-lg-8.offset-lg-2
+      = form_with model: @inquiry, local: true do |f|
+        = render 'shared/error_messages', model: f.object
+        .form-group
+          span.badge.badge-danger.mr-2 必須
+          =f.label :category
+          =f.select :category, Inquiry.categories.keys.map { |k| [I18n.t("enums.inquiry.category.#{k}"), k]}, {}, class: 'form-control'
+        .form-group
+          span.badge.badge-primary.mr-2 任意
+          =f.label :name
+          =f.text_field :name, class: 'form-control'
+        .form-group
+          span.badge.badge-primary.mr-2 任意
+          =f.label :email
+          =f.email_field :email, class: 'form-control'
+        .form-group
+          span.badge.badge-danger.mr-2 必須
+          =f.label :body
+          =f.text_area :body, class: 'form-control', rows: 10
+        .form-group.text-center
+          =f.submit t('defaults.inquiry'), class: 'btn btn-primary'
+

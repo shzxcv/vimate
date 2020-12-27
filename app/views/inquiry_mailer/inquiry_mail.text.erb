@@ -1,0 +1,12 @@
+<% if @inquiry.name.present? %>
+<%= "#{@inquiry.name}様"%>
+<% end %>
+
+この度は、お問い合わせありがとうございます。
+お問い合わせ内容を確認させて頂き、今後のサービス改善に役立てます。
+今後ともViMate.jpをよろしくお願い致します。
+
+カテゴリ: <%= I18n.t("enums.inquiry.category.#{@inquiry.category}") %>
+
+お問い合わせ内容:
+<%= @inquiry.body %>
