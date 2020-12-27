@@ -8,7 +8,7 @@ class InquiriesController < ApplicationController
   def create
     @inquiry = Inquiry.new(inquiry_params)
     if @inquiry.save
-      InquiryMailer.inquiry_mail(@inquiry).deliver_now if @inquiry.email.present?
+      InquiryMailer.inquiry_mail(@inquiry).deliver_later if @inquiry.email.present?
       redirect_to root_path, success: t('.success')
     else
       flash.now[:danger] = t('.fail')
