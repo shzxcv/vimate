@@ -19,6 +19,7 @@ gem 'enum_help'
 gem 'seed-fu'
 gem 'draper'
 gem 'gon'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
