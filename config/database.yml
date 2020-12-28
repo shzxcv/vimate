@@ -8,21 +8,25 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  password: <%= Rails.application.credentials.db[:password] %>
-  host: <%= Rails.application.credentials.db[:host] %>
   timeout: 5000
 
 development:
   <<: *default
   database: vimate_development
   username: root
+  host: <%= Rails.application.credentials.db[:host] %>
+  password: <%= Rails.application.credentials.db[:password] %>
 
 test:
   <<: *default
   database: vimate_test
   username: root
+  host: <%= Rails.application.credentials.db[:host] %>
+  password: <%= Rails.application.credentials.db[:password] %>
 
 production:
   <<: *default
   database: vimate_production
   username: admin
+  host: <%= Rails.application.credentials.db[:host] %>
+  password: <%= Rails.application.credentials.db[:password] %>
