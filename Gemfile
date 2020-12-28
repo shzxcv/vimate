@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 ruby '2.7.2'
 
 gem 'bootsnap', '>= 1.4.2', require: false
-gem 'dotenv-rails'
 gem 'jbuilder', '~> 2.7'
 gem 'mysql2'
 gem 'puma', '~> 4.1'

@@ -89,10 +89,6 @@ GEM
     crass (1.0.6)
     debug_inspector (0.0.3)
     diff-lcs (1.4.4)
-    dotenv (2.7.6)
-    dotenv-rails (2.7.6)
-      dotenv (= 2.7.6)
-      railties (>= 3.2)
     draper (4.0.1)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -339,7 +335,6 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
-  dotenv-rails
   draper
   enum_help
   foreman
