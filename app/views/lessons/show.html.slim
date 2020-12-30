@@ -1,5 +1,7 @@
 h1.text-center.mt-4 = @lesson.decorate.lesson_name
-.text-center
-  = link_to 'スタート' , "#", remote: true, class: 'btn btn-primary', id: 'js-lesson-start'
+
+.container
+  .bg-light.d-flex.align-items-center.justify-content-center.m-4.rounded style='height: 450px'
+    = link_to 'スタート' , "#", remote: true, class: 'btn btn-outline-secondary w-50', id: 'js-lesson-start'
 
 = javascript_pack_tag 'command'

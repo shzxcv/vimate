@@ -1,8 +1,22 @@
 var button = document.getElementById('js-lesson-start')
-button.addEventListener( 'click', function() {
+
+$(button).on('click', function() {
+  $(this).replaceWith('<p class="font-weight-bold text-secondary">spaceキーを入力でスタート</p>');
+  wait_space_key();
+})
+
+function wait_space_key() {
+  document.addEventListener('keyup', event => {
+    if (event.key == 'x') {
+      alert('スペースが押されました');
+    }
+  })
+}
+  /*
+  button.addEventListener( 'click', function() {
   var count = 0
   while( count <= gon.lesson_count ) {
     alert("問題: " + gon.commands[`${count}`].question + "\n答え: " + gon.commands[`${count}`].answer_key);
     count += 1
-  }
-})
+  })
+  */
