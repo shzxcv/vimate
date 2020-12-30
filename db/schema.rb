@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_27_045713) do
+ActiveRecord::Schema.define(version: 2020_12_30_101901) do
 
   create_table "authentications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -49,6 +49,17 @@ ActiveRecord::Schema.define(version: 2020_12_27_045713) do
     t.index ["name", "category"], name: "index_lessons_on_name_and_category", unique: true
   end
 
+  create_table "user_lessons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "lesson_id", null: false
+    t.integer "time", null: false
+    t.integer "answer_rate", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["lesson_id"], name: "index_user_lessons_on_lesson_id"
+    t.index ["user_id"], name: "index_user_lessons_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "avatar"
@@ -62,4 +73,6 @@ ActiveRecord::Schema.define(version: 2020_12_27_045713) do
   end
 
   add_foreign_key "commands", "lessons"
+  add_foreign_key "user_lessons", "lessons"
+  add_foreign_key "user_lessons", "users"
 end
