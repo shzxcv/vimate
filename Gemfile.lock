@@ -391,7 +391,7 @@ DEPENDENCIES
   pry-byebug
   pry-doc
   pry-rails
-  puma (~> 4.1)
+  puma
   rails (~> 6.0.3, >= 6.0.3.4)
   rails-i18n
   rspec-rails
