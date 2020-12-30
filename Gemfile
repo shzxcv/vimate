@@ -21,6 +21,7 @@ gem 'draper'
 gem 'gon'
 gem 'dotenv-rails'
 gem 'carrierwave'
+gem 'fog-aws'
 gem 'mini_magick'
 
 group :development, :test do
