@@ -19,7 +19,7 @@ body
             = link_to 'ヘルプ', help_path, class: 'nav-link'
           li.nav-item.dropdown.dropdown-slide
             a#header-profile.nav-link aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#"
-              = image_pack_tag 'sample.jpg', size: '40x40', class: 'rounded-circle mr15'
+              = image_tag current_user.avatar.url, size: '40x40', class: 'rounded-circle mr15'
             .dropdown-menu.dropdown-menu-right
               .dropdown-item = current_user.name
               .dropdown-divider

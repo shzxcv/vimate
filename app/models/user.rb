@@ -1,8 +1,10 @@
 class User < ApplicationRecord
   has_many :authentications, dependent: :destroy
-  accepts_nested_attributes_for :authentications
 
+  accepts_nested_attributes_for :authentications
   authenticates_with_sorcery!
+
+  mount_uploader :avatar, AvatarUploader
 
   validates :name, presence: true
   validates :email, uniqueness: true, presence: true

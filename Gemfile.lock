@@ -362,6 +362,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   letter_opener_web
   listen (~> 3.2)
+  mini_magick
   mysql2
   pry
   pry-byebug
