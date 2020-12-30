@@ -7,6 +7,7 @@ ja:
     attributes:
       user:
         name: 'ユーザー名'
+        avatar: 'プロフィール画像'
         email: 'メールアドレス'
         password: 'パスワード'
         password_confirmation: 'パスワード確認用'

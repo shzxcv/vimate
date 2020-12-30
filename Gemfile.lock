@@ -83,6 +83,13 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
+    carrierwave (2.1.0)
+      activemodel (>= 5.0.0)
+      activesupport (>= 5.0.0)
+      addressable (~> 2.6)
+      image_processing (~> 1.1)
+      mimemagic (>= 0.3.0)
+      mini_mime (>= 0.1.3)
     childprocess (3.0.0)
     coderay (1.1.3)
     concurrent-ruby (1.1.7)
@@ -102,11 +109,29 @@ GEM
     enum_help (0.0.17)
       activesupport (>= 3.0.0)
     erubi (1.10.0)
+    excon (0.78.1)
     faraday (1.2.0)
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
     ffi (1.14.2)
+    fog-aws (3.7.0)
+      fog-core (~> 2.1)
+      fog-json (~> 1.1)
+      fog-xml (~> 0.1)
+      ipaddress (~> 0.8)
+    fog-core (2.1.0)
+      builder
+      excon (~> 0.58)
+      formatador (~> 0.2)
+      mime-types
+    fog-json (1.2.0)
+      fog-core
+      multi_json (~> 1.10)
+    fog-xml (0.1.3)
+      fog-core
+      nokogiri (>= 1.5.11, < 2.0.0)
     foreman (0.87.2)
+    formatador (0.2.5)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     gon (6.4.0)
@@ -119,6 +144,10 @@ GEM
       hpricot
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
+    image_processing (1.12.1)
+      mini_magick (>= 4.9.5, < 5)
+      ruby-vips (>= 2.0.17, < 3)
+    ipaddress (0.8.3)
     jbuilder (2.10.1)
       activesupport (>= 5.0.0)
     jwt (2.2.2)
@@ -141,7 +170,11 @@ GEM
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (1.0.0)
+    mime-types (3.3.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2020.1104)
     mimemagic (0.3.5)
+    mini_magick (4.11.0)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.2)
@@ -259,6 +292,8 @@ GEM
       rubocop (~> 1.0)
       rubocop-ast (>= 1.1.0)
     ruby-progressbar (1.10.1)
+    ruby-vips (2.0.17)
+      ffi (~> 1.9)
     ruby2_keywords (0.0.2)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
@@ -339,15 +374,18 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
+  carrierwave
   dotenv-rails
   draper
   enum_help
+  fog-aws
   foreman
   gon
   html2slim
   jbuilder (~> 2.7)
   letter_opener_web
   listen (~> 3.2)
+  mini_magick
   mysql2
   pry
   pry-byebug
