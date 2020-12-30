@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+  #StaticPages
   root 'static_pages#top'
   get 'terms', to: 'static_pages#terms'
   get 'privacy', to: 'static_pages#privacy'
   get 'help', to: 'static_pages#help'
 
   #Users
-  resources :users, only: %i[new create]
+  resources :users, only: %i[new create edit update], param: :name
+  get 'mypage', to: 'users#show'
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'

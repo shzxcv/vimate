@@ -4,12 +4,21 @@ ja:
     register: '登録'
     inquiry: '問い合わせ'
     require_login: 'ログインしてください'
+    change: '変更'
   users:
     new:
       title: 'ユーザー登録'
     create:
       success: 'ユーザーを登録しました'
       fail: 'ユーザーの登録に失敗しました'
+    show:
+      title: 'マイページ'
+      profile_edit: 'プロフィール編集'
+    edit:
+      title: 'プロフィール変更'
+    update:
+      success: 'プロフィールを変更しました'
+      fail: 'プロフィールの変更に失敗しました'
   user_sessions:
     new:
       title: 'ログイン'

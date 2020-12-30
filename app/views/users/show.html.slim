@@ -1,0 +1,11 @@
+h1.text-center.mt-4 = t('.title')
+.container
+  .row
+    .col-md-10.offset-md-1.col-lg-8.offset-lg-2
+      .d-flex.flex-column.text-left
+        .p-2.font-weight-bold.mr-5 終了レッスン
+      .d-flex.flex-column.text-right
+        .p-2.font-weight-bold.mr-5 = t('.profile_edit')
+        .p-2.mr-5 = current_user.name
+        .p-2.mr-5 = link_to '編集', edit_user_path(current_user), class: 'btn btn-light'
+        .p-2.mr-5 = link_to 'パスワード変更', '#', class: 'btn btn-light'
