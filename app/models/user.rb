@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   has_many :authentications, dependent: :destroy
+  has_many :user_lessons, dependent: :destroy
+  has_many :lessons, through: :user_lessons
 
   accepts_nested_attributes_for :authentications
   authenticates_with_sorcery!
