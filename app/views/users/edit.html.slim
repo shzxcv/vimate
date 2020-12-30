@@ -3,7 +3,6 @@ h1.text-center.mt-4 = t('.title')
   .row
     .col-md-10.offset-md-1.col-lg-8.offset-lg-2
       = form_with model: @user, local: true do |f|
-        = render 'shared/error_messages', model: f.object
         .form-group.text-center
           = image_tag current_user.avatar.url, size: '100x100', class: 'rounded-circle mr15' if current_user.avatar?
         .form-group

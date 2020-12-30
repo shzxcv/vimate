@@ -3,7 +3,6 @@ h1.text-center.mt-4 = t('.title')
   .row
     .col-md-10.offset-md-1.col-lg-8.offset-lg-2
       = form_with model: @user, local: true do |f|
-        = render 'shared/error_messages', model: f.object
         .form-group
           span.badge.badge-danger.mr-2 必須
           =f.label :name

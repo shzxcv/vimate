@@ -10,7 +10,6 @@ ja:
       title: 'ユーザー登録'
     create:
       success: 'ユーザーを登録しました'
-      fail: 'ユーザーの登録に失敗しました'
     show:
       title: 'マイページ'
       profile_edit: 'プロフィール編集'
@@ -18,14 +17,13 @@ ja:
       title: 'プロフィール変更'
     update:
       success: 'プロフィールを変更しました'
-      fail: 'プロフィールの変更に失敗しました'
   user_sessions:
     new:
       title: 'ログイン'
       to_register_page: 'アカウントをお持ちでない場合はこちら'
     create:
       success: 'ログインしました'
-      fail: 'ログインに失敗しました'
+      fail: 'メールアドレスかパスワードに誤りがあります'
     destroy:
       success: 'ログアウトしました'
   lessons:
@@ -38,4 +36,3 @@ ja:
       title: '問い合わせ'
     create:
       success: 'お問い合わせありがとうございます。'
-      fail: '問い合わせに失敗しました'

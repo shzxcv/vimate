@@ -9,9 +9,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to login_path, success: t('.success')
+      auto_login(@user)
+      redirect_to root_path, success: t('.success')
     else
-      flash.now[:danger] = t('.fail')
       render 'new'
     end
   end
@@ -24,7 +24,6 @@ class UsersController < ApplicationController
     if @user.update(user_edit_params)
       redirect_to mypage_path, success: t('.success')
     else
-      flash.now[:danger] = t('.fail')
       render 'edit'
     end
   end

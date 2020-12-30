@@ -11,7 +11,6 @@ class InquiriesController < ApplicationController
       InquiryMailer.inquiry_mail(@inquiry).deliver_later if @inquiry.email.present?
       redirect_to root_path, success: t('.success')
     else
-      flash.now[:danger] = t('.fail')
       render 'new'
     end
   end

@@ -5,10 +5,10 @@ h1.text-center.mt-4 = t('.title')
       = form_with url: login_path, method: :post, local: true do |f|
         .form-group
           = f.label :email, User.human_attribute_name(:email)
-          = f.email_field :email, class: 'form-control'
+          = f.email_field :email, class: 'form-control', required: true
         .form-group
           = f.label :password, User.human_attribute_name(:password)
-          = f.password_field :password, class: 'form-control'
+          = f.password_field :password, class: 'form-control', required: true
         .form-group.text-center
           = f.submit t('.title'), class: 'btn btn-primary'
         .text-right.mb-1
