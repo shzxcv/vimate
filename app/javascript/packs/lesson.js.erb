@@ -4,8 +4,9 @@ const input = document.getElementById('js-input');
 const result_title = document.getElementById('js-result-title');
 const result_time = document.getElementById('js-result-time');
 const result_rate = document.getElementById('js-result-rate');
-const reult_repeat = document.getElementById('js-result-repeat');
-const reult_twitter = document.getElementById('js-result-twitter');
+const result_repeat = document.getElementById('js-result-repeat');
+const result_twitter = document.getElementById('js-result-twitter');
+const result_answer = document.getElementById('js-result-answer');
 const progress = document.getElementById('js-progress-bar');
 //BackSpace + Ctrl + Space以外の不要キーを無効
 const ignore_keys = ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'Tab', 'Enter', 'Shift', 'Alt', 'PauseBreak', 'CapsLock', 'Esc', 'PageUp', 'PageDown', 'End', 'Home', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Insert', 'Delete', 'NumLock', 'ScrollLock', 'Dead', 'Meta', 'Escape'];
@@ -65,8 +66,11 @@ function end_lesson() {
   result_title.textContent = '終了しました!';
   result_time.textContent = `クリアタイム: ${cleartime}秒`;
   result_rate.textContent = `正答率: ${answer_rate}%`;
-  reult_repeat.classList.remove('d-none');
-  reult_twitter.classList.remove('d-none');
+  //Twitterシェア結果埋め込み
+  result_twitter.href = result_twitter.href.replace('cleartime', String(cleartime)).replace('answer_rate', String(answer_rate));
+  result_repeat.classList.remove('d-none');
+  result_twitter.classList.remove('d-none');
+  result_answer.classList.remove('d-none');
   return;
 }
 

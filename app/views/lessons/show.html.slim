@@ -8,10 +8,37 @@ h1.text-center.mt-4 = @lesson.decorate.lesson_name
     p#js-result-time.font-weight-bold.text-info
     p#js-result-rate.font-weight-bold.text-info
     .text-center.m-2
-      = link_to '結果をTwitterでシェア', lesson_path(@lesson), class: 'btn btn-primary w-25 d-none', id: 'js-result-twitter'
+      = link_to "https://twitter.com/intent/tweet?text=#{@lesson.decorate.lesson_name}%0a回答率%20:%20answer_rate%25%0aタイム%20:%20cleartime秒%0aでした！%0a%0a%23Vimate%20%23Vim%0a\&url=#{request.url}", target: :_blank, rel: 'noopener noreferrer', class: 'btn btn-primary w-25 d-none', id: 'js-result-twitter' do
+        i.fab.fa-twitter.mr-1
+        span 結果をTwitterでシェア
     .text-center.m-2
-      = link_to 'リトライ', lesson_path(@lesson), class: 'btn btn-warning w-25 d-none', id: 'js-result-repeat'
-  .progress.m-4
+      = link_to lesson_path(@lesson), class: 'btn btn-warning w-25 d-none', id: 'js-result-repeat' do
+        i.fas.fa-sync.mr-1
+        span リトライ
+    /回答表示モーダル
+    .text-center.m-2
+      /! Button trigger modal
+      button.btn.btn-warning.w-25.d-none data-target="#modal_answer_list" data-toggle="modal" type="button" id="js-result-answer"
+        | 回答を表示
+      /! Modal
+      #modal_answer_list.modal.fade aria-hidden="true" aria-labelledby="modal_answer_label" role="dialog" tabindex="-1"
+        .modal-dialog role="document"
+          .modal-content
+            .modal-header
+              h5#exampleModalLabel.modal-title 回答
+              button.close aria-label="Close" data-dismiss="modal" type="button"
+                span aria-hidden="true"  ×
+            .modal-body
+              table.table.table-primary.text-left
+                - @commands.each do |command|
+                  tbody
+                    tr
+                      td = command.question
+                      td = command.answer_key
+            .modal-footer
+              button.btn.btn-secondary data-dismiss="modal" type="button"  閉じる
+  .progress.m-4 style=("height: 30px;")
     #js-progress-bar.progress-bar.bg-info aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" role="progressbar" style=("width: 0%")
+    = image_pack_tag('vimatekun.svg', size: '30x30')
 
 = javascript_pack_tag 'lesson'
