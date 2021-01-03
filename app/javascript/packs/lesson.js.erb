@@ -1,0 +1,86 @@
+//定数定義
+const target = document.getElementById('js-target');
+const input = document.getElementById('js-input');
+const result_title = document.getElementById('js-result-title');
+const result_time = document.getElementById('js-result-time');
+const result_rate = document.getElementById('js-result-rate');
+const progress = document.getElementById('js-progress-bar');
+//BackSpace + Ctrl + Space以外の不要キーを無効
+const ignore_keys = ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'Tab', 'Enter', 'Shift', 'Alt', 'PauseBreak', 'CapsLock', 'Esc', 'PageUp', 'PageDown', 'End', 'Home', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Insert', 'Delete', 'NumLock', 'ScrollLock', 'Dead', 'Meta', 'Escape'];
+//gonで配列取得
+const questions = [];
+const answers = [];
+for (let i = 0; i < gon.commands.length; i++) { questions.push(gon.commands[`${i}`].question) };
+for (let i = 0; i < gon.commands.length; i++) { answers.push(gon.commands[`${i}`].answer_key) };
+const total_questions = questions.length
+
+//変数定義
+let enter_key = "";
+let playing = false;
+let starttime;
+let answer_count = 0;
+//let progress_percent = Number(progress.style.width.replace('%', ''));
+let progress_percent = 0;
+let progress_timer;
+
+//プログレスバー処理
+const progress_bar = function() {
+  if (progress_percent < 100) {
+    progress_percent ++;
+    progress.style.width = String(progress_percent) + "%";
+  }
+  if (progress_percent === 100) {
+    set_question();
+  }
+}
+
+function set_question() {
+  clearInterval(progress_timer);
+  input_init()
+  question = String(questions.splice(0, 1));
+  answer = String(answers.splice(0, 1));
+  target.textContent = question;
+  progress_percent = 0;
+  progress_timer = setInterval(progress_bar, 100);
+}
+
+function input_init() {
+  target.textContent = "";
+  input.textContent = "";
+  enter_key = "";
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === ' ' && playing === true || e.key !== ' ' && playing === false || ignore_keys.includes(e.key) || result_title.textContent.length > 0) {
+    return;
+  } else if (e.key === ' ' && playing === false) {
+    //レッスン開始処理
+    playing = true;
+    starttime = Date.now();
+    set_question();
+  } else if (e.key === 'Backspace') {
+  	enter_key = enter_key.slice(0, -1);
+  } else if (e.key === 'Control') {
+  	enter_key += e.key + "+";
+  } else {
+  	enter_key += e.key;
+  }
+  if (enter_key.length > 30) enter_key = "";
+  input.textContent = enter_key;
+  if (enter_key === answer) {
+    answer_count ++
+    if (questions.length === 0) {
+      input_init();
+      clearInterval(progress_timer);
+      progress.remove();
+      const cleartime = Math.round((Date.now() - starttime) / 1000)
+      const answer_rate = Math.round(answer_count / total_questions * 100)
+      result_title.textContent = '終了しました!';
+      result_time.textContent = `クリアタイム: ${cleartime}秒`;
+      result_rate.textContent = `正答率: ${answer_rate}%`;
+      return;
+    }
+    //alert('OKOK!!!');
+    set_question();
+  }
+})
