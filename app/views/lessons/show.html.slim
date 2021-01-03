@@ -7,6 +7,10 @@ h1.text-center.mt-4 = @lesson.decorate.lesson_name
     p#js-result-title.font-weight-bold.text-secondary
     p#js-result-time.font-weight-bold.text-info
     p#js-result-rate.font-weight-bold.text-info
+    .text-center.m-2
+      = link_to '結果をTwitterでシェア', lesson_path(@lesson), class: 'btn btn-primary w-25 d-none', id: 'js-result-twitter'
+    .text-center.m-2
+      = link_to 'リトライ', lesson_path(@lesson), class: 'btn btn-warning w-25 d-none', id: 'js-result-repeat'
   .progress.m-4
     #js-progress-bar.progress-bar.bg-info aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" role="progressbar" style=("width: 0%")
 
