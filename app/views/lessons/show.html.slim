@@ -12,7 +12,7 @@ h1.text-center.mt-4 = @lesson.decorate.lesson_name
         i.fab.fa-twitter.mr-1
         span 結果をTwitterでシェア
     .text-center.m-2
-      = link_to lesson_path(@lesson), class: 'btn btn-warning w-25 d-none', id: 'js-result-repeat' do
+      = link_to lesson_path(@lesson), class: 'btn btn-warning w-25 d-none', id: 'js-result-repeat', 'data-turbolinks': false do
         i.fas.fa-sync.mr-1
         span リトライ
     /回答表示モーダル

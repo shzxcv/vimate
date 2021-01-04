@@ -12,12 +12,13 @@ const result_login = document.getElementById('js-result-login');
 const progress = document.getElementById('js-progress-bar');
 //BackSpace + Ctrl + Space以外の不要キーを無効
 const ignore_keys = ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'Tab', 'Enter', 'Shift', 'Alt', 'PauseBreak', 'CapsLock', 'Esc', 'PageUp', 'PageDown', 'End', 'Home', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Insert', 'Delete', 'NumLock', 'ScrollLock', 'Dead', 'Meta', 'Escape'];
-//gonで配列取得
+//gon取得
 const questions = [];
 const answers = [];
 for (let i = 0; i < gon.commands.length; i++) { questions.push(gon.commands[`${i}`].question) };
 for (let i = 0; i < gon.commands.length; i++) { answers.push(gon.commands[`${i}`].answer_key) };
 const total_questions = questions.length
+const user_login_flag = gon.user_login_flag
 
 //変数定義
 let enter_key = "";
@@ -86,7 +87,12 @@ function end_lesson() {
   result_twitter.classList.remove('d-none');
   result_answer.classList.remove('d-none');
   set_csrftoken();
+  //ログインしている場合はDB格納
   const lesson_name = location.pathname.replace('/lessons/', '');
+  if (user_login_flag === false) {
+    result_login.classList.remove('d-none');
+    return;
+  }
   $.ajax({
     url: '/user_lessons',
     type: 'POST',

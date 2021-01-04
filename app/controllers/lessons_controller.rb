@@ -9,5 +9,6 @@ class LessonsController < ApplicationController
     @lesson = Lesson.find_by!(url: params[:url])
     @commands = @lesson.commands.sample(3)
     gon.commands = @commands
+    logged_in? ? gon.user_login_flag = true : gon.user_login_flag = false
   end
 end
