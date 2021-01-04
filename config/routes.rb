@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   #Lessons
   resources :lessons, only: %i[index show], param: :url
 
+  #UserLessons
+  resources :user_lessons, only: %i[create]
+
   #Inquiries
   resources :inquiries, only: %i[new create]
 

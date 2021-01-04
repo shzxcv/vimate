@@ -19,6 +19,7 @@ h1.text-center.mt-4 = @lesson.decorate.lesson_name
     .text-center.m-2
       /! Button trigger modal
       button.btn.btn-warning.w-25.d-none data-target="#modal_answer_list" data-toggle="modal" type="button" id="js-result-answer"
+        i.fas.fa-reply.mr-1
         | 回答を表示
       /! Modal
       #modal_answer_list.modal.fade aria-hidden="true" aria-labelledby="modal_answer_label" role="dialog" tabindex="-1"
@@ -37,6 +38,9 @@ h1.text-center.mt-4 = @lesson.decorate.lesson_name
                       td = command.answer_key
             .modal-footer
               button.btn.btn-secondary data-dismiss="modal" type="button"  閉じる
+    .text-center.m-2
+      = link_to 'マイページから統計データを確認', mypage_path, class: 'text-muted font-weight-normal d-none', id: 'js-result-mypage'
+      = link_to '結果を保存する場合は、ログインしてください。', login_path, class: 'text-muted font-weight-normal d-none', id: 'js-result-login'
   .progress.m-4 style=("height: 30px;")
     #js-progress-bar.progress-bar.bg-info aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" role="progressbar" style=("width: 0%")
     = image_pack_tag('vimatekun.svg', size: '30x30')

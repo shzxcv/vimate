@@ -7,6 +7,8 @@ const result_rate = document.getElementById('js-result-rate');
 const result_repeat = document.getElementById('js-result-repeat');
 const result_twitter = document.getElementById('js-result-twitter');
 const result_answer = document.getElementById('js-result-answer');
+const result_mypage = document.getElementById('js-result-mypage');
+const result_login = document.getElementById('js-result-login');
 const progress = document.getElementById('js-progress-bar');
 //BackSpace + Ctrl + Space以外の不要キーを無効
 const ignore_keys = ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'Tab', 'Enter', 'Shift', 'Alt', 'PauseBreak', 'CapsLock', 'Esc', 'PageUp', 'PageDown', 'End', 'Home', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Insert', 'Delete', 'NumLock', 'ScrollLock', 'Dead', 'Meta', 'Escape'];
@@ -56,6 +58,18 @@ function input_init() {
   enter_key = "";
 }
 
+//ajax用CSRFトークン設定
+function set_csrftoken() {
+  $.ajaxPrefilter(function (options, originalOptions, jqXHR) {
+    if (!options.crossDomain) {
+      const token = $('meta[name="csrf-token"]').attr('content');
+      if (token) {
+        return jqXHR.setRequestHeader('X-CSRF-Token', token);
+      }
+    }
+  });
+}
+
 //終了処理
 function end_lesson() {
   input_init();
@@ -71,7 +85,23 @@ function end_lesson() {
   result_repeat.classList.remove('d-none');
   result_twitter.classList.remove('d-none');
   result_answer.classList.remove('d-none');
-  return;
+  set_csrftoken();
+  const lesson_name = location.pathname.replace('/lessons/', '');
+  $.ajax({
+    url: '/user_lessons',
+    type: 'POST',
+    data: {
+      user_lesson: {
+        //Controllerでlesson_nameをlesson_idに変換
+        lesson_id: lesson_name,
+        time: cleartime,
+        answer_rate: answer_rate
+      }
+    },
+    dataType: 'json'
+  }).done(function() {
+    result_mypage.classList.remove('d-none');
+  });
 }
 
 document.addEventListener('keydown', e => {
@@ -99,6 +129,7 @@ document.addEventListener('keydown', e => {
     answer_count ++
     if (questions.length === 0) {
       end_lesson();
+      return;
     }
     set_question();
   }
