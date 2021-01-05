@@ -14,7 +14,7 @@ ja:
       title: 'マイページ'
       profile_edit: 'プロフィール編集'
     edit:
-      title: 'プロフィール変更'
+      title: 'プロフィール編集'
     update:
       success: 'プロフィールを変更しました'
   user_sessions:
@@ -33,6 +33,13 @@ ja:
       title: 'レッスン'
   inquiries:
     new:
-      title: '問い合わせ'
+      title: 'お問い合わせフォーム'
     create:
       success: 'お問い合わせありがとうございます。'
+  static_pages:
+    help:
+      title: 'ヘルプ'
+    privacy:
+      title: 'プライバシーポリシー'
+    terms:
+      title: '利用規約'
