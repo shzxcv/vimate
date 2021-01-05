@@ -1,3 +1,10 @@
 .top-wrapper
   .top-inner-text
-    h2.text-center.text-primary Vimで世界を変える - Vim of World
+    p.font-weight-bolder.display-4 Vimに特化した学習サイト
+    p.font-weight-bolder.display-4 Vimate
+    p.font-weight-bolder.text-black-50.mt-3 ゲーム形式でVimを学びましょう。
+    div
+      = link_to 'ユーザー登録', new_user_path, class: 'btn btn-info w-50 mt-4'
+    div
+      = link_to 'すぐにレッスンを受講', lessons_path, class: 'btn btn-info w-50 mt-4'
+      small.form-text.text-muted.mt-2 ※ログインしない場合は、受講情報が保存されません。

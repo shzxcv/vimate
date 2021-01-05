@@ -4,7 +4,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  if Rails.env.production? 
+  if Rails.env.production?
     storage :fog
   else
     storage :file
@@ -22,7 +22,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
     # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
 
     # "/images/fallback/" + [version_name, "default.png"].compact.join('_')
-    'sample.jpg'
+    'user_default_avatar.svg'
   end
 
   # Process files as they are uploaded:
