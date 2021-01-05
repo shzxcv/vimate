@@ -52,7 +52,6 @@ group :development do
   gem 'foreman'
   gem "letter_opener_web"
   gem 'hirb'
-  # gem 'hirb-unicode'
 end
 
 group :test do
