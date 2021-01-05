@@ -24,6 +24,7 @@ gem 'carrierwave'
 gem 'fog-aws'
 gem 'mini_magick'
 gem 'chartkick'
+gem 'meta-tags'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

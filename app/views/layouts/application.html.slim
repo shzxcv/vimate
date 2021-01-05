@@ -1,11 +1,10 @@
 doctype html
 html
   head
-    title
-      | Vimate
     meta[name="viewport" content="width=device-width, initial-scale=1.0"]
     = csrf_meta_tags
     = csp_meta_tag
+    = display_meta_tags default_meta_tags
     = include_gon
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload'

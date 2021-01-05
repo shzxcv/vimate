@@ -9,7 +9,7 @@ ja:
     new:
       title: 'ユーザー登録'
     create:
-      success: 'ユーザーを登録しました'
+      success: 'ユーザー登録ありがとうございます'
     show:
       title: 'マイページ'
       profile_edit: 'プロフィール編集'
