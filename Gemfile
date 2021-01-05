@@ -23,6 +23,7 @@ gem 'dotenv-rails'
 gem 'carrierwave'
 gem 'fog-aws'
 gem 'mini_magick'
+gem 'chartkick'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
@@ -50,6 +51,7 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'foreman'
   gem "letter_opener_web"
+  gem 'hirb'
 end
 
 group :test do
