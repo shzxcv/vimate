@@ -26,9 +26,10 @@ module ApplicationHelper
       },
       twitter: {
         card: 'summary',
-        site: 'vimatejp',
         # 暫定版
         image: asset_pack_url('media/images/apple-touch-icon.png'),
+        width: 100,
+        height: 100
       }
     }
   end
