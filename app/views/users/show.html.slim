@@ -2,10 +2,18 @@ h1.text-center.mt-4 = t('.title')
 .container
   .row
     .col-md-10.offset-md-1.col-lg-8.offset-lg-2
-      .d-flex.flex-column.text-left
-        .p-2.font-weight-bold.mr-5 終了レッスン
-      .d-flex.flex-column.text-right
-        .p-2.font-weight-bold.mr-5 = t('.profile_edit')
+      .d-flex.flex-column.text-center
+        .p-2.font-weight-bold.mr-5.mt-5 = t('.profile_edit')
         .p-2.mr-5 = current_user.name
         .p-2.mr-5 = link_to '編集', edit_user_path(current_user), class: 'btn btn-light'
         .p-2.mr-5 = link_to 'パスワード変更', '#', class: 'btn btn-light'
+      .d-flex.flex-column.text-center
+        .p-2.font-weight-bold.mr-5.mt-5 終了レッスン
+        - answer_rate_list = current_user.lessons.group(:id).average('user_lessons.answer_rate').map { |k, v| [Lesson.find(k).decorate.lesson_name, '正答率平均', v.to_f.round(1)] }
+        - time_list = current_user.lessons.group(:id).average('user_lessons.time').map { |k, v| [Lesson.find(k).decorate.lesson_name, 'クリアタイム平均', v.to_f.round(1)] }
+        - lesson_count = current_user.lessons.group(:id).count.map { |k, v| [Lesson.find(k).decorate.lesson_name, '受講回数', v] }
+        - answer_rate_list.each do |answer_rate|
+          .p-2.font-weight-normal.m-3.text-left = answer_rate[0]
+          = bar_chart [time_list.shift()[1, 2]], width: '600px', height: '70px', suffix: '秒'
+          = bar_chart [answer_rate[1, 2]], width: '600px', height: '70px', suffix: '%'
+          = bar_chart [lesson_count.shift()[1, 2]], width: '600px', height: '70px', suffix: '回'
