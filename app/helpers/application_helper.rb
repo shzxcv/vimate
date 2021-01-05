@@ -26,7 +26,7 @@ module ApplicationHelper
       },
       twitter: {
         card: 'summary',
-        # site: 'ツイッターアカウント名',
+        site: 'vimatejp',
         # 暫定版
         image: asset_pack_url('media/images/apple-touch-icon.png'),
       }
