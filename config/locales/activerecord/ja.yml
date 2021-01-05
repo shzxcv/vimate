@@ -25,3 +25,7 @@ ja:
         bug: 'バグや問題報告'
         request: '機能追加リクエスト'
         others: 'その他のお問い合わせ'
+    user:
+      role:
+        general: '一般'
+        admin: '管理者'
