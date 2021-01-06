@@ -139,8 +139,8 @@ Rails.application.config.sorcery.configure do |config|
   config.github.key = Rails.application.credentials.github[:key]
   config.github.secret = Rails.application.credentials.github[:secret]
   config.github.callback_url = Rails.application.credentials.github[:callback_url]
-  config.github.user_info_mapping = {email: "email", name: "username"}
-  config.github.scope = "user:email username"
+  config.github.user_info_mapping = {email: "email", name: "login", remote_avatar_url: "avatar_url"}
+  config.github.scope = "user:email"
   #
   # config.paypal.key = ""
   # config.paypal.secret = ""
@@ -161,7 +161,7 @@ Rails.application.config.sorcery.configure do |config|
   config.google.key = Rails.application.credentials.google[:key]
   config.google.secret = Rails.application.credentials.google[:secret]
   config.google.callback_url = Rails.application.credentials.google[:callback_url]
-  config.google.user_info_mapping = {email: "email", name: "given_name"}
+  config.google.user_info_mapping = {email: "email", name: "name", remote_avatar_url: "picture"}
   config.google.scope = "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
   #
   # For Microsoft Graph, the key will be your App ID, and the secret will be your app password/public key.
