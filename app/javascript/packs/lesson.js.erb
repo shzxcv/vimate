@@ -117,6 +117,7 @@ document.addEventListener('keydown', e => {
     //レッスン開始処理
     playing = true;
     starttime = Date.now();
+    $('small').remove();
     set_question();
   } else if (e.key === 'Backspace') {
     //バックスペース処理

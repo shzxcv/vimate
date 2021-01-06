@@ -2,7 +2,7 @@
 h1.text-center.mt-4 = t('.title')
 .container.mt-4
   .row
-    table.table.table-dark.text-left
+    table.table.table-active.text-left
       thead
         tr
           th scope="col" レッスン名
@@ -11,6 +11,6 @@ h1.text-center.mt-4 = t('.title')
       - @lessons.each do |lesson|
         tbody
           tr
-            td = lesson.decorate.lesson_name
-            td = lesson.description
-            td = link_to 'レッスンはこちら', lesson_path(lesson), class: 'btn btn-secondary'
+            td.font-weight-bold = lesson.decorate.lesson_name
+            td.font-weight-light = lesson.description
+            td = link_to 'レッスンはこちら', lesson_path(lesson), class: 'btn btn-outline-info'

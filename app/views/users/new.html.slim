@@ -23,3 +23,11 @@ h1.text-center.mt-4 = t('.title')
           =f.password_field :password_confirmation, class: 'form-control'
         .form-group.text-center
           =f.submit t('defaults.register'), class: 'btn btn-primary'
+        .text-right.mb-2
+          = link_to auth_at_provider_path(provider: :google), class: 'btn btn-light' do
+            i.fab.fa-google style='color: firebrick'
+            span  Googleログイン
+        .text-right.mb-3
+          = link_to auth_at_provider_path(provider: :github), class: 'btn btn-light' do
+            i.fab.fa-github
+            span  Githubログイン&nbsp;
