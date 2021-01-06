@@ -13,4 +13,4 @@ h1.text-center.mt-4 = t('.title')
           tr
             td.font-weight-bold = lesson.decorate.lesson_name
             td.font-weight-light = lesson.description
-            td = link_to 'レッスンはこちら', lesson_path(lesson), class: 'btn btn-outline-info'
+            td = link_to 'レッスンはこちら', lesson_path(lesson), class: 'btn btn-outline-info', 'data-turbolinks': false
