@@ -25,7 +25,7 @@ module ApplicationHelper
         locale: 'ja_JP',
       },
       twitter: {
-        card: 'summary_large_image',
+        card: 'summary',
          # 暫定版
         image: asset_pack_url('media/images/ogp_twitter_card.png'),
       }
