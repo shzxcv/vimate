@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   get "oauth/:provider" => "oauths#oauth", as: :auth_at_provider
 
   #Lessons
-  resources :lessons, only: %i[index show], param: :url
+  resources :lessons, only: %i[index show], param: :url do
+    resources :commands, only: %i[index]
+  end
 
   #UserLessons
   resources :user_lessons, only: %i[create]

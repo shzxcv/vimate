@@ -1,0 +1,14 @@
+- set_meta_tags title: "#{@lesson.decorate.lesson_name} #{t('.title')}"
+h1.text-center.mt-4 = t('.title')
+.container.mt-4
+  .row
+    table.table.table-active.text-left
+      thead
+        tr
+          th scope="col" 問題
+          th scope="col" コマンド
+      - @commands.each do |command|
+        tbody
+          tr
+            td.font-weight-bold = command.question
+            td.font-weight-bold = command.answer_key

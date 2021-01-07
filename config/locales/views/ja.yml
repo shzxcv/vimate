@@ -43,3 +43,6 @@ ja:
       title: 'プライバシーポリシー'
     terms:
       title: '利用規約'
+  commands:
+    index:
+      title: '解答一覧'
