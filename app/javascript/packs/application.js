@@ -22,3 +22,8 @@ import 'bootstrap';
 import '../stylesheets/application';
 import '@fortawesome/fontawesome-free/js/all'
 import '../packs/alert'
+
+// Google Analytics
+$(document).on("turbolinks:load", function() {
+  gtag('config', 'G-3TYHE8S944', {'page_location': event.data.url});
+})
