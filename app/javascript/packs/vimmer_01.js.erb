@@ -1,0 +1,20 @@
+//canvas
+const canvas = document.getElementById('js-canvas')
+canvas.width = 640;
+canvas.height = 640;
+let ctx = canvas.getContext('2d');
+
+//アイコン
+let icon = new Object();
+icon.img = new Image();
+//railsで書き換えすること
+icon.img.src = '/assets/vimmer_01_vimuta.png'
+icon.x = 0;
+icon.y = 0;
+
+function main() {
+  ctx.drawImage(icon.img, icon.x, icon.y);
+  requestAnimationFrame( main );
+}
+
+addEventListener('load', main(), false);

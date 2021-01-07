@@ -8,6 +8,8 @@ html
     = include_gon
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    - if Rails.env.production?
+      = render 'shared/google_analytics'
   body
     - if logged_in?
       = render 'shared/header'
