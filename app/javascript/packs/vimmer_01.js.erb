@@ -27,8 +27,16 @@ let key_left_h = false;
 let key_right_l = false;
 let input_key = false;
 
-//タイムカウント
+//カウント
 let starttime;
+let playing = false;
+let goal_count = false;
+
+//html要素
+const start_frame = document.getElementById('js-start-frame');
+const result_frame = document.getElementById('js-result-frame');
+const result_time = document.getElementById('js-result-time');
+const result_twitter = document.getElementById('js-result-twitter');
 
 //マップ
 const map_array = [
@@ -75,7 +83,22 @@ function maze() {
 
   //アニメーション繰り返し
   vimuta_move_count();
+  if (vimuta_x/32 === 28 && vimuta_y/32 === 18) {
+    //終了処理
+    end_lesson();
+    return;
+  }
   requestAnimationFrame(maze);
+}
+
+function end_lesson() {
+  //ゲーム非表示
+  canvas.classList.add('d-none');
+  //結果表示
+  const cleartime = Math.round((Date.now() - starttime) / 1000)
+  result_time.textContent = `クリアタイム: ${cleartime}秒`;
+  result_twitter.href = result_twitter.href.replace('cleartime', String(cleartime));
+  result_frame.classList.remove('d-none');
 }
 
 function input_key_down(event) {
@@ -101,28 +124,45 @@ function vimuta_move_count() {
   	if ( key_left_h === true ) {
       let left_block_x = vimuta_x/32 - 1;
       let left_block_y = vimuta_y/32;
-      if ( map_array[left_block_y][left_block_x] === 1) return;
+      //if ( map_array[left_block_y][left_block_x] === 1) return;
+      if ( map_array[left_block_y][left_block_x] === 1) {
+        vimuta_x = 32;
+        vimuta_y = 32;
+        return;
+      }
   		vimuta_move = 32;
   		input_key = 'left';
   	}
   	if ( key_up_k === true ) {
       let up_block_x = vimuta_x/32;
       let up_block_y = vimuta_y/32 - 1;
-      if ( map_array[up_block_y][up_block_x] === 1) return;
+      if ( map_array[up_block_y][up_block_x] === 1) {
+        vimuta_x = 32;
+        vimuta_y = 32;
+        return;
+      }
   		vimuta_move = 32;
   		input_key = 'up';
   	}
   	if ( key_right_l === true ) {
       let right_block_x = vimuta_x/32 + 1;
       let right_block_y = vimuta_y/32;
-      if ( map_array[right_block_y][right_block_x] === 1) return;
+      if ( map_array[right_block_y][right_block_x] === 1) {
+        vimuta_x = 32;
+        vimuta_y = 32;
+        return;
+      }
   		vimuta_move = 32;
   		input_key = 'right';
   	}
   	if ( key_down_j === true ) {
       let down_block_x = vimuta_x/32;
       let down_block_y = vimuta_y/32 + 1;
-      if ( map_array[down_block_y][down_block_x] === 1) return;
+      if ( map_array[down_block_y][down_block_x] === 1) {
+        vimuta_x = 32;
+        vimuta_y = 32;
+        return;
+      }
   		vimuta_move = 32;
   		input_key = 'down';
   	}
@@ -137,12 +177,17 @@ function vimuta_move_count() {
   }
 }
 
-addEventListener('load', maze(), false);
-
-/*
-document.addEventListener('keydown', e => {
-  if (e.key = 'Space') {
-    addEventListener('load', maze(), false);
-  }
-})
-*/
+//スタート処理
+if (playing === false) {
+  document.addEventListener('keydown', e => {
+    if (e.key !== ' ') {
+      return;
+    } else {
+      playing = true;
+      starttime = Date.now();
+      start_frame.classList.add('d-none');
+      canvas.classList.remove('d-none');
+      requestAnimationFrame(maze);
+    }
+  })
+}
