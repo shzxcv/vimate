@@ -1,139 +1,148 @@
 //canvas
-const canvas = document.getElementById('js-canvas')
-canvas.width = 640;
+const canvas = document.getElementById('js-canvas');
+canvas.width = 960;
 canvas.height = 640;
-let ctx = canvas.getContext('2d');
+const canvas_area = canvas.getContext('2d');
 
-//アイコン
-let icon = new Object();
-icon.img = new Image();
-//railsで書き換えすること
-icon.img.src = '/assets/vimmer_01_vimuta.png'
-//vimuta初期値
-icon.x = 0;
-icon.y = 0;
-icon.move = 0;
+//vimuta
+const vimuta = new Image();
+vimuta.src = '/assets/vimmer_01_vimuta.png'
+let vimuta_x = 32;
+let vimuta_y = 32;
+let vimuta_move = 0;
 
 //ブロック
-let block = new Image();
-block.src = '/assets/vimmer_01_map.png'
+const block = new Image();
+block.src = '/assets/vimmer_01_block_emacs.png'
 
-//マップ 1がblock
-const map = [
-	[0, 0, 1, 0, 1, 0, 0, 0 ,0 ,1 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,1 ,0],
-	[0, 1, 0, 0, 0, 1, 1, 1 ,0 ,1 ,0 ,1 ,1 ,0 ,1 ,1 ,1 ,0 ,1 ,0],
-	[0, 0, 1, 1, 0, 0, 0, 1 ,0 ,0 ,0 ,1 ,0 ,0 ,0 ,1 ,0 ,0 ,0 ,0],
-	[1, 0, 1, 0, 1, 1, 0, 0 ,0 ,1 ,1 ,1 ,1 ,1 ,0 ,0 ,1 ,0 ,1 ,0],
-	[0, 0, 0, 0, 0, 1, 1, 1 ,0 ,1 ,0 ,0 ,0 ,0 ,1 ,1 ,0 ,1 ,1 ,0],
-	[0, 1, 1, 1, 0, 0, 0, 0 ,0 ,1 ,0 ,1 ,1 ,1 ,0 ,1 ,0 ,0 ,0 ,0],
-	[0, 1, 1, 1, 0, 1, 1, 1 ,1 ,1 ,0 ,1 ,0 ,0 ,0 ,0 ,1 ,1 ,1 ,0],
-	[0, 0, 0, 1, 0, 0, 0, 0 ,1 ,0 ,0 ,1 ,0 ,1 ,1 ,0 ,0 ,0 ,1 ,0],
-	[1, 1, 0, 1, 1, 1, 1, 1 ,1 ,0 ,1 ,1 ,0 ,0 ,1 ,1 ,1 ,0 ,1 ,1],
-	[1, 0, 0, 0, 0, 0, 1, 1 ,0 ,0 ,0 ,0 ,1 ,0 ,1 ,1 ,0 ,0 ,1 ,0],
-	[1, 0, 1, 1, 1, 0, 0, 0 ,1 ,0 ,1 ,0 ,0 ,0 ,0 ,0 ,1 ,1 ,0 ,0],
-	[1, 0, 1, 0, 1, 1, 1, 0 ,1 ,0 ,1 ,1 ,0 ,1 ,1 ,0 ,0 ,0 ,0 ,1],
-	[0, 0, 1, 0, 0, 1, 0, 0 ,1 ,0 ,0 ,1 ,0 ,1 ,0 ,1 ,1 ,1 ,0 ,0],
-	[0, 1, 1, 1, 0, 1, 0, 1 ,0 ,0 ,1 ,1 ,0 ,1 ,0 ,1 ,1 ,0 ,1 ,0],
-	[0, 0, 0, 1, 0, 1, 0, 0 ,1 ,0 ,1 ,1 ,0 ,1 ,0 ,0 ,0 ,0 ,0 ,0],
-	[1, 1, 0, 1, 0, 1, 0, 1 ,1 ,0 ,0 ,1 ,0 ,1 ,1 ,0 ,1 ,1 ,1 ,0],
-	[0, 0, 0, 1, 0, 1, 1, 1 ,1 ,1 ,0 ,1 ,0 ,1 ,1 ,0 ,0 ,0 ,1 ,0],
-	[0, 1, 1, 1, 0, 1, 0, 0 ,0 ,0 ,0 ,1 ,0 ,0 ,0 ,1 ,1 ,0 ,1 ,1],
-	[0, 1, 0, 0, 0, 1, 0, 1 ,1 ,1 ,0 ,0 ,1 ,1 ,0 ,1 ,0 ,0 ,0 ,0],
-	[0, 0, 0, 1, 0, 0, 0, 1 ,1 ,1 ,1 ,0 ,0 ,0 ,1 ,1 ,1 ,1 ,1 ,0]
-]
+//ブロック
+const goal = new Image();
+goal.src = '/assets/vimmer_01_goal.png'
 
 //キーボード
-let key = new Object();
-key.up = false;
-key.down = false;
-key.right = false;
-key.left = false;
-key.push = '';
 const valid_keys = ['h', 'j', 'k', 'l'];
+let key_up_k = false;
+let key_down_j = false;
+let key_left_h = false;
+let key_right_l = false;
+let input_key = false;
 
-function main() {
-  ctx.fillStyle = '#f5f5f5';
-  ctx.fillRect(0, 0, 640, 640);
-  for (let mapy=0; mapy < map.length; mapy++) {
-    for (let mapx=0; mapx < map[mapy].length; mapx++) {
-			if ( map[mapy][mapx] === 1 ) ctx.drawImage( block, 32*mapx, 32*mapy);
+//タイムカウント
+let starttime;
+
+//マップ
+const map_array = [
+	[1, 1, 1, 1, 1, 1, 1, 1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1],
+	[1, 0, 0, 0, 0, 1, 1, 1 ,0 ,1 ,0 ,1 ,1 ,0 ,1 ,1 ,1 ,0 ,1 ,0 ,0 ,1 ,0 ,1 ,0 ,1 ,0 ,1 ,0 ,1],
+	[1, 0, 1, 1, 0, 0, 0, 1 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,1 ,0 ,0 ,0 ,0 ,0 ,1 ,0 ,0 ,0 ,1 ,0 ,1 ,0 ,1],
+	[1, 0, 1, 0, 1, 1, 0, 0 ,0 ,1 ,1 ,1 ,1 ,1 ,0 ,0 ,0 ,0 ,1 ,0 ,0 ,1 ,0 ,0 ,0 ,1 ,0 ,1 ,0 ,1],
+	[1, 0, 0, 0, 0, 1, 1, 1 ,0 ,1 ,0 ,0 ,0 ,0 ,1 ,1 ,0 ,1 ,1 ,0 ,0 ,1 ,0 ,0 ,0 ,1 ,0 ,1 ,0 ,1],
+	[1, 1, 1, 1, 0, 0, 0, 0 ,0 ,1 ,0 ,1 ,1 ,1 ,0 ,1 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,1 ,0 ,0 ,0 ,1],
+	[1, 1, 1, 1, 0, 1, 1, 1 ,1 ,1 ,0 ,1 ,0 ,0 ,0 ,0 ,1 ,1 ,1 ,0 ,0 ,0 ,0 ,1 ,0 ,0 ,0 ,0 ,0 ,1],
+	[1, 0, 0, 1, 0, 0, 0, 0 ,0 ,0 ,0 ,1 ,0 ,1 ,1 ,0 ,0 ,0 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,0 ,0 ,0 ,0 ,1],
+	[1, 1, 0, 1, 1, 1, 1, 1 ,1 ,0 ,1 ,1 ,0 ,0 ,1 ,1 ,1 ,0 ,1 ,0 ,0 ,1 ,0 ,1 ,1 ,0 ,0 ,1 ,0 ,1],
+	[1, 0, 0, 0, 0, 0, 1, 1 ,0 ,0 ,0 ,0 ,1 ,0 ,1 ,1 ,0 ,0 ,1 ,0 ,0 ,1 ,0 ,1 ,1 ,1 ,1 ,1 ,0 ,1],
+	[1, 0, 1, 1, 1, 0, 0, 0 ,1 ,0 ,1 ,0 ,0 ,0 ,0 ,0 ,1 ,1 ,0 ,0 ,0 ,1 ,0 ,0 ,0 ,0 ,0 ,1 ,0 ,1],
+	[1, 0, 1, 0, 1, 1, 1, 0 ,1 ,0 ,1 ,1 ,0 ,1 ,1 ,0 ,0 ,0 ,0 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,0 ,1],
+	[1, 0, 1, 0, 0, 1, 0, 0 ,1 ,0 ,0 ,1 ,0 ,1 ,0 ,1 ,1 ,1 ,0 ,0 ,0 ,1 ,0 ,1 ,0 ,0 ,0 ,1 ,0 ,1],
+	[1, 1, 1, 1, 0, 1, 0, 1 ,0 ,0 ,1 ,1 ,0 ,1 ,0 ,1 ,1 ,0 ,1 ,0 ,0 ,1 ,0 ,1 ,0 ,0 ,1 ,1 ,0 ,1],
+	[1, 0, 0, 1, 0, 1, 0, 0 ,1 ,0 ,1 ,1 ,0 ,1 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,1 ,0 ,0 ,1 ,1 ,0 ,1],
+	[1, 1, 0, 1, 0, 1, 0, 1 ,1 ,0 ,0 ,1 ,0 ,1 ,1 ,0 ,1 ,1 ,1 ,0 ,0 ,0 ,0 ,1 ,0 ,0 ,1 ,1 ,0 ,1],
+	[1, 0, 0, 1, 0, 1, 1, 1 ,1 ,1 ,0 ,1 ,0 ,1 ,1 ,0 ,0 ,0 ,1 ,0 ,0 ,1 ,0 ,1 ,0 ,0 ,1 ,1 ,0 ,1],
+	[1, 1, 1, 1, 0, 1, 0, 0 ,0 ,0 ,0 ,1 ,0 ,0 ,0 ,1 ,1 ,0 ,1 ,0 ,0 ,1 ,0 ,1 ,0 ,0 ,0 ,1 ,0 ,1],
+	[1, 1, 0, 0, 0, 1, 0, 1 ,1 ,1 ,0 ,0 ,1 ,1 ,0 ,1 ,0 ,0 ,0 ,0 ,0 ,1 ,0 ,1 ,0 ,1 ,0 ,1 ,2 ,1],
+	[1, 1, 1, 1, 1, 1, 1, 1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1]
+];
+
+//メイン処理
+function maze() {
+  //背景
+  canvas_area.fillStyle = '#f5f5f5';
+  canvas_area.fillRect(0, 1, canvas.width, canvas.height);
+  //マップ
+  for (let y = 0; y < map_array.length; y++) {
+    for (let x = 0; x < map_array[y].length; x++) {
+      if (map_array[y][x] === 1) canvas_area.drawImage(block, 32*x, 32*y);
+      if (map_array[y][x] === 2) canvas_area.drawImage(goal, 32*x, 32*y);
     }
   }
-  ctx.drawImage(icon.img, icon.x, icon.y);
+  //vimuta
+  canvas_area.drawImage(vimuta, vimuta_x, vimuta_y);
 
-  addEventListener('keydown', keydownfunc, false);
-  addEventListener('keyup', keyupfunc, false);
+  //キー入力処理
+  addEventListener('keydown', input_key_down, false);
+  addEventListener('keyup', input_key_up, false);
 
-  if (icon.move === 0) {
-    if (key.left === true) {
-      x = icon.x/32;
-      y = icon.y/32;
-      x--;
-      if (map[y][x] === 0) {
-        icon.move = 32;
-        key.push = 'left';
-      }
-    }
-    if (key.up === true) {
-      x = icon.x/32;
-      y = icon.y/32;
-      if (y > 0) {
-        y--;
-        if (map[y][x] === 0) {
-          icon.move = 32;
-          key.push = 'up';
-        }
-      }
-    }
-    if (key.right === true) {
-      x = icon.x/32;
-      y = icon.y/32;
-      x++;
-      if (map[y][x] === 0) {
-        icon.move = 32;
-        key.push = 'right';
-      }
-    }
-    if (key.down === true) {
-      x = icon.x/32;
-      y = icon.y/32;
-      debugger;
-      if (y < 19) {
-        y++;
-        if (map[x][y] === 0) {
-          icon.move = 32;
-          key.push = 'down';
-        }
-      }
-    }
-  }
-
-  if (icon.move > 0) {
-    icon.move -= 4;
-    if (key.push === 'left') icon.x -= 4;
-    if (key.push === 'up') icon.y -= 4;
-    if (key.push === 'right') icon.x += 4;
-    if (key.push === 'down') icon.y += 4;
-  }
-
-  requestAnimationFrame(main);
+  //アニメーション繰り返し
+  vimuta_move_count();
+  requestAnimationFrame(maze);
 }
 
-function keydownfunc(event) {
+function input_key_down(event) {
+  //kjhl以外無効
   if (!valid_keys.includes(event.key)) return;
-  if (event.key === 'h') key.left = true;
-  if (event.key === 'k') key.up = true;
-  if (event.key === 'l') key.right = true;
-  if (event.key === 'j') key.down = true;
-  event.preventDefault();
+  if (event.key === 'k') key_up_k = true;
+  if (event.key === 'j') key_down_j = true;
+  if (event.key === 'h') key_left_h = true;
+  if (event.key === 'l') key_right_l = true;
 }
 
-function keyupfunc(event) {
+function input_key_up() {
+  //kjhl以外無効
   if (!valid_keys.includes(event.key)) return;
-  if (event.key === 'h') key.left = false;
-  if (event.key === 'k') key.up = false;
-  if (event.key === 'l') key.right = false;
-  if (event.key === 'j') key.down = false;
+  if (event.key === 'k') key_up_k = false;
+  if (event.key === 'j') key_down_j = false;
+  if (event.key === 'h') key_left_h = false;
+  if (event.key === 'l') key_right_l = false;
 }
 
-addEventListener('load', main(), false);
+function vimuta_move_count() {
+  if ( vimuta_move === 0 ) {
+  	if ( key_left_h === true ) {
+      let left_block_x = vimuta_x/32 - 1;
+      let left_block_y = vimuta_y/32;
+      if ( map_array[left_block_y][left_block_x] === 1) return;
+  		vimuta_move = 32;
+  		input_key = 'left';
+  	}
+  	if ( key_up_k === true ) {
+      let up_block_x = vimuta_x/32;
+      let up_block_y = vimuta_y/32 - 1;
+      if ( map_array[up_block_y][up_block_x] === 1) return;
+  		vimuta_move = 32;
+  		input_key = 'up';
+  	}
+  	if ( key_right_l === true ) {
+      let right_block_x = vimuta_x/32 + 1;
+      let right_block_y = vimuta_y/32;
+      if ( map_array[right_block_y][right_block_x] === 1) return;
+  		vimuta_move = 32;
+  		input_key = 'right';
+  	}
+  	if ( key_down_j === true ) {
+      let down_block_x = vimuta_x/32;
+      let down_block_y = vimuta_y/32 + 1;
+      if ( map_array[down_block_y][down_block_x] === 1) return;
+  		vimuta_move = 32;
+  		input_key = 'down';
+  	}
+  }
+  if (vimuta_move > 0) {
+    //1移動で32/4で8枚描写
+	  vimuta_move -= 4;
+	  if ( input_key === 'left' ) vimuta_x -= 4;
+	  if ( input_key === 'up' ) vimuta_y -= 4;
+	  if ( input_key === 'right' ) vimuta_x += 4;
+	  if ( input_key === 'down' ) vimuta_y += 4;
+  }
+}
+
+addEventListener('load', maze(), false);
+
+/*
+document.addEventListener('keydown', e => {
+  if (e.key = 'Space') {
+    addEventListener('load', maze(), false);
+  }
+})
+*/

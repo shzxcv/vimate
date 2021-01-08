@@ -1,6 +1,11 @@
 - set_meta_tags title: @lesson.decorate.lesson_name
 h1.text-center.mt-4 = @lesson.decorate.lesson_name
 
+.container
+  .bg-light.d-flex.flex-column.text-center.m-4.rounded style='height: 640px'
+    p#js-target.font-weight-bold.text-secondary.mt-5.h4 Spaceキー入力でスタート
+    p.text-secondary.mt-2 ※[h]で[左移動], [j]で[下移動], [k]で[上移動], [l]で[右移動]
+
 .text-center
   canvas#js-canvas
 
