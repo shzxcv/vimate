@@ -6,18 +6,18 @@ const canvas_area = canvas.getContext('2d');
 
 //vimuta
 const vimuta = new Image();
-vimuta.src = '/assets/vimmer_01_vimuta.png'
+vimuta.src = gon.vimuta_src_url
 let vimuta_x = 32;
 let vimuta_y = 32;
 let vimuta_move = 0;
 
 //ブロック
 const block = new Image();
-block.src = '/assets/vimmer_01_block_emacs.png'
+block.src = gon.block_src_url
 
 //ブロック
 const goal = new Image();
-goal.src = '/assets/vimmer_01_goal.png'
+goal.src = gon.goal_src_url
 
 //キーボード
 const valid_keys = ['h', 'j', 'k', 'l'];
