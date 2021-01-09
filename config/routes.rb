@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   #Users
   resources :users, only: %i[new create edit update], param: :name
+  resources :password_resets, only: %i[new create edit update]
   get 'mypage', to: 'users#show'
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'

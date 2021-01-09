@@ -21,6 +21,7 @@ ja:
     new:
       title: 'ログイン'
       to_register_page: 'アカウントをお持ちでない場合はこちら'
+      password_reset: 'パスワードリセットはこちら'
     create:
       success: 'ログインしました。'
       fail: 'メールアドレスもしくはパスワードに誤りがあります。'
@@ -46,3 +47,13 @@ ja:
   commands:
     index:
       title: '解答一覧'
+  password_resets:
+    create:
+      info: 'メールを送信しました。<br>メールに記載の手順でパスワードの再設定をお願いします。'
+    update:
+      success: 'パスワードをリセットしました。'
+      fail: 'パスワードリセットに失敗しました。'
+    new:
+      title: 'パスワードリセット'
+    edit:
+      title: 'パスワード再登録'

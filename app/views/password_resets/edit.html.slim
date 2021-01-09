@@ -1,0 +1,17 @@
+- set_meta_tags title: t('.title')
+h1.text-center.mt-4 = t('.title')
+.container
+  .row
+    .col-md-10.offset-md-1.col-lg-8.offset-lg-2
+      = form_with model: @user, url: password_reset_path(@token), local: true do |f|
+        .form-group
+          = f.label :email, User.human_attribute_name(:email)
+          = @user.email
+        .form-group
+          = f.label :password, User.human_attribute_name(:password)
+          = f.password_field :password, class: 'form-control'
+        .form-group
+          = f.label :password_confirmation, User.human_attribute_name(:password_confirmation)
+          = f.password_field :password_confirmation, class: 'form-control'
+        .form-group.text-center
+          = f.submit t('defaults.register'), class: 'btn btn-primary'
