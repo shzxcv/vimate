@@ -1,10 +1,10 @@
 class ApplicationController < ActionController::Base
   before_action :require_login
-  add_flash_types :success, :info, :warning, :danger
+  add_flash_types :success, :info, :warning, :error
 
   protected
 
   def not_authenticated
-    redirect_to login_path, danger: t('defaults.require_login')
+    redirect_to login_path, error: t('defaults.require_login')
   end
 end

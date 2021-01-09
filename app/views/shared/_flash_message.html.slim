@@ -1,2 +1,22 @@
-- flash.each do |message_type, message|
-  div class=("alert alert-#{message_type}") = message
+- if flash.any?
+  - flash.each do |message_type, message|
+    javascript:
+      toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "800",
+        "hideDuration": "800",
+        "timeOut": "3000",
+        "extendedTimeOut": "0",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+      }
+      //to_json要 syntaxerror
+      toastr[#{raw message_type.to_json}](#{raw message.to_json})

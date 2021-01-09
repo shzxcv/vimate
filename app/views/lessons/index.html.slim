@@ -14,5 +14,6 @@ h1.text-center.mt-4 = t('.title')
           tr
             td.font-weight-bold = lesson.decorate.lesson_name
             td.font-weight-light = lesson.description
-            td = link_to 'レッスンはこちら', lesson_path(lesson), class: 'btn btn-outline-info', 'data-turbolinks': false
-            td = link_to '解答一覧はこちら', lesson_commands_path(lesson), class: 'btn btn-outline-info'
+            td = link_to 'レッスンはこちら', lesson_path(lesson), class: "btn btn-outline-info #{'disabled' if lesson.url.in?(['vimmer-02', 'vimmer-03'])}", 'data-turbolinks': false
+            - unless lesson.category == 'Option'
+              td = link_to '解答一覧はこちら', lesson_commands_path(lesson), class: 'btn btn-outline-info'

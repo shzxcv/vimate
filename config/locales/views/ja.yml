@@ -3,29 +3,29 @@ ja:
     login: 'ログイン'
     register: '登録'
     inquiry: '問い合わせ'
-    require_login: 'ログインしてください'
+    require_login: 'ログインしてください。'
     change: '変更'
   users:
     new:
       title: 'ユーザー登録'
     create:
-      success: 'ユーザー登録ありがとうございます'
+      success: 'ご登録ありがとうございます。<br>確認用のメールを送信しております。'
     show:
       title: 'マイページ'
       profile_edit: 'プロフィール編集'
     edit:
       title: 'プロフィール編集'
     update:
-      success: 'プロフィールを変更しました'
+      success: 'ユーザー情報を更新しました。'
   user_sessions:
     new:
       title: 'ログイン'
       to_register_page: 'アカウントをお持ちでない場合はこちら'
     create:
-      success: 'ログインしました'
-      fail: 'メールアドレスかパスワードに誤りがあります'
+      success: 'ログインしました。'
+      fail: 'メールアドレスもしくはパスワードに誤りがあります。'
     destroy:
-      success: 'ログアウトしました'
+      success: 'ログアウトしました。'
   lessons:
     index:
       title: 'レッスン一覧'
@@ -35,7 +35,7 @@ ja:
     new:
       title: 'お問い合わせフォーム'
     create:
-      success: 'お問い合わせありがとうございます。'
+      info: 'お問い合わせありがとうございます。'
   static_pages:
     help:
       title: 'ヘルプ'

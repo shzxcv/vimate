@@ -110,6 +110,49 @@ function end_lesson() {
   });
 }
 
+function flash_next() {
+  toastr.options = {
+  "closeButton": false,
+  "debug": false,
+  "newestOnTop": false,
+  "progressBar": false,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "400",
+  "hideDuration": "400",
+  "timeOut": "1000",
+  "extendedTimeOut": "0",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+  }
+
+  Command: toastr["success"]("Next")
+}
+
+function flash_warn() {
+  toastr.options = {
+    "closeButton": false,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": false,
+    "positionClass": "toast-top-right",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "400",
+    "hideDuration": "400",
+    "timeOut": "2500",
+    "extendedTimeOut": "0",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+  }
+  Command: toastr["warning"]("解答のみ入力してください。<br>入力はBackspaceで削除できます。")
+}
+
 document.addEventListener('keydown', e => {
   if (e.key === ' ' && playing === true || e.key !== ' ' && playing === false || ignore_keys.includes(e.key) || result_title.textContent.length > 0) {
     return;
@@ -124,15 +167,19 @@ document.addEventListener('keydown', e => {
   	enter_key = enter_key.slice(0, -1);
   } else if (e.key === 'Control') {
     //コントロールキー処理
-  	enter_key += e.key + "+";
+  	enter_key += 'Ctrl+';
   } else {
     //入力内容追加
   	enter_key += e.key;
   }
-  //30文字以上は入力させない
-  if (enter_key.length > 30) enter_key = "";
+  //10文字以上は入力させない
+  if (enter_key.length > 10) {
+    enter_key = "";
+    flash_warn();
+  }
   input.textContent = enter_key;
   if (enter_key === answer) {
+    flash_next();
     answer_count ++
     if (questions.length === 0) {
       end_lesson();

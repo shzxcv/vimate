@@ -9,7 +9,7 @@ class InquiriesController < ApplicationController
     @inquiry = Inquiry.new(inquiry_params)
     if @inquiry.save
       InquiryMailer.inquiry_mail(@inquiry).deliver_later if @inquiry.email.present?
-      redirect_to root_path, success: t('.success')
+      redirect_to root_path, info: t('.info')
     else
       render 'new'
     end

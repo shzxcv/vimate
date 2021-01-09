@@ -26,6 +26,7 @@ gem 'mini_magick'
 gem 'chartkick'
 gem 'meta-tags'
 gem 'sitemap_generator'
+gem 'toastr-rails'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
