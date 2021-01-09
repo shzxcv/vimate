@@ -402,7 +402,7 @@ Rails.application.config.sorcery.configure do |config|
     # Hammering protection: how long in seconds to wait before allowing another email to be sent.
     # Default: `5 * 60`
     #
-    # user.reset_password_time_between_emails =
+    user.reset_password_time_between_emails = 10
 
     # Access counter to a reset password page attribute name
     # Default: `:access_count_to_reset_password_page`
