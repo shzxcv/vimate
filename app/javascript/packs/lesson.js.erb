@@ -7,6 +7,7 @@ const result_rate = document.getElementById('js-result-rate');
 const result_repeat = document.getElementById('js-result-repeat');
 const result_twitter = document.getElementById('js-result-twitter');
 const result_answer = document.getElementById('js-result-answer');
+const result_lesson_list = document.getElementById('js-result-lesson-list');
 const result_mypage = document.getElementById('js-result-mypage');
 const result_login = document.getElementById('js-result-login');
 const progress = document.getElementById('js-progress-bar');
@@ -83,8 +84,9 @@ function end_lesson() {
   result_rate.textContent = `正答率: ${answer_rate}%`;
   //Twitterシェア結果埋め込み
   result_twitter.href = result_twitter.href.replace('cleartime', String(cleartime)).replace('answer_rate', String(answer_rate));
-  result_repeat.classList.remove('d-none');
   result_twitter.classList.remove('d-none');
+  result_repeat.classList.remove('d-none');
+  result_lesson_list.classList.remove('d-none');
   result_answer.classList.remove('d-none');
   set_csrftoken();
   //ログインしている場合はDB格納

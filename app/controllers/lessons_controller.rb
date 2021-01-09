@@ -9,7 +9,7 @@ class LessonsController < ApplicationController
     @lesson = Lesson.find_by!(url: params[:url])
     if @lesson.url.match?("vimmer-01")
       gon.vimuta_src_url = helpers.asset_path 'vimmer_01_vimuta.png'
-      gon.block_src_url = helpers.asset_path 'vimmer_01_block_emacs.png'
+      gon.block_src_url = helpers.asset_path 'vimmer_01_block.png'
       gon.goal_src_url = helpers.asset_path 'vimmer_01_goal.png'
       render @lesson.url.gsub('-', '_')
       return
