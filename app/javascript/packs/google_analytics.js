@@ -1,3 +1,0 @@
-$(document).on("turbolinks:load", function() {
-  gtag('config', 'G-3TYHE8S944', {'page_location': event.data.url});
-})

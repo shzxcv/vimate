@@ -21,6 +21,6 @@ const imagePath = (name) => images(name, true)
 import 'bootstrap';
 import '../stylesheets/application';
 import '@fortawesome/fontawesome-free/js/all'
-import '../packs/google_analytics'
+import '../packs/google_analytics.js.erb'
 import toastr from 'toastr'
 window.toastr = toastr
