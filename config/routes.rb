@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   get 'help', to: 'static_pages#help'
 
   #Users
-  resources :users, only: %i[new create edit update], param: :name
+  resources :users, only: %i[new create], param: :name
   resources :password_resets, only: %i[new create edit update]
+  resource :mypage, only: :show
+  resource :profile, only: %i[edit update]
   get 'mypage', to: 'users#show'
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'

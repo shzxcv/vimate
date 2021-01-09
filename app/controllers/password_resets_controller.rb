@@ -5,7 +5,8 @@ class PasswordResetsController < ApplicationController
 
   def create
     @user = User.find_by(email: params[:email])
-    @user&.deliver_reset_password_instructions!
+    #外部認証は除外
+    @user&.deliver_reset_password_instructions! if @user&.authentications.blank?
     redirect_to login_path, info: t('.info')
   end
 
@@ -24,7 +25,6 @@ class PasswordResetsController < ApplicationController
     if @user.change_password(params[:user][:password])
       redirect_to root_path, success: t('.success')
     else
-      flash.now[:error] = t('.fail')
       render 'edit'
     end
   end

@@ -10,13 +10,6 @@ ja:
       title: 'ユーザー登録'
     create:
       success: 'ご登録ありがとうございます。<br>確認用のメールを送信しております。'
-    show:
-      title: 'マイページ'
-      profile_edit: 'プロフィール編集'
-    edit:
-      title: 'プロフィール編集'
-    update:
-      success: 'ユーザー情報を更新しました。'
   user_sessions:
     new:
       title: 'ログイン'
@@ -49,11 +42,19 @@ ja:
       title: '解答一覧'
   password_resets:
     create:
-      info: 'メールを送信しました。<br>メールに記載の手順でパスワードの再設定をお願いします。'
+      info: 'メールを送信しました。<br>メールに記載の手順でパスワードの再設定をお願いします。<br>外部認証を使用している場合は、リセットできません。'
     update:
       success: 'パスワードをリセットしました。'
-      fail: 'パスワードリセットに失敗しました。'
     new:
       title: 'パスワードリセット'
     edit:
       title: 'パスワード再登録'
+  mypages:
+    show:
+      title: 'マイページ'
+      profile_edit: 'プロフィール編集'
+  profiles:
+    edit:
+      title: 'プロフィール編集'
+    update:
+      success: 'ユーザー情報を更新しました。'
