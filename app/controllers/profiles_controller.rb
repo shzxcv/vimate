@@ -11,9 +11,6 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def password
-  end
-
   private
 
   def set_user
