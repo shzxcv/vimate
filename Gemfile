@@ -27,6 +27,8 @@ gem 'chartkick'
 gem 'meta-tags'
 gem 'sitemap_generator'
 gem 'toastr-rails'
+gem 'slack-notifier'
+gem 'exception_notification'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
