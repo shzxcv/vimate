@@ -16,7 +16,7 @@ h1.text-center.mt-4 = t('.title')
           span.badge.badge-danger.mr-2 必須
           =f.label :password
           =f.password_field :password, class: 'form-control'
-          small.form-text.text-muted パスワードは英数記号8文字以上
+          small.form-text.text-muted 半角英小文字・英大文字・数字を組み合わせ、8文字以上で入力してください。
         .form-group
           span.badge.badge-danger.mr-2 必須
           =f.label :password_confirmation

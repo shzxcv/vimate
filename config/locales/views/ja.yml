@@ -9,18 +9,12 @@ ja:
     new:
       title: 'ユーザー登録'
     create:
-      success: 'ご登録ありがとうございます。<br>確認用のメールを送信しております。'
-    show:
-      title: 'マイページ'
-      profile_edit: 'プロフィール編集'
-    edit:
-      title: 'プロフィール編集'
-    update:
-      success: 'ユーザー情報を更新しました。'
+      success: 'ご登録ありがとうございます。<br>ログインしました。'
   user_sessions:
     new:
       title: 'ログイン'
       to_register_page: 'アカウントをお持ちでない場合はこちら'
+      password_reset: 'パスワードリセットはこちら'
     create:
       success: 'ログインしました。'
       fail: 'メールアドレスもしくはパスワードに誤りがあります。'
@@ -46,3 +40,30 @@ ja:
   commands:
     index:
       title: '解答一覧'
+  password_resets:
+    create:
+      info: 'メールを送信しました。<br>メールに記載の手順でパスワードの再設定をお願いします。<br>外部認証を使用している場合は、リセットできません。'
+    update:
+      success: 'パスワードをリセットしました。'
+      error: '不正なパスワード再設定URLです。<br>パスワード再設定申請を再度行ってください。'
+    new:
+      title: 'パスワードリセット'
+    edit:
+      title: 'パスワード再登録'
+      error: '不正なパスワード再設定URLです。<br>パスワード再設定申請を再度行ってください。'
+  mypages:
+    show:
+      title: 'マイページ'
+      profile_edit: 'プロフィール編集'
+  profiles:
+    edit:
+      title: 'プロフィール編集'
+    update:
+      success: 'ユーザー情報を更新しました。'
+  passwords:
+    edit:
+      title: 'パスワード編集'
+      submit: '編集'
+      error: '外部認証アカウントはパスワード変更できません。'
+    update:
+      success: 'パスワードを更新しました。'

@@ -1,0 +1,18 @@
+- set_meta_tags title: t('.title')
+h1.text-center.mt-4 = t('.title')
+.container
+  .row
+    .col-md-10.offset-md-1.col-lg-8.offset-lg-2
+      = form_with model: @user, url: password_reset_path(@token), local: true do |f|
+        .form-group
+          = f.label :email, class: 'w-100'
+          = @user.email
+        .form-group
+          = f.label :password
+          = f.password_field :password, class: 'form-control', required: true
+          small.form-text.text-muted 半角英小文字・英大文字・数字を組み合わせ、8文字以上で入力してください。
+        .form-group
+          = f.label :password_confirmation
+          = f.password_field :password_confirmation, class: 'form-control', required: true
+        .form-group.text-center
+          = f.submit t('defaults.register'), class: 'btn btn-primary'

@@ -5,12 +5,12 @@ h1.text-center.mt-4 = t('.title')
     .col-md-10.offset-md-1.col-lg-8.offset-lg-2
       .d-flex.flex-column.text-center
         .p-2.font-weight-bold.mr-5.mt-5 = t('.profile_edit')
-        .p-2.mr-5 = current_user.name
-        .p-2.mr-5 = link_to '編集', edit_user_path(current_user), class: 'btn btn-light'
-        .p-2.mr-5 = link_to 'パスワード変更', '#', class: 'btn btn-light'
+        .p-2.mr-5 = @user.name
+        .p-2.mr-5 = link_to '編集', edit_profile_path, class: 'btn btn-light'
+        .p-2.mr-5 = link_to 'パスワード変更', edit_mypage_password_path, class: 'btn btn-light'
       .d-flex.flex-column.text-center
         .p-2.font-weight-bold.mr-5.mt-5 終了レッスン
-        - current_user.chart_lists.each do |chart_list|
+        - @user.chart_lists.each do |chart_list|
           .p-2.font-weight-normal.m-3.text-left = chart_list[0]
           = bar_chart [['クリアタイム平均', chart_list[1]]], width: '600px', height: '70px', suffix: '秒'
           = bar_chart [['正答平均率', chart_list[2]]], width: '600px', height: '70px', suffix: '%', max: 100, min: 0

@@ -3,18 +3,18 @@ h1.text-center.mt-4 = t('.title')
 .container
   .row
     .col-md-10.offset-md-1.col-lg-8.offset-lg-2
-      = form_with model: @user, local: true do |f|
+      = form_with model: @user, url: profile_path, local: true do |f|
         .form-group.text-center
-          = image_tag current_user.avatar.url, size: '100x100', class: 'rounded-circle mr15' if current_user.avatar?
+          = image_tag @user.avatar.url, size: '100x100', class: 'rounded-circle mr15' if @user.avatar?
         .form-group
-          = f.label :avatar, User.human_attribute_name(:avatar)
+          = f.label :avatar
           = f.file_field :avatar, class: 'form-control', accept: 'image/*'
           = f.hidden_field :avatar_cache
         .form-group
-          = f.label :name, User.human_attribute_name(:name)
+          = f.label :name
           = f.text_field :name, class: 'form-control'
         .form-group
-          = f.label :email, User.human_attribute_name(:email)
+          = f.label :email
           = f.email_field :email, class: 'form-control'
         .form-group.text-center
           = f.submit t('defaults.change'), class: 'btn btn-primary'
