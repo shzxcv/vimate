@@ -37,11 +37,12 @@ ExceptionNotification.configure do |config|
   # }
 
   # Webhook notifier sends notifications over HTTP protocol. Requires 'httparty' gem.
-  config.add_notifier :slack, {
-    webhook_url: Rails.application.credentials.slack[:error_url],
-    channel: Rails.application.credentials.slack[:error_channel]
-  }
+  # config.add_notifier :slack, {
+  #   webhook_url: Rails.application.credentials.slack[:error_url],
+  #   channel: Rails.application.credentials.slack[:error_channel]
+  # }
   config.ignore_if do |exception, options|
     !Rails.env.production?
   end
+  config.add_notifier :slack, webhook_url: Rails.application.credentials.slack[:error_url], channel: Rails.application.credentials.slack[:error_channel]
 end

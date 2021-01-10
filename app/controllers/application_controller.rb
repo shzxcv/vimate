@@ -1,14 +1,12 @@
 class ApplicationController < ActionController::Base
-  rescue_from StandardError, with: :render_500
-  rescue_from ActiveRecord::RecordNotFound, with: :render_404
+  if Rails.env.production?
+    #安定運用までslackで監視
+    # rescue_from StandardError, with: :render_500
+    rescue_from ActiveRecord::RecordNotFound, with: :render_404
+  end
+
   before_action :require_login
   add_flash_types :success, :info, :warning, :error
-
-  protected
-
-  def not_authenticated(msg = t('defaults.require_login'))
-    redirect_to login_path, error: msg
-  end
 
   def render_500(error)
     logger.error(error.message)
@@ -19,4 +17,11 @@ class ApplicationController < ActionController::Base
   def render_404
     render file: Rails.root.join('public/404.html'), status: 404, layout: false, content_type: 'text/html'
   end
+
+  protected
+
+  def not_authenticated(msg = t('defaults.require_login'))
+    redirect_to login_path, error: msg
+  end
+
 end
