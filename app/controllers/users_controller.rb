@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
 
   def new
+    return redirect_to root_path, info: t('defaults.info') if logged_in?
     @user = User.new
   end
 
