@@ -7,7 +7,7 @@ h1.text-center.mt-4 = t('.title')
         .p-2.font-weight-bold.mr-5.mt-5 = t('.profile_edit')
         .p-2.mr-5 = @user.name
         .p-2.mr-5 = link_to '編集', edit_profile_path, class: 'btn btn-light'
-        .p-2.mr-5 = link_to 'パスワード変更', '#', class: 'btn btn-light'
+        .p-2.mr-5 = link_to 'パスワード変更', edit_mypage_password_path, class: 'btn btn-light'
       .d-flex.flex-column.text-center
         .p-2.font-weight-bold.mr-5.mt-5 終了レッスン
         - @user.chart_lists.each do |chart_list|

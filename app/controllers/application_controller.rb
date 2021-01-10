@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def not_authenticated
-    redirect_to login_path, error: t('defaults.require_login')
+  def not_authenticated(msg = t('defaults.require_login'))
+    redirect_to login_path, error: msg
   end
 end

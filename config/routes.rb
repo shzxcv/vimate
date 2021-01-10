@@ -8,9 +8,10 @@ Rails.application.routes.draw do
   #Users
   resources :users, only: %i[new create], param: :name
   resources :password_resets, only: %i[new create edit update]
-  resource :mypage, only: :show
+  resource :mypage, only: :show do
+    resource :password, only: %i[edit update]
+  end
   resource :profile, only: %i[edit update]
-  get 'mypage', to: 'users#show'
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
