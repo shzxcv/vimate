@@ -9,7 +9,7 @@ ja:
     new:
       title: 'ユーザー登録'
     create:
-      success: 'ご登録ありがとうございます。<br>確認用のメールを送信しております。'
+      success: 'ご登録ありがとうございます。<br>ログインしました。'
   user_sessions:
     new:
       title: 'ログイン'
