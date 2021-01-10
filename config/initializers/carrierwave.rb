@@ -3,6 +3,7 @@ if Rails.env.production?
     config.fog_directory  = Rails.application.credentials.aws[:s3_directory]
     config.cache_storage = :fog
     config.fog_public = false
+    config.storage = :fog
     config.fog_authenticated_url_expiration = 60
 
     config.fog_credentials = {

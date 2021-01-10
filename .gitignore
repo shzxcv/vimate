@@ -78,3 +78,6 @@ tags
 
 # Ignore foreman config
 Procfile
+
+# Ignore sitemap
+public/sitemap.xml.gz
