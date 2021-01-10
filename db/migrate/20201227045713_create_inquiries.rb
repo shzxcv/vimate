@@ -4,7 +4,7 @@ class CreateInquiries < ActiveRecord::Migration[6.0]
       t.string :email
       t.string :name
       t.integer :category, null: false, default: 0
-      t.string :body, null: false
+      t.text :body, null: false
 
       t.timestamps
     end

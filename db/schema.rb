@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2021_01_09_083728) do
     t.string "email"
     t.string "name"
     t.integer "category", default: 0, null: false
-    t.string "body", null: false
+    t.text "body", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

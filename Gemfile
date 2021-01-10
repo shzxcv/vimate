@@ -21,7 +21,6 @@ gem 'draper'
 gem 'gon'
 gem 'dotenv-rails'
 gem 'carrierwave'
-gem 'fog-aws'
 gem 'mini_magick'
 gem 'chartkick'
 gem 'meta-tags'
@@ -66,4 +65,5 @@ group :test do
 end
 
 group :production do
+  gem 'fog-aws'
 end
