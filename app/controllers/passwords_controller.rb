@@ -2,7 +2,7 @@ class PasswordsController < ApplicationController
   before_action :set_user, only: %i[edit update]
 
   def edit
-    not_authenticated if @user.blank?
+    return not_authenticated if @user.blank?
     if @user&.authentications.present?
       redirect_to mypage_path, error: t('.error')
     end

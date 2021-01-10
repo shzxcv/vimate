@@ -5,6 +5,7 @@ ja:
     inquiry: '問い合わせ'
     require_login: 'ログインしてください。'
     change: '変更'
+    info: 'ログインしています。'
   users:
     new:
       title: 'ユーザー登録'

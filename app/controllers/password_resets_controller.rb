@@ -1,7 +1,9 @@
 class PasswordResetsController < ApplicationController
   skip_before_action :require_login
 
-  def new; end
+  def new
+    return redirect_to edit_mypage_password_path if logged_in?
+  end
 
   def create
     @user = User.find_by(email: params[:email])
