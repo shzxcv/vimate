@@ -12,7 +12,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true, presence: true, format: { with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i}
 
   validates :password, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] }
-  #半角英小文字大文字数字をそれぞれ1種類以上含む8文字以上100文字
+  #半角英小文字大文字数字をそれぞれ1種類以上含む8文字以上100文字以下
   validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,100}+\z/ }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }

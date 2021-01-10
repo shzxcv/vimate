@@ -9,7 +9,6 @@ class UserMailer < ApplicationMailer
     @user = User.find(user.id)
     @url = edit_password_reset_url(@user.reset_password_token)
 
-    #ここにsnsログインのロジック書く？
     mail(to: user.email, subject: t('password_resets.new.title'))
   end
 end
