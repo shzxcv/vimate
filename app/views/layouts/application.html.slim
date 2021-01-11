@@ -12,7 +12,7 @@ html
     = stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
     - if logged_in?
-      = render 'shared/header'
+      = render 'shared/after_login_header'
     - else
       = render 'shared/before_login_header'
     = render 'shared/flash_message'
