@@ -1,6 +1,11 @@
-footer#footer.footer-bottom.bg-light
+footer.footer-bottom.bg-light
   .container
     .row
-      .col-sm-6.col-12
-        .copyright
-          p Copyright © Vimate
+      .col.mt-3
+        p.has-text-weight-medium Copyright © Vimate
+    .row
+      .col
+        ul.d-flex
+          li = link_to '利用規約', terms_path, class: 'dropdown-item'
+          li = link_to 'プリバシーポリシー', privacy_path, class: 'dropdown-item'
+          li = link_to 'お問い合わせ', new_inquiry_path, class: 'dropdown-item'

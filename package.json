@@ -8,6 +8,7 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
     "bootstrap": "^4.5.3",
+    "bulma": "^0.9.1",
     "chart.js": "^2.9.4",
     "chartkick": "^3.2.1",
     "jquery": "^3.5.1",

@@ -1,14 +1,22 @@
-.top-wrapper
-  .top-inner-text
-    p.font-weight-bolder.display-4 Vimに特化した学習サイト
-    p.font-weight-bolder.display-4 Vimate
-    p.font-weight-bolder.text-black-50.mt-3 ゲーム形式でVimを学びましょう。
-    - if logged_in?
-      div
-        = link_to 'レッスン一覧はこちら', lessons_path, class: 'btn btn-info w-50 mt-4'
-    - else
-      div
-        = link_to 'ユーザー登録', new_user_path, class: 'btn btn-info w-50 mt-4'
-      div
-        = link_to 'すぐにレッスンを受講', lessons_path, class: 'btn btn-info w-50 mt-4'
-        small.form-text.text-muted.mt-2 ※ログインしない場合は、受講情報が保存されません。
+section.hero.is-medium.is-bold style=("background-color: #CAE5CD;")
+  .hero-body
+    .container.has-text-centered
+      .d-flex.justify-content-center.align-items-center
+        ul
+          li
+            h1.title.is-size-1.m-5
+              | Vim特化の学習サイト<br>
+              | Vimate
+          li.has-text-weight-bold
+            h2.subtitle
+            | ゲーム形式でVimを学びましょう。
+          - if logged_in?
+            li
+              = link_to 'レッスン一覧はこちら', lessons_path, class: 'button is-info text-decoration-none'
+          - else
+            li
+              = link_to 'ユーザー登録', new_user_path, class: 'button is-info has-text-weight-bold w-50 is-medium mt-4 text-decoration-none'
+            li
+               = link_to 'すぐにレッスンを受講', lessons_path, class: 'button is-info w-50 mt-4 text-decoration-none'
+               small.form-text.text-muted.mt-2 ※ログインしない場合は、受講情報が保存されません。
+        = image_pack_tag('vimuta/vimuta_11.svg', size: '250x250', class: 'mt-5')
