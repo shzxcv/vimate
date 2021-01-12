@@ -1,11 +1,74 @@
 - set_meta_tags title: t('.title')
-h1.text-center.mt-4 = t('.title')
-.container
-  p Q. Vimって何ですか？
-  p A. Vimは玄人専用のテキストエディタです。
-  br
-  p Q. キーボード入力ができません。
-  p A. Vimiumを使用している場合は無効化や除外設定をするか、insert modeで入力してください。
-  br
-  p Q. あのキャラクタって何ですか？
-  p A. びむ太と申します。563年のエディタ宗教戦争において、Vim軍の英雄として讃えられています。
+.container.my-4
+  h1.title.has-text-centered = t('.title')
+  .row
+    .column.is-8.is-offset-2.my-2
+      .card
+        .card-content
+          .content.ml-3.mt-3
+            p.title.is-5.has-text-weight-bold
+              i.far.fa-question-circle.fa-lg.fa-fw
+              | Vimって何ですか？
+            p.has-text-weight-normal.ml-1
+              i.fas.fa-arrow-right.fa-fw.mr-1
+              | Vimはテキストエディタの一つです。サーバサイドの作業を行う際に必要になったり、プログラミングの際にエディタとして使われる方も多くいます。
+    .column.is-8.is-offset-2.my-2
+      .card
+        .card-content
+          .content.ml-3.mt-3
+            p.title.is-5.has-text-weight-bold
+              i.far.fa-question-circle.fa-lg.fa-fw
+              | レッスンの問題が全く分かりません。
+            p.has-text-weight-normal.ml-1
+              i.fas.fa-arrow-right.fa-fw.mr-1
+              | 解答一覧を用意しております。そちらを参照しながら解答を進めてみてください。一つずつコマンドを覚えて、Vimmerを目指しましょう！
+    .column.is-8.is-offset-2.my-2
+      .card
+        .card-content
+          .content.ml-3.mt-3
+            p.title.is-5.has-text-weight-bold
+              i.far.fa-question-circle.fa-lg.fa-fw
+              | キーボード入力ができません。
+            p.has-text-weight-normal.ml-1
+              i.fas.fa-arrow-right.fa-fw.mr-1
+              | Vimiumを使用している場合は無効化や除外設定をするか、insert modeで入力してください。解決しなければ、お問い合わせフォームよりお問い合わせをお願いします。
+    .column.is-8.is-offset-2.my-2
+      .card
+        .card-content
+          .content.ml-3.mt-3
+            p.title.is-5.has-text-weight-bold
+              i.far.fa-question-circle.fa-lg.fa-fw
+              | スマホでレッスンができません。
+            p.has-text-weight-normal.ml-1
+              i.fas.fa-arrow-right.fa-fw.mr-1
+              | 現在はPCのみ対応しています。スマホ対応を希望される際は、今後の開発に役立てますのでお問い合わせフォームよりお問い合わせをお願い致します。
+    .column.is-8.is-offset-2.my-2
+      .card
+        .card-content
+          .content.ml-3.mt-3
+            p.title.is-5.has-text-weight-bold
+              i.far.fa-question-circle.fa-lg.fa-fw
+              | あのキャラクタって何ですか？
+            p.has-text-weight-normal.ml-1
+              i.fas.fa-arrow-right.fa-fw.mr-1
+              | びむ太と申します。V6T年のエディタ宗教戦争の生き残り、Vim軍の英雄として讃えられています。
+    .column.is-8.is-offset-2.my-2
+      .card
+        .card-content
+          .content.ml-3.mt-3
+            p.title.is-5.has-text-weight-bold
+              i.far.fa-question-circle.fa-lg.fa-fw
+              | バグがありました。
+            p.has-text-weight-normal.ml-1
+              i.fas.fa-arrow-right.fa-fw.mr-1
+              | お手数ですが、フッターのお問い合わせフォームよりお問い合わせをお願い致します。
+    .column.is-8.is-offset-2.my-2
+      .card
+        .card-content
+          .content.ml-3.mt-3
+            p.title.is-5.has-text-weight-bold
+              i.far.fa-question-circle.fa-lg.fa-fw
+              | 機能を追加して欲しい。
+            p.has-text-weight-normal.ml-1
+              i.fas.fa-arrow-right.fa-fw.mr-1
+              | フッターのお問い合わせフォームよりお問い合わせをお願い致します。随時アップデートしていきますので、対応をお待ちいただければと思います。
