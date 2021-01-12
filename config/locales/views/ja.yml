@@ -2,9 +2,10 @@ ja:
   defaults:
     login: 'ログイン'
     register: '登録'
+    send: '送信'
+    change: '変更'
     inquiry: '問い合わせ'
     require_login: 'ログインしてください。'
-    change: '変更'
     info: 'ログインしています。'
   users:
     new:
@@ -14,8 +15,7 @@ ja:
   user_sessions:
     new:
       title: 'ログイン'
-      to_register_page: 'アカウントをお持ちでない場合はこちら'
-      password_reset: 'パスワードリセットはこちら'
+      here: 'こちら'
     create:
       success: 'ログインしました。'
       fail: 'メールアドレスもしくはパスワードに誤りがあります。'
@@ -52,6 +52,7 @@ ja:
     edit:
       title: 'パスワード再登録'
       error: '不正なパスワード再設定URLです。<br>パスワード再設定申請を再度行ってください。'
+      mail_registration: 'ご登録メールアドレス'
   mypages:
     show:
       title: 'マイページ'

@@ -1,25 +1,33 @@
 - set_meta_tags title: t('.title')
-h1.text-center.mt-4 = t('.title')
-.container
+.container.my-4
+  h1.title.has-text-centered = t('.title')
   .row
-    .col-md-10.offset-md-1.col-lg-8.offset-lg-2
+    .column.is-6.is-offset-3
       = form_with model: @inquiry, local: true do |f|
-        .form-group
-          span.badge.badge-danger.mr-2 必須
-          =f.label :category
-          =f.select :category, Inquiry.categories.keys.map { |k| [I18n.t("enums.inquiry.category.#{k}"), k]}, {}, class: 'form-control'
-        .form-group
-          span.badge.badge-primary.mr-2 任意
-          =f.label :name
-          =f.text_field :name, class: 'form-control'
-        .form-group
-          span.badge.badge-primary.mr-2 任意
-          =f.label :email
-          =f.email_field :email, class: 'form-control'
-        .form-group
-          span.badge.badge-danger.mr-2 必須
-          =f.label :body
-          =f.text_area :body, class: 'form-control', rows: 10
-        .form-group.text-center
-          =f.submit t('defaults.inquiry'), class: 'btn btn-primary'
-
+        .field
+          .d-flex.justify-content-start.align-items-center
+            .badge.badge-danger.mr-2.mb-2 必須
+            =f.label :category, class: 'label'
+          .select.is-info
+            =f.select :category, Inquiry.categories.keys.map { |k| [I18n.t("enums.inquiry.category.#{k}"), k]}
+        .field
+          .d-flex.justify-content-start.align-items-center
+            .badge.badge-primary.mr-2.mb-2 任意
+            =f.label :name, class: 'label'
+          .control
+            =f.text_field :name, class: 'input'
+        .field
+          .d-flex.justify-content-start.align-items-center
+            .badge.badge-primary.mr-2.mb-2 任意
+            =f.label :email, class: 'label'
+          .control
+            =f.email_field :email, class: 'input'
+        .field
+          .d-flex.justify-content-start.align-items-center
+            .badge.badge-danger.mr-2.mb-2 必須
+            =f.label :body, class: 'label'
+          .control
+            =f.text_area :body, class: 'textarea is-info', rows: 10
+        .field
+          .control.has-text-centered
+            =f.submit t('defaults.send'), class: 'button is-primary has-text-weight-bold'

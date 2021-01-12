@@ -1,18 +1,24 @@
 - set_meta_tags title: t('.title')
-h1.text-center.mt-4 = t('.title')
-.container
+.container.my-4
+  h1.title.has-text-centered = t('.title')
   .row
-    .col-md-10.offset-md-1.col-lg-8.offset-lg-2
+    .column.is-4.is-offset-4
+        table.table.table-borderless.my-4
+          tbody
+            tr.border-bottom
+              td.has-text-weight-semibold = t('.mail_registration')
+              td.has-text-weight-semibold = @user.email
+    .column.is-6.is-offset-3
       = form_with model: @user, url: password_reset_path(@token), local: true do |f|
-        .form-group
-          = f.label :email, class: 'w-100'
-          = @user.email
-        .form-group
-          = f.label :password
-          = f.password_field :password, class: 'form-control', required: true
-          small.form-text.text-muted 半角英小文字・英大文字・数字を組み合わせ、8文字以上で入力してください。
-        .form-group
-          = f.label :password_confirmation
-          = f.password_field :password_confirmation, class: 'form-control', required: true
-        .form-group.text-center
-          = f.submit t('defaults.register'), class: 'btn btn-primary'
+        .field
+          =f.label :password, class: 'label'
+          .control
+            =f.password_field :password, class: 'input', required: true
+            small.form-text.text-muted ※半角英小文字・英大文字・数字を組み合わせ、8文字以上で入力してください。
+        .field
+          =f.label :password_confirmation, class: 'label'
+          .control
+            =f.password_field :password_confirmation, class: 'input', required: true
+        .field
+          .control.has-text-centered
+            =f.submit t('defaults.register'), class: 'button is-primary has-text-weight-bold'

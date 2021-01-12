@@ -1,11 +1,13 @@
 - set_meta_tags title: t('.title')
-h1.text-center.mt-4 = t('.title')
-.container
+.container.my-4
+  h1.title.has-text-centered = t('.title')
   .row
-    .col-md-10.offset-md-1.col-lg-8.offset-lg-2
+    .column.is-6.is-offset-3
       = form_with url: password_resets_path, method: :post, local: true do |f|
-        .form-group
-          = f.label :email, User.human_attribute_name(:email)
-          = f.email_field :email, class: 'form-control', required: true
-        .form-group.text-center
-          = f.submit t('defaults.register'), class: 'btn btn-primary'
+        .field
+          =f.label :email, User.human_attribute_name(:email), class: 'label'
+          .control
+            =f.email_field :email, class: 'input', required: true
+        .field
+          .control.has-text-centered
+            =f.submit t('defaults.register'), class: 'button is-primary has-text-weight-bold'

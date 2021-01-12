@@ -1,33 +1,40 @@
 - set_meta_tags title: t('.title')
-h1.text-center.mt-4 = t('.title')
-.container
+.container.my-4
+  h1.title.has-text-centered = t('.title')
   .row
-    .col-md-10.offset-md-1.col-lg-8.offset-lg-2
+    .column.is-6.is-offset-3
       = form_with model: @user, local: true do |f|
-        .form-group
-          span.badge.badge-danger.mr-2 必須
-          =f.label :name
-          =f.text_field :name, class: 'form-control'
-        .form-group
-          span.badge.badge-danger.mr-2 必須
-          =f.label :email
-          =f.email_field :email, class: 'form-control'
-        .form-group
-          span.badge.badge-danger.mr-2 必須
-          =f.label :password
-          =f.password_field :password, class: 'form-control'
-          small.form-text.text-muted 半角英小文字・英大文字・数字を組み合わせ、8文字以上で入力してください。
-        .form-group
-          span.badge.badge-danger.mr-2 必須
-          =f.label :password_confirmation
-          =f.password_field :password_confirmation, class: 'form-control'
-        .form-group.text-center
-          =f.submit t('defaults.register'), class: 'button is-info'
-        .text-right.mb-2
-          = link_to auth_at_provider_path(provider: :google), class: 'btn btn-light' do
-            i.fab.fa-google style='color: firebrick'
-            span  Googleログイン
-        .text-right.mb-3
-          = link_to auth_at_provider_path(provider: :github), class: 'btn btn-light' do
-            i.fab.fa-github
-            span  Githubログイン&nbsp;
+        .field
+          .d-flex.justify-content-start.align-items-center
+            .badge.badge-danger.mr-2.mb-2 必須
+            =f.label :name, class: 'label'
+          .control
+            =f.text_field :name, class: 'input'
+        .field
+          .d-flex.justify-content-start.align-items-center
+            .badge.badge-danger.mr-2.mb-2 必須
+            =f.label :email, class: 'label'
+          .control
+            =f.email_field :email, class: 'input'
+        .field
+          .d-flex.justify-content-start.align-items-center
+            .badge.badge-danger.mr-2.mb-2 必須
+            =f.label :password, class: 'label'
+          .control
+            =f.password_field :password, class: 'input'
+            small.form-text.text-muted ※半角英小文字・英大文字・数字を組み合わせ、8文字以上で入力してください。
+        .field
+          .d-flex.justify-content-start.align-items-center
+            .badge.badge-danger.mr-2.mb-2 必須
+            =f.label :password_confirmation, class: 'label'
+          .control
+            =f.password_field :password_confirmation, class: 'input'
+        .field
+          .control.has-text-centered
+            =f.submit t('defaults.register'), class: 'button is-primary has-text-weight-bold'
+          .control.is-pulled-right
+            = link_to auth_at_provider_path(provider: :github), class: 'button is-dark my-2 mr-1 text-decoration-none' do
+              i.fab.fa-github.mr-2
+              span.has-text-weight-medium Sign in with Github&nbsp;
+          .control.is-pulled-right
+            = link_to image_tag('btn_google_signin_dark_pressed_web@2x.png', size: '208x48'), auth_at_provider_path(provider: :google)

@@ -1,26 +1,29 @@
 - set_meta_tags title: t('.title')
-h1.text-center.mt-4 = t('.title')
-.container
+.container.my-4
+  h1.title.has-text-centered = t('.title')
   .row
-    .col-md-10.offset-md-1.col-lg-8.offset-lg-2
+    .column.is-6.is-offset-3
       = form_with url: login_path, method: :post, local: true do |f|
-        .form-group
-          = f.label :email, User.human_attribute_name(:email)
-          = f.email_field :email, class: 'form-control', required: true
-        .form-group
-          = f.label :password, User.human_attribute_name(:password)
-          = f.password_field :password, class: 'form-control', required: true
-        .form-group.text-center
-          = f.submit t('.title'), class: 'btn btn-primary'
-        .text-right.mb-1
-          = link_to auth_at_provider_path(provider: :google), class: 'btn btn-light' do
-            i.fab.fa-google style='color: firebrick'
-            span  Googleログイン
-        .text-right.mb-1
-          = link_to auth_at_provider_path(provider: :github), class: 'btn btn-light' do
-            i.fab.fa-github
-            span  Githubログイン&nbsp;
-        .text-right
-          = link_to t('.to_register_page'), new_user_path
-        .text-right
-          = link_to t('.password_reset'), new_password_reset_path
+        .field
+          =f.label :email, User.human_attribute_name(:email), class: 'label'
+          .control
+            =f.email_field :email, class: 'input', required: true
+        .field
+          =f.label :password, User.human_attribute_name(:password), class: 'label'
+          .control
+            =f.password_field :password, class: 'input', required: true
+        .field
+          .control.has-text-centered
+            =f.submit t('.title'), class: 'button is-primary has-text-weight-bold'
+          .control.is-pulled-right
+            = link_to auth_at_provider_path(provider: :github), class: 'button is-dark my-2 mr-1 text-decoration-none' do
+              i.fab.fa-github.mr-2
+              span.has-text-weight-medium Sign in with Github&nbsp;
+          .control.is-pulled-right
+            = link_to image_tag('btn_google_signin_dark_pressed_web@2x.png', size: '208x48'), auth_at_provider_path(provider: :google)
+          .control.is-pulled-right.mt-3
+            p.has-text-grey
+              | アカウントをお持ちでない場合は#{link_to t('.here'), new_user_path, class: 'has-text-grey-darker'}
+          .control.is-pulled-right
+            p.has-text-grey
+              | パスワードリセットは#{link_to t('.here'), new_password_reset_path, class: 'has-text-grey-darker'}

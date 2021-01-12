@@ -33,7 +33,7 @@ module Vimate
       else
         class_name = instance.instance_variable_get(:@object_name)
         method_name = instance.instance_variable_get(:@method_name)
-        input_error_icon = html_tag.gsub("form-control", "form-control is-invalid").html_safe
+        input_error_icon = html_tag.gsub("class=\"", "class=\"is-invalid ").html_safe
         below_error_message = "<div class=\"invalid-feedback\">#{I18n.t("activerecord.attributes.#{class_name}.#{method_name}")}#{instance.error_message.first}</div>".html_safe
         input_error_icon.concat(below_error_message)
       end
