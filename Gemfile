@@ -27,6 +27,7 @@ gem 'meta-tags'
 gem 'toastr-rails'
 gem 'slack-notifier'
 gem 'exception_notification'
+gem 'rack-user_agent'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

@@ -6,6 +6,7 @@ class LessonsController < ApplicationController
   end
 
   def show
+    return redirect_to lessons_path, warning: 'レッスンはPC専用です。' if request.from_smartphone?
     @lesson = Lesson.find_by!(url: params[:url])
     if @lesson.url.match?("vimmer-01")
       gon.vimuta_src_url = helpers.asset_path 'vimmer_01_vimuta.png'

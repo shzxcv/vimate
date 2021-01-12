@@ -222,6 +222,9 @@ GEM
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
+    rack-user_agent (0.5.2)
+      rack (>= 1.5)
+      woothee (>= 1.0.0)
     rails (6.0.3.4)
       actioncable (= 6.0.3.4)
       actionmailbox (= 6.0.3.4)
@@ -370,6 +373,7 @@ GEM
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    woothee (1.11.1)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yard (0.9.26)
@@ -406,6 +410,7 @@ DEPENDENCIES
   pry-doc
   pry-rails
   puma (~> 4.1)
+  rack-user_agent
   rails (~> 6.0.3, >= 6.0.3.4)
   rails-i18n
   rspec-rails

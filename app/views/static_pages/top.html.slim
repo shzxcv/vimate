@@ -12,7 +12,7 @@ section.hero.is-medium.is-bold style=("background-color: #CAE5CD;")
             | ゲーム形式でVimを学びましょう。
           - if logged_in?
             li
-              = link_to 'レッスン一覧はこちら', lessons_path, class: 'button is-info text-decoration-none'
+              = link_to 'レッスン一覧はこちら', lessons_path, class: 'button is-info text-decoration-none mt-4'
           - else
             li
               = link_to 'ユーザー登録', new_user_path, class: 'button is-info has-text-weight-bold w-50 is-medium mt-4 text-decoration-none'
