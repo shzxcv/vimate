@@ -1,20 +1,25 @@
 - set_meta_tags title: t('.title')
-h1.text-center.mt-4 = t('.title')
-.container
+.container.my-4
+  h1.title.has-text-centered = t('.title')
   .row
-    .col-md-10.offset-md-1.col-lg-8.offset-lg-2
+    .column.is-6.is-offset-3
       = form_with model: @user, url: profile_path, local: true do |f|
-        .form-group.text-center
-          = image_tag @user.avatar.url, size: '100x100', class: 'rounded-circle mr15' if @user.avatar?
-        .form-group
-          = f.label :avatar
-          = f.file_field :avatar, class: 'form-control', accept: 'image/*'
-          = f.hidden_field :avatar_cache
-        .form-group
-          = f.label :name
-          = f.text_field :name, class: 'form-control'
-        .form-group
-          = f.label :email
-          = f.email_field :email, class: 'form-control'
-        .form-group.text-center
-          = f.submit t('defaults.change'), class: 'btn btn-primary'
+        .field
+          .control.has-text-centered
+            = image_tag @user.avatar.url, size: '100x100', class: 'rounded-circle mr15' if @user.avatar?
+        .field
+          = f.label :avatar, class: 'label'
+          .control
+            = f.file_field :avatar, class: 'input', accept: 'image/*'
+            = f.hidden_field :avatar_cache
+        .field
+          = f.label :name, class: 'label'
+          .control
+            = f.text_field :name, class: 'input'
+        .field
+          = f.label :email, class: 'label'
+          .control
+          = f.email_field :email, class: 'input'
+        .field
+          .control.has-text-centered
+            =f.submit t('defaults.register'), class: 'button is-primary has-text-weight-bold'
