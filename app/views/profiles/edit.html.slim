@@ -1,3 +1,4 @@
+= javascript_include_tag 'https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js'
 - set_meta_tags title: t('.title')
 .container.my-4
   h1.title.has-text-centered = t('.title')
@@ -8,9 +9,9 @@
           .control.has-text-centered
             = image_tag @user.avatar.url, size: '100x100', class: 'rounded-circle mr15' if @user.avatar?
         .field
-          = f.label :avatar, class: 'label'
-          .control
-            = f.file_field :avatar, class: 'input', accept: 'image/*'
+          .custom-file.my-2
+            = f.label :avatar, class: 'custom-file-label'
+            = f.file_field :avatar, class: 'form-control-file', accept: 'image/*'
             = f.hidden_field :avatar_cache
         .field
           = f.label :name, class: 'label'
@@ -23,3 +24,5 @@
         .field
           .control.has-text-centered
             =f.submit t('defaults.register'), class: 'button is-primary has-text-weight-bold'
+
+= javascript_pack_tag 'bs-custom-file-input'
