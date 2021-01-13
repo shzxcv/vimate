@@ -1,8 +1,8 @@
 - set_meta_tags title: t('.title')
 .container.my-4
   h1.title.has-text-centered = t('.title')
-  .row
-    .column.is-6.is-offset-3
+  .rows
+    .column.is-8.is-offset-2
       = form_with model: @inquiry, local: true do |f|
         .field
           .d-flex.justify-content-start.align-items-center
