@@ -7,6 +7,7 @@ ja:
     inquiry: '問い合わせ'
     require_login: 'ログインしてください。'
     info: 'ログインしています。'
+    unsub: '退会する'
   users:
     new:
       title: 'ユーザー登録'
@@ -57,6 +58,11 @@ ja:
     show:
       title: 'マイページ'
       profile_edit: 'プロフィール編集'
+    remove:
+      title: '退会'
+    destroy:
+      success: '退会しました。ご利用ありがとうございました。'
+      fail: 'パスワードが誤っています。再度入力してください。'
   profiles:
     edit:
       title: 'プロフィール編集'

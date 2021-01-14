@@ -30,11 +30,17 @@
           .control
             =f.password_field :password_confirmation, class: 'input'
         .field
+          .d-flex.justify-content-start.align-items-center
+            =f.check_box :agreement, class: 'mb-2 mr-2'
+            =f.label :agreement, "#{link_to '利用規約', terms_path, class: 'has-text-grey-darker'}と#{link_to 'プライバシーポリシー', privacy_path, class: 'has-text-grey-darker'}に同意する".html_safe, class: 'label'
+        .field
           .control.has-text-centered
-            =f.submit t('defaults.register'), class: 'button is-primary has-text-weight-bold'
+            =f.submit t('defaults.register'), class: 'button is-primary has-text-weight-bold',id: 'js-submit'
           .control.is-pulled-right
             = link_to auth_at_provider_path(provider: :github), class: 'button is-dark my-2 mr-1 text-decoration-none' do
               i.fab.fa-github.mr-2
               span.has-text-weight-medium Sign in with Github&nbsp;
           .control.is-pulled-right
             = link_to image_tag('btn_google_signin_dark_pressed_web@2x.png', size: '208x48'), auth_at_provider_path(provider: :google)
+
+= javascript_pack_tag 'usernew_checkbox'

@@ -1,28 +1,29 @@
 - set_meta_tags title: t('.title')
-section.container.my-4
+section.container.my-5
   - @lessons.each do |lesson|
-    .column.is-8.is-offset-2.my-3
-      .card
-        .card-content
-          .d-flex.justify-content-start
-            = image_pack_tag("vimuta/vimuta_#{sprintf('%02d', rand(1..12))}.svg", size: '150x150', class: '.align-self-end')
-            .content.ml-3.mt-3.align-self-center
-              p.title.is-4.has-text-weight-bold = lesson.decorate.lesson_name
-              p.has-text-weight-normal = lesson.description
-          .content.is-pulled-right
-            .buttons
-              - unless lesson.url.in?(['vimmer-02', 'vimmer-03'])
-                = link_to lesson_path(lesson), class: 'button is-primary is-outlined is-rounded text-decoration-none', 'data-turbolinks': false do
-                  span.mr-1
-                    i.fas.fa-caret-square-right
-                  | レッスンはこちら
-              - else
-                button.button.is-primary.is-outlined.is-rounded disabled="disable"
-                  span.mr-1
-                    i.fas.fa-ban
-                  | レッスンはこちら
-              - unless lesson.category == 'Option'
-                = link_to lesson_commands_path(lesson), class: 'button is-info is-outlined is-rounded text-decoration-none ml-2' do
-                  span.mr-1
-                    i.fas.fa-caret-right
-                  | 解答一覧はこちら
+    .row
+      .column.is-8.is-offset-2.my-3
+        .card
+          .card-content
+            .d-flex.justify-content-start
+              = image_pack_tag("vimuta/vimuta_#{sprintf('%02d', rand(1..12))}.svg", size: '150x150', class: '.align-self-end')
+              .content.ml-3.mt-3.align-self-center
+                p.title.is-4.has-text-weight-bold = lesson.decorate.lesson_name
+                p.has-text-weight-normal = lesson.description
+            .content.is-pulled-right
+              .buttons
+                - unless lesson.url.in?(['vimmer-02', 'vimmer-03'])
+                  = link_to lesson_path(lesson), class: 'button is-primary is-outlined is-rounded text-decoration-none', 'data-turbolinks': false do
+                    span.mr-1
+                      i.fas.fa-caret-square-right
+                    | レッスンはこちら
+                - else
+                  button.button.is-primary.is-outlined.is-rounded disabled="disable"
+                    span.mr-1
+                      i.fas.fa-ban
+                    | レッスンはこちら
+                - unless lesson.category == 'Option'
+                  = link_to lesson_commands_path(lesson), class: 'button is-info is-outlined is-rounded text-decoration-none ml-2' do
+                    span.mr-1
+                      i.fas.fa-caret-right
+                    | 解答一覧はこちら

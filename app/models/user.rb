@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :email, uniqueness: true, presence: true, format: { with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i}
+  validates_acceptance_of :agreement, presence: true, on: :create
 
   validates :password, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] }
   #半角英小文字大文字数字をそれぞれ1種類以上含む8文字以上100文字以下
@@ -21,11 +22,19 @@ class User < ApplicationRecord
 
   enum role: { general: 0, admin: 1}
 
-  def to_param
-    name
+  def end_lessons
+    lessons.group(:id)
   end
 
-  def chart_lists
-    lessons.group(:id).select('category, name, count(user_lessons.time) as time_count, sum(user_lessons.time) as time_sum, count(user_lessons.answer_rate) as answer_rate_count, sum(user_lessons.answer_rate) as answer_rate_sum, count(user_lessons.id) as lesson_count').map { |x| [x.category + x.name, (x.time_sum.to_f / x.time_count.to_f).round, (x.answer_rate_sum.to_f / x.answer_rate_count.to_f).round, x.lesson_count] }
+  def end_lessons_count(lesson)
+    lessons.find_end_lessons(lesson).count
+  end
+
+  def user_average(lesson, avg)
+    lessons.find_end_lessons(lesson).average(avg).to_f.round(0)
+  end
+
+  def user_month(lesson, avg)
+    lessons.find_end_lessons(lesson).find_month_lessnos.group('date(user_lessons.created_at)').average("user_lessons.#{avg}").map { |k, v| [k.strftime('%m/%d'), v.to_f.round(0)]}.to_h
   end
 end

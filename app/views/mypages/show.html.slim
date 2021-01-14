@@ -1,17 +1,58 @@
+/chartkick library
+= javascript_include_tag "https://www.gstatic.com/charts/loader.js"
+
 - set_meta_tags title: t('.title')
-h1.text-center.mt-4 = t('.title')
-.container
-  .row
-    .col-md-10.offset-md-1.col-lg-8.offset-lg-2
-      .d-flex.flex-column.text-center
-        .p-2.font-weight-bold.mr-5.mt-5 = t('.profile_edit')
-        .p-2.mr-5 = @user.name
-        .p-2.mr-5 = link_to '編集', edit_profile_path, class: 'btn btn-light'
-        .p-2.mr-5 = link_to 'パスワード変更', edit_mypage_password_path, class: 'btn btn-light'
-      .d-flex.flex-column.text-center
-        .p-2.font-weight-bold.mr-5.mt-5 終了レッスン
-        - @user.chart_lists.each do |chart_list|
-          .p-2.font-weight-normal.m-3.text-left = chart_list[0]
-          = bar_chart [['クリアタイム平均', chart_list[1]]], width: '600px', height: '70px', suffix: '秒'
-          = bar_chart [['正答平均率', chart_list[2]]], width: '600px', height: '70px', suffix: '%', max: 100, min: 0
-          = bar_chart [['受講回数', chart_list[3]]], width: '600px', height: '70px', suffix: '回'
+section.section
+  .container
+    .columns
+      .column.is-9
+        h1.title.has-text-centered.ml-5 = t('.title')
+        h2.subtitle.mt-5.has-text-weight-bold.has-text-centered.ml-5 終了レッスン
+        - @user.end_lessons.each do |lesson|
+          .card.mt-5.has-text-centered
+            .card-content.ml-5
+              .content
+                h4 = lesson.decorate.lesson_name
+                h6.mr-3
+                  i.far.fa-check-circle.fa-fw.faa-pulse.animated.fa-lg style="color:limegreen;"
+                  | 受講回数 #{@user.end_lessons_count(lesson)}回
+
+              .content.my-5.ml-5
+              .has-text-centered.my-4
+                button.button.is-info.is-outlined.w-50 aria-controls="barchart0#{lesson.id}" aria-expanded="false" data-target="#barchart0#{lesson.id}" data-toggle="collapse" type="button"
+                    | 今までの平均正答率をみる
+                .collapse id="barchart0#{lesson.id}"
+                  .content.my-4.ml-5
+                    = bar_chart [['あなたの平均正答率', @user.user_average(lesson, :answer_rate)], ['ユーザ全体の平均正答率', UserLesson.all_average(lesson, :answer_rate)]], width: '700px', height: '100px', suffix: '%', max: 100, min: 0, colors: ['#3298dc']
+
+              .has-text-centered.my-4
+                button.button.is-info.is-outlined.w-50 aria-controls="linechart0#{lesson.id}" aria-expanded="false" data-target="#linechart0#{lesson.id}" data-toggle="collapse" type="button"
+                    | 日ごとの平均正答率をみる
+                .collapse id="linechart0#{lesson.id}"
+                  .content.my-4.ml-5
+                    = line_chart @user.user_month(lesson, 'answer_rate'), width: '700px', height: '150px',  colors: ['#3298dc'], xtitle: 'あなたの日別平均正答率の推移', suffix: "%", library: {fontSize: 90}
+
+              .has-text-centered.my-4
+                button.button.is-info.is-outlined.w-50 aria-controls="barchart1#{lesson.id}" aria-expanded="false" data-target="#barchart1#{lesson.id}" data-toggle="collapse" type="button"
+                    | 今までの平均タイムをみる
+                .collapse id="barchart1#{lesson.id}"
+                  .content.my-4.ml-5
+                    = bar_chart [['あなたの平均タイム', @user.user_average(lesson, :time)], ['ユーザ全体の平均タイム', UserLesson.all_average(lesson, :time)]], width: '700px', height: '100px', suffix: '秒',  colors: ['#3298dc']
+
+              .has-text-centered.my-4
+                button.button.is-info.is-outlined.w-50 aria-controls="linechart1#{lesson.id}" aria-expanded="false" data-target="#linechart1#{lesson.id}" data-toggle="collapse" type="button"
+                    | 日ごとの平均タイムをみる
+                .collapse id="linechart1#{lesson.id}"
+                  .content.my-4.ml-5
+                    = line_chart @user.user_month(lesson, 'time'), width: '700px', height: '150px',  colors: ['#3298dc'], xtitle: 'あなたの日別平均タイムの推移', suffix: "秒"
+
+      .column.is-3
+        aside.menu style=("margin-top: 150px;")
+          p.menu-label.is-size-6 プロフィール
+          .menu-list
+            = link_to  edit_profile_path, class: 'button is-primary my-2 mr-1 text-decoration-none' do
+              i.far.fa-address-card.mr-2
+              span.has-text-weight-medium プロフィール編集
+            = link_to  edit_mypage_password_path, class: 'button is-primary my-2 mr-1 text-decoration-none' do
+              i.fas.fa-key.mr-2
+              span.has-text-weight-medium パスワード変更

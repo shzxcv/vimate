@@ -11,6 +11,7 @@ ja:
         email: 'メールアドレス'
         password: 'パスワード'
         password_confirmation: 'パスワード確認用'
+        agreement: '利用規約とプライバシーポリシー'
       inquiry:
         category: 'カテゴリ'
         name: 'お名前'

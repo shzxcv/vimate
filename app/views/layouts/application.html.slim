@@ -10,6 +10,7 @@ html
       = render 'shared/google_analytics'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.2.1/font-awesome-animation.css"
   body
     - if logged_in?
       = render 'shared/after_login_header'
