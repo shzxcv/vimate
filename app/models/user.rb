@@ -22,10 +22,6 @@ class User < ApplicationRecord
 
   enum role: { general: 0, admin: 1}
 
-  def to_param
-    name
-  end
-
   def end_lessons
     lessons.group(:id)
   end
