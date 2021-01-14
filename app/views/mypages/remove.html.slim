@@ -1,0 +1,20 @@
+- set_meta_tags title: t('.title')
+.container.my-4
+  h1.title.has-text-centered = t('.title')
+  .row
+    .column.is-4.is-offset-4
+      p 以下の注意事項をご確認して頂き、同意した上でパスワードを入力、退会するをクリックしてください。
+      ol.ml-4.my-4.has-text-danger.has-text-weight-semibold
+        li アカウント削除後に、ユーザに紐づく全てのデータが削除されます。削除後に、復元することはできません。
+        li 再度サービスを利用される際は、新しくユーザを作成する必要があります。以前のデータを移行することはできません。
+      = form_with url: remove_mypage_path, method: :delete, local: true do |f|
+        .field
+          = f.label :password, User.human_attribute_name(:password), class: 'label'
+          .control
+            = f.password_field :password, class: 'input', id: 'js-password'
+            small.form-text.text-muted ※外部認証で作成されたアカウントは入力不要です。
+        .field
+          .control.has-text-centered
+            =f.submit t('defaults.unsub'), class: 'button is-danger has-text-weight-bold', data: {confirm: '本当に削除しますか？'}
+
+= javascript_pack_tag 'user_remove'

@@ -22,7 +22,12 @@
           .control
           = f.email_field :email, class: 'input'
         .field
-          .control.has-text-centered
+          .control.has-text-centered.mb-5
             =f.submit t('defaults.register'), class: 'button is-primary has-text-weight-bold'
+
+  h1.subtitle.has-text-centered.mt-5 = '退会申請'
+  .row
+    .column.is-6.is-offset-3
+      p.has-text-centered 退会申請は#{link_to 'こちら', remove_mypage_path, class: 'has-text-grey-darker'}からお願い致します。
 
 = javascript_pack_tag 'bs-custom-file-input'

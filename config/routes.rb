@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :password_resets, only: %i[new create edit update]
   resource :mypage, only: :show do
     resource :password, only: %i[edit update]
+    get 'remove', to: 'mypages#remove'
+    delete 'remove', to: 'mypages#destroy'
   end
   resource :profile, only: %i[edit update]
   get 'login', to: 'user_sessions#new'
