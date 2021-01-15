@@ -81,3 +81,6 @@ Procfile
 
 # Ignore sitemap
 public/sitemap.xml.gz
+
+# Mac
+.DS_Store

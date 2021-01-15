@@ -1,0 +1,97 @@
+#js-question-area {
+  //background: linear-gradient(transparent 50%, #3298dc);
+  position: relative;
+  padding: 20px;
+  background-color: #5fc2f5;
+  border-radius: 15px;
+  margin-left: 70px;
+}
+
+#js-question-area::before {
+content: '';
+position: absolute;
+display: block;
+border-radius: 50%;
+background-color: #5fc2f5;
+left: -35px;
+bottom: 15px;
+width: 30px;
+height: 30px;
+}
+
+#js-question-area::after {
+content: '';
+position: absolute;
+display: block;
+border-radius: 50%;
+background-color: #5fc2f5;
+left: -55px;
+bottom: 10px;
+width: 15px;
+height: 15px;
+}
+
+#js-input-area {
+  &:empty{
+    &:before{
+      content: '___';
+      -webkit-animation: blink 1s ease infinite;
+	    animation: blink 1s ease infinite;
+    }
+  }
+}
+
+.input-terminal {
+  height: 10vh;
+  border-radius: 10px;
+}
+
+@-webkit-keyframes blink {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}
+
+@keyframes blink {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}
+
+.bg-cloud {
+  background-image: url('../images/kumo_kusa.png');
+  background-size: 100% 65vh;
+  height: 65vh;
+  animation: cloud-animation 1000s linear infinite;
+  background-repeat: repeat-x;
+}
+
+@keyframes cloud-animation {
+  from {
+    //transform: translateX(0%);
+    background-position: 0 0;
+  }
+  to {
+    //transform: translateX(0%);
+    background-position: 50000px 0;
+  }
+}
+
+.result-box {
+  margin: 2em 0;
+  background: #f1f1f1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
+}
+
+.result-box .result-box-title {
+    font-size: 1.2em;
+    background: #5fc2f5;
+    padding: 4px;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+
+.result-box p {
+    padding: 15px 20px;
+    margin: 0;
+}

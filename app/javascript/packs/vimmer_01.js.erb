@@ -37,6 +37,7 @@ const start_frame = document.getElementById('js-start-frame');
 const result_frame = document.getElementById('js-result-frame');
 const result_time = document.getElementById('js-result-time');
 const result_twitter = document.getElementById('js-result-twitter');
+const result_comment = document.getElementById('js-result-comment');
 
 //マップ
 const map_array = [
@@ -97,8 +98,28 @@ function end_lesson() {
   canvas.classList.add('d-none');
   //結果表示
   const cleartime = Math.round((Date.now() - starttime) / 1000)
+
+  if (cleartime < 10) {
+    result_comment.textContent = '確実にチートです。やめてください。そうでなければ、Vimのソースコードの一部でしょう。'
+  } else if (cleartime < 20) {
+    result_comment.textContent = '伝説のVimmerのようです。血液中にVimが流れています。このサイトで学ぶことはおそらくありません。'
+  } else if (cleartime < 30) {
+    result_comment.textContent = 'Vimmerの中のレジェンドと呼ばれています。Vimの事なら大体知っています。Vim以外のエディタを見下す傾向があります。'
+  } else if (cleartime < 40) {
+    result_comment.textContent = '相当すごいVimmerです。大体のことなら知っているはずです。Vimハラスメントを好みます。'
+  } else if (cleartime < 50) {
+    result_comment.textContent = '少しすごいVimmerです。ある程度のことは知っていて、Vimを知り尽くしていると勘違いしています。'
+  } else if (cleartime < 60) {
+    result_comment.textContent = '移動はマスターVimmerです。これから他のコマンドも覚えていくことでしょう。Vimが楽しくなっているはずです。'
+  } else if (cleartime < 70) {
+    result_comment.textContent = 'まだまだこれからVimmerです。Vimに関心を持ち始めた頃で、他のエディタに浮気もしているでしょう。'
+  } else if (cleartime >= 70) {
+    result_comment.textContent = 'Vimmerではありません。こんなサイトいらないだろと思っているはずです。ぜひVimに改心しましょう。'
+  }
+
   result_time.textContent = `クリアタイム: ${cleartime}秒`;
   result_twitter.href = result_twitter.href.replace('cleartime', String(cleartime));
+  result_twitter.href = result_twitter.href.replace('result_comment', result_comment.textContent);
   result_frame.classList.remove('d-none');
 }
 

@@ -1,30 +1,38 @@
 - set_meta_tags title: @lesson.decorate.lesson_name
-h1.text-center.mt-4 = @lesson.decorate.lesson_name
 
-.container
-  .text-center
+.container.my-4
+  .has-text-centered
     canvas#js-canvas.d-none
   #js-start-frame
-    .bg-light.d-flex.flex-column.text-center.m-4.rounded style='height: 640px'
-      p.font-weight-bold.text-secondary.mt-5.h4 Spaceキー入力でスタート
-      p.text-secondary.mt-2 ※[h]で[左移動], [j]で[下移動], [k]で[上移動], [l]で[右移動]
-      p.text-secondary.mt-2 ※Vimmer診断の結果は保存されません。
-      p.text-secondary.mt-2 ※壁に当たると最初からスタートです。
+    .d-flex.justify-content-center.align-items-center style='height: 640px; background-color: #CAE5CD;'
+      .has-text-centered
+        h1.title.has-text-grey-darker = @lesson.decorate.lesson_name
+        h1.title.has-text-grey-darker スペースキーでスタート
+        p.is-size-8 使用できるキーは[H]で[左移動], [J]で[下移動], [K]で[上移動], [L]で[右移動]です。
+        p.text-muted.is-size-8 ※Vimmer診断の結果は保存されません。
   #js-result-frame.d-none
-    .bg-light.d-flex.flex-column.text-center.m-4.rounded style='height: 640px'
-      p.font-weight-bold.text-secondary.mt-5.h4 終了しました!
-      p#js-result-time.font-weight-bold.text-info
-      .text-center.m-2
-        = link_to "https://twitter.com/intent/tweet?text=#{@lesson.decorate.lesson_name}%0aタイム%20:%20cleartime秒%0aでした！%0a%0a%23Vimate%20%23Vim%0a\&url=#{request.url}", target: :_blank, rel: 'noopener noreferrer', class: 'btn btn-primary w-25', id: 'js-result-twitter' do
-          i.fab.fa-twitter.mr-1
-          span 結果をTwitterでシェア
-      .text-center.m-2
-        = link_to lesson_path(@lesson), class: 'btn btn-warning w-25', 'data-turbolinks': false do
-          i.fas.fa-sync.mr-1
-          span リトライ
-      .text-center.m-2
-        = link_to lessons_path, class: 'btn btn-warning w-25' do
-          i.fas.fa-list.mr-1
-          span レッスン一覧
+    .d-flex.justify-content-center.align-items-center style='height: 640px; background-color: #CAE5CD;'
+      .has-text-centered
+        h1.title.has-text-centered.has-text-grey-darker.mt-5 = @lesson.decorate.lesson_name
+
+        .result-box.has-text-centered
+          .result-box-title
+            i.far.fa-check-circle.fa-fw
+            | 結果
+          p#js-result-time.has-text-weight-bold
+          p#js-result-comment.has-text-weight-bold
+
+        .has-text-centered
+          p = link_to "https://twitter.com/intent/tweet?text=#{@lesson.decorate.lesson_name}%0aタイム%20:%20cleartime秒でした！%0a%0aあなたの診断結果は...%0aresult_comment%0a%0a%23Vimate%20%23Vim%0a\&url=#{request.url}", target: :_blank, rel: 'noopener noreferrer', class: 'button is-info text-decoration-none mb-3', id: 'js-result-twitter' do
+            i.fab.fa-twitter.mr-1
+            span 結果をTwitterでシェア
+
+        .d-flex.justify-content-center.mt-5
+          p = link_to lesson_path(@lesson), class: 'button is-primary text-decoration-none', 'data-turbolinks': false do
+            i.fas.fa-sync.mr-1
+            span リトライ
+          p = link_to lessons_path, class: 'button is-primary text-decoration-none ml-3' do
+            i.fas.fa-list.mr-1
+            span レッスン一覧
 
 = javascript_pack_tag 'vimmer_01'

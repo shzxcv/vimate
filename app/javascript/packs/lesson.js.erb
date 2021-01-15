@@ -1,18 +1,19 @@
 //定数定義
-const target = document.getElementById('js-target');
-const input = document.getElementById('js-input');
-const result_title = document.getElementById('js-result-title');
+//レッスン中
+const question_area = document.getElementById('js-question-area');
+const input_area = document.getElementById('js-input-area');
+
+//レッスン終了
 const result_time = document.getElementById('js-result-time');
 const result_rate = document.getElementById('js-result-rate');
-const result_repeat = document.getElementById('js-result-repeat');
 const result_twitter = document.getElementById('js-result-twitter');
-const result_answer = document.getElementById('js-result-answer');
-const result_lesson_list = document.getElementById('js-result-lesson-list');
 const result_mypage = document.getElementById('js-result-mypage');
 const result_login = document.getElementById('js-result-login');
 const progress = document.getElementById('js-progress-bar');
+
 //BackSpace + Ctrl + Space以外の不要キーを無効
 const ignore_keys = ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'Tab', 'Enter', 'Shift', 'Alt', 'PauseBreak', 'CapsLock', 'Esc', 'PageUp', 'PageDown', 'End', 'Home', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Insert', 'Delete', 'NumLock', 'ScrollLock', 'Dead', 'Meta', 'Escape'];
+
 //gon取得
 const questions = [];
 const answers = [];
@@ -28,6 +29,7 @@ let starttime;
 let answer_count = 0;
 let progress_percent = 0;
 let progress_timer;
+let cleartime;
 
 //プログレスバー処理
 const progress_bar = function() {
@@ -48,15 +50,15 @@ function set_question() {
   input_init()
   question = String(questions.splice(0, 1));
   answer = String(answers.splice(0, 1));
-  target.textContent = question;
+  question_area.textContent = question;
   progress_percent = 0;
   progress_timer = setInterval(progress_bar, 100);
 }
 
 //入力内容初期化
 function input_init() {
-  target.textContent = "";
-  input.textContent = "";
+  question_area.textContent = "";
+  input_area.textContent = "";
   enter_key = "";
 }
 
@@ -75,19 +77,16 @@ function set_csrftoken() {
 //終了処理
 function end_lesson() {
   input_init();
+  document.getElementById('js-lesson-play').style.display='none';
   clearInterval(progress_timer);
   progress.remove();
-  const cleartime = Math.round((Date.now() - starttime) / 1000)
+  cleartime = Math.round((Date.now() - starttime) / 1000)
   const answer_rate = Math.round(answer_count / total_questions * 100)
-  result_title.textContent = '終了しました!';
   result_time.textContent = `クリアタイム: ${cleartime}秒`;
   result_rate.textContent = `正答率: ${answer_rate}%`;
   //Twitterシェア結果埋め込み
   result_twitter.href = result_twitter.href.replace('cleartime', String(cleartime)).replace('answer_rate', String(answer_rate));
-  result_twitter.classList.remove('d-none');
-  result_repeat.classList.remove('d-none');
-  result_lesson_list.classList.remove('d-none');
-  result_answer.classList.remove('d-none');
+  document.getElementById('js-lesson-end').style.display='block';
   set_csrftoken();
   //ログインしている場合はDB格納
   const lesson_name = location.pathname.replace('/lessons/', '');
@@ -152,24 +151,28 @@ function flash_warn() {
     "showMethod": "fadeIn",
     "hideMethod": "fadeOut"
   }
-  Command: toastr["warning"]("解答のみ入力してください。<br>入力はBackspaceで削除できます。")
+  Command: toastr["warning"]("10文字以上は入力できません。<br>入力はBackspaceで削除できます。")
 }
 
 document.addEventListener('keydown', e => {
-  if (e.key === ' ' && playing === true || e.key !== ' ' && playing === false || ignore_keys.includes(e.key) || result_title.textContent.length > 0) {
+  if (e.key === ' ' && playing === true || e.key !== ' ' && playing === false || ignore_keys.includes(e.key) || typeof cleartime !== 'undefined') {
     return;
   } else if (e.key === ' ' && playing === false) {
+    //スペースのスクロール無効
+    e.preventDefault();
     //レッスン開始処理
+    //レッスン表示
+    document.getElementById('js-lesson-start').style.display='none';
+    document.getElementById('js-lesson-play').style.display='block';
     playing = true;
     starttime = Date.now();
-    $('small').remove();
     set_question();
   } else if (e.key === 'Backspace') {
     //バックスペース処理
   	enter_key = enter_key.slice(0, -1);
   } else if (e.key === 'Control') {
     //コントロールキー処理
-  	enter_key += 'Ctrl+';
+  	enter_key += 'ctrl+';
   } else {
     //入力内容追加
   	enter_key += e.key;
@@ -179,8 +182,9 @@ document.addEventListener('keydown', e => {
     enter_key = "";
     flash_warn();
   }
-  input.textContent = enter_key;
-  if (enter_key === answer) {
+  input_area.textContent = enter_key;
+  //正答判定 入力内容に解答が含まれればOK
+  if (enter_key.toLowerCase().includes(answer)) {
     flash_next();
     answer_count ++
     if (questions.length === 0) {
