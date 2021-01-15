@@ -1,8 +1,6 @@
 - set_meta_tags title: @lesson.decorate.lesson_name
 
 .container.my-4
-  /一旦放置
-  /#particles-js
   .row
     .column.is-10.is-offset-1.bg-cloud.d-flex.justify-content-center.align-items-center
       #js-lesson-start
@@ -12,48 +10,54 @@
       //レッスン中
       #js-lesson-play style='display: none;'
         .d-flex
-          = image_pack_tag('vimuta/vimuta.gif', size: '150x150', class: 'ml-5')
-          h1#js-question-area.title.has-text-grey-darker.is-size-3.my-5
-        h1#js-input-area.title.has-text-centered.is-size-4.my-5
+          = image_pack_tag('vimuta/vimuta.gif', size: '150x150', class: 'mr-3')
+          h1#js-question-area.title.has-text-white-ter.is-size-4.my-5
+        .input-terminal.has-background-black-bis.my-5.d-flex.align-items-end.justify-content-center
+          p#js-input-area.title.has-text-centered.is-size-4.has-text-white-ter
 
       //レッスン終了
       #js-lesson-end style='display: none;'
-        p#js-result-title.font-weight-bold.text-secondary
-        p#js-result-time.font-weight-bold.text-info
-        p#js-result-rate.font-weight-bold.text-info
-        p = link_to "https://twitter.com/intent/tweet?text=#{@lesson.decorate.lesson_name}%0a回答率%20:%20answer_rate%25%0aタイム%20:%20cleartime秒%0aでした！%0a%0a%23Vimate%20%23Vim%0a\&url=#{request.url}", target: :_blank, rel: 'noopener noreferrer', class: 'btn btn-primary', id: 'js-result-twitter' do
-          i.fab.fa-twitter.mr-1
-          span 結果をTwitterでシェア
-        /回答表示モーダル
-        /! Button trigger modal
-        button.btn.btn-warning data-target="#modal_answer_list" data-toggle="modal" type="button"
-          i.fas.fa-reply.mr-1
-          | 回答を表示
-        /! Modal
-        #modal_answer_list.modal.fade aria-hidden="true" aria-labelledby="modal_answer_label" role="dialog" tabindex="-1"
-          .modal-dialog role="document"
-            .modal-content
-              .modal-header
-                h5#exampleModalLabel.modal-title 回答
-                button.close aria-label="Close" data-dismiss="modal" type="button"
-                  span aria-hidden="true"  ×
-              .modal-body
-                table.table.table-primary.text-left
-                  - @commands.each do |command|
-                    tbody
-                      tr
-                        td = command.question
-                        td = command.answer_key
-              .modal-footer
-                button.btn.btn-secondary data-dismiss="modal" type="button"  閉じる
-        p = link_to lesson_path(@lesson), class: 'btn btn-warning my-3', 'data-turbolinks': false do
-          i.fas.fa-sync.mr-1
-          span リトライ
-        p = link_to lessons_path, class: 'btn btn-warning' do
-          i.fas.fa-list.mr-1
-          span レッスン一覧
-        p = link_to 'マイページから統計データを確認', mypage_path, class: 'text-muted font-weight-normal d-none', id: 'js-result-mypage'
-        p = link_to '結果を保存する場合は、ログインしてください。', login_path, class: 'text-muted font-weight-normal d-none', id: 'js-result-login'
+        h1.title.has-text-centered.has-text-grey-darker.mt-5 = @lesson.decorate.lesson_name
+        .result-box.has-text-centered
+          .result-box-title
+            i.far.fa-check-circle.fa-fw
+            | 結果
+          p#js-result-time.has-text-weight-bold
+          p#js-result-rate.has-text-weight-bold
+
+        .has-text-centered
+          p = link_to "https://twitter.com/intent/tweet?text=#{@lesson.decorate.lesson_name}%0a回答率%20:%20answer_rate%25%0aタイム%20:%20cleartime秒%0aでした！%0a%0a%23Vimate%20%23Vim%0a\&url=#{request.url}", target: :_blank, rel: 'noopener noreferrer', class: 'button is-info text-decoration-none', id: 'js-result-twitter' do
+            i.fab.fa-twitter.fa-fw.mr-1
+            span 結果をTwitterでシェア
+          p = link_to mypage_path, class: 'button is-info text-decoration-none d-none', id: 'js-result-mypage'
+            i.fas.fa-user-check.fa-fw.mr-1
+            span マイページで統計を確認
+
+        .d-flex.justify-content-around.mt-4
+          p = link_to 'リトライ', lesson_path(@lesson), class: 'button is-primary text-decoration-none mx-3', 'data-turbolinks': false
+          /解答表示モーダル
+          /! Button trigger modal
+          button.button.is-primary.text-decoration-none.mx-3 data-target="#modal_answer_list" data-toggle="modal" type="button"
+            | 解答を表示
+          /! Modal
+          #modal_answer_list.modal.fade aria-hidden="true" aria-labelledby="modal_answer_label" role="dialog" tabindex="-1"
+            .modal-dialog role="document"
+              .modal-content.has-background-white-bis
+                .modal-header.has-text-centered
+                  .modal-title.w-100
+                    h5#exampleModalLabel.title.mt-2 解答
+                .modal-body
+                  table.table.is-hoverable.has-background-white-bis
+                    - @commands.each do |command|
+                      tbody
+                        tr
+                          td.has-text-weight-semibold = command.question
+                          td.has-text-weight-semibold = command.answer_key
+                .modal-footer
+                  button.button.is-light data-dismiss="modal" type="button"  閉じる
+          p = link_to 'レッスン一覧', lessons_path, class: 'button is-primary text-decoration-none mx-3'
+        .has-text-centered
+          p = link_to '結果を保存する場合は、ログインしてください。', login_path, class: 'has-text-grey d-none', id: 'js-result-login'
 
   //プログレスバー
   .row
