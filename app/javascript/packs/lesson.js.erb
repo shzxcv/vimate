@@ -5,6 +5,7 @@ const input_area = document.getElementById('js-input-area');
 
 //レッスン終了
 const result_time = document.getElementById('js-result-time');
+const result_point = document.getElementById('js-result-point');
 const result_rate = document.getElementById('js-result-rate');
 const result_twitter = document.getElementById('js-result-twitter');
 const result_mypage = document.getElementById('js-result-mypage');
@@ -30,6 +31,7 @@ let answer_count = 0;
 let progress_percent = 0;
 let progress_timer;
 let cleartime;
+let point;
 
 //プログレスバー処理
 const progress_bar = function() {
@@ -82,8 +84,12 @@ function end_lesson() {
   progress.remove();
   cleartime = Math.round((Date.now() - starttime) / 1000)
   const answer_rate = Math.round(answer_count / total_questions * 100)
+  point = 1;
+  if (answer_rate >= 60) point += 1
+  if (cleartime < 40) point += 1
   result_time.textContent = `クリアタイム: ${cleartime}秒`;
   result_rate.textContent = `正答率: ${answer_rate}%`;
+  result_point.textContent = `経験値: ${point}ポイント`;
   //Twitterシェア結果埋め込み
   result_twitter.href = result_twitter.href.replace('cleartime', String(cleartime)).replace('answer_rate', String(answer_rate));
   document.getElementById('js-lesson-end').style.display='block';
@@ -102,7 +108,8 @@ function end_lesson() {
         //Controllerでlesson_nameをlesson_idに変換
         lesson_id: lesson_name,
         time: cleartime,
-        answer_rate: answer_rate
+        answer_rate: answer_rate,
+        point: point
       }
     },
     dataType: 'json'

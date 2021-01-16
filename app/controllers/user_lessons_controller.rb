@@ -8,7 +8,7 @@ class UserLessonsController < ApplicationController
   private
 
   def user_lesson_params
-    params.require(:user_lesson).permit(:time, :answer_rate, :lesson_id).merge(user_id: current_user.id)
+    params.require(:user_lesson).permit(:time, :answer_rate, :point, :lesson_id).merge(user_id: current_user.id)
   end
 
   def params_url_to_id

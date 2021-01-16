@@ -5,6 +5,7 @@ class CreateUserLessons < ActiveRecord::Migration[6.0]
       t.references :lesson, null: false, foreign_key: true
       t.integer :time, null: false
       t.integer :answer_rate, null: false
+      t.integer :point, null: false
 
       t.timestamps
     end

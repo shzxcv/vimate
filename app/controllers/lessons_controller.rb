@@ -15,7 +15,7 @@ class LessonsController < ApplicationController
       render @lesson.url.gsub('-', '_')
       return
     end
-    @commands = @lesson.commands.sample(3)
+    @commands = @lesson.commands.sample(5)
     gon.commands = @commands
     logged_in? ? gon.user_login_flag = true : gon.user_login_flag = false
   end

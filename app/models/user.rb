@@ -37,4 +37,15 @@ class User < ApplicationRecord
   def user_month(lesson, avg)
     lessons.find_end_lessons(lesson).find_month_lessnos.group('date(user_lessons.created_at)').average("user_lessons.#{avg}").map { |k, v| [k.strftime('%m/%d'), v.to_f.round(0)]}.to_h
   end
+
+  def user_level
+    sum_point = lessons.sum(:point)
+    level_list = {hiyokko: 10, nitouhei: 20, ittouhei: 30, joutouhei: 40, heityou: 60, gotyou: 80, gunsou: 100, soutyou: 120, juni: 170, syoui: 220, tyuui: 270, taii: 320, syousa: 520, tyuusa: 720, taisa: 920, syousyou: 1420, tyuusyou: 1920, taisyou: 0}.to_a
+    return [:taisyou, nil, nil, sum_point] if sum_point >= 1920
+    user_level = level_list.each { |level, point| if sum_point < point ; break [level, point] ; end}
+    before_level_point = level_list[level_list.index(user_level) - 1][1]
+    user_level[1] -= before_level_point
+    current_point = sum_point - before_level_point
+    return user_level.push(current_point, sum_point)
+  end
 end
