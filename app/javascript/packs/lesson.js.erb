@@ -184,7 +184,7 @@ document.addEventListener('keydown', e => {
   }
   input_area.textContent = enter_key;
   //正答判定 入力内容に解答が含まれればOK
-  if (enter_key.toLowerCase().includes(answer)) {
+  if (enter_key.includes(answer)) {
     flash_next();
     answer_count ++
     if (questions.length === 0) {
