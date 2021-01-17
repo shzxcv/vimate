@@ -41,7 +41,7 @@ ja:
       title: '利用規約'
   commands:
     index:
-      title: '解答一覧'
+      title: 'コマンド一覧'
   password_resets:
     create:
       info: 'メールを送信しました。<br>メールに記載の手順でパスワードの再設定をお願いします。<br>外部認証を使用している場合は、リセットできません。'
@@ -58,6 +58,24 @@ ja:
     show:
       title: 'マイページ'
       profile_edit: 'プロフィール編集'
+      taisyou: 'Vimmer大将'
+      tyuusyou: 'Vimmer中将'
+      syousyou: 'Vimmer少将'
+      taisa: 'Vimmer大佐'
+      tyuusa: 'Vimmer中佐'
+      syousa: 'Vimmer少佐'
+      taii: 'Vimmer大尉'
+      tyuui: 'Vimmer中尉'
+      syoui: 'Vimmer少尉'
+      juni: 'Vimmer准尉'
+      soutyou: 'Vimmer曹長'
+      gunsou: 'Vimmer軍曹'
+      gotyou: 'Vimmer伍長'
+      heityou: 'Vimmer兵長'
+      joutouhei: 'Vimmer上等兵'
+      ittouhei: 'Vimmer一等兵'
+      nitouhei: 'Vimmer二等兵'
+      hiyokko: 'ひよっこVimmer'
     remove:
       title: '退会'
     destroy:

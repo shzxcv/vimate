@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2021_01_09_083728) do
     t.bigint "lesson_id", null: false
     t.integer "time", null: false
     t.integer "answer_rate", null: false
+    t.integer "point", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["lesson_id"], name: "index_user_lessons_on_lesson_id"

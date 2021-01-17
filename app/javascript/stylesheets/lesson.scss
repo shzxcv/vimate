@@ -1,5 +1,4 @@
 #js-question-area {
-  //background: linear-gradient(transparent 50%, #3298dc);
   position: relative;
   padding: 20px;
   background-color: #5fc2f5;
@@ -56,8 +55,7 @@ height: 15px;
 	100% {opacity: 1;}
 }
 
-.bg-cloud {
-  background-image: url('../images/kumo_kusa.png');
+.bg-image-animation {
   background-size: 100% 65vh;
   height: 65vh;
   animation: cloud-animation 1000s linear infinite;

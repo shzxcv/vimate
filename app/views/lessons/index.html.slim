@@ -12,6 +12,11 @@ section.container.my-5
                 p.has-text-weight-normal = lesson.description
             .content.is-pulled-right
               .buttons
+                - unless lesson.category == 'Option'
+                  = link_to lesson_commands_path(lesson), class: 'button is-info is-outlined is-rounded text-decoration-none mr-3' do
+                    span.mr-1
+                      i.fas.fa-caret-right
+                    | コマンド一覧はこちら
                 - unless lesson.url.in?(['vimmer-02', 'vimmer-03'])
                   = link_to lesson_path(lesson), class: 'button is-primary is-outlined is-rounded text-decoration-none', 'data-turbolinks': false do
                     span.mr-1
@@ -22,8 +27,3 @@ section.container.my-5
                     span.mr-1
                       i.fas.fa-ban
                     | レッスンはこちら
-                - unless lesson.category == 'Option'
-                  = link_to lesson_commands_path(lesson), class: 'button is-info is-outlined is-rounded text-decoration-none ml-2' do
-                    span.mr-1
-                      i.fas.fa-caret-right
-                    | 解答一覧はこちら
