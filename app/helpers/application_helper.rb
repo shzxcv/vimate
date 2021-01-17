@@ -24,7 +24,7 @@ module ApplicationHelper
         locale: 'ja_JP',
       },
       twitter: {
-        card: 'summary',
+        card: 'summary_large_image',
         image: asset_pack_url('media/images/ogp_twitter_card.png'),
       }
     }
