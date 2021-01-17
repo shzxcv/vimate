@@ -20,13 +20,11 @@ module ApplicationHelper
         description: :description,
         type: 'website',
         url: request.original_url,
-        # 暫定版
         image: asset_pack_url('media/images/ogp_twitter_card.png'),
         locale: 'ja_JP',
       },
       twitter: {
-        card: 'summary',
-         # 暫定版
+        card: 'summary_large_image',
         image: asset_pack_url('media/images/ogp_twitter_card.png'),
       }
     }
