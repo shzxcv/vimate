@@ -12,12 +12,15 @@ section.section
             i.far.fa-check-circle.fa-fw
             | レベル
           - level = @user.user_level
-          p.has-text-weight-bold = t(".#{level[0]}")
+          p.has-text-weight-bold
+            i class = "#{user_level_icon(level[0])} mr-2" style= "#{user_level_icon_color(level[0])}"
+            | #{t(".#{level[0]}")}
           p.has-text-weight-bold = "累計ポイント#{level[3]}"
           - unless level[0] == :taisyou
             .d-flex.justify-content-center
-              = bar_chart [['ポイント', @user.user_level[2]]], width: '700px', height: '70px', suffix: 'P', max: @user.user_level[1], min: 0, colors: ['#3298dc']
-              span.has-text-weight-bold.mt-2 →次の階級
+              = bar_chart [['ポイント', level[2]]], width: '700px', height: '70px', suffix: 'P', max: level[1], min: 0, colors: ['#3298dc']
+              small.form-text.text-muted.mt-3 →次の階級へ
+              //span.has-text-weight-bold.mt-2 →次の階級へ
         h2.subtitle.mt-5.has-text-weight-bold.has-text-centered.ml-5 終了レッスン
         - @user.end_lessons.each do |lesson|
           .card.mt-5.has-text-centered

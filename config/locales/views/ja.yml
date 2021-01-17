@@ -41,7 +41,7 @@ ja:
       title: '利用規約'
   commands:
     index:
-      title: '解答一覧'
+      title: 'コマンド一覧'
   password_resets:
     create:
       info: 'メールを送信しました。<br>メールに記載の手順でパスワードの再設定をお願いします。<br>外部認証を使用している場合は、リセットできません。'
