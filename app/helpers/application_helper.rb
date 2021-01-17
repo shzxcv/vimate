@@ -3,7 +3,7 @@ module ApplicationHelper
     {
       site: 'Vimate',
       title: 'Vim特化学習サイト',
-      reverse: false,
+      reverse: true,
       charset: 'utf-8',
       description: 'VimateはVimに特化した学習サイトです。ゲーム形式でVimを学び、Vimmerへの道を歩みましょう。',
       keywords: 'vimate, vimatejp, vim 勉強, vim ゲーム, vimmer',
@@ -24,7 +24,7 @@ module ApplicationHelper
         locale: 'ja_JP',
       },
       twitter: {
-        card: 'summary_large_image',
+        card: 'summary',
         image: asset_pack_url('media/images/ogp_twitter_card.png'),
       }
     }
