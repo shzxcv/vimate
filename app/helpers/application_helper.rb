@@ -9,7 +9,6 @@ module ApplicationHelper
       keywords: 'vimate, vimatejp, vim 勉強, vim ゲーム, vimmer',
       canonical: request.original_url,
       separator: '|',
-      # 暫定版
       icon: [
         { href: asset_pack_url('media/images/favicon.ico') },
         { href: asset_pack_url('media/images/ogp_apple_touch_icon.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' },
@@ -20,11 +19,13 @@ module ApplicationHelper
         description: :description,
         type: 'website',
         url: request.original_url,
+        #変更する
         image: asset_pack_url('media/images/ogp_twitter_card.png'),
         locale: 'ja_JP',
       },
       twitter: {
         card: 'summary_large_image',
+        #変更する
         image: asset_pack_url('media/images/ogp_twitter_card.png'),
       }
     }
