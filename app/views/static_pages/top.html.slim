@@ -33,19 +33,30 @@ section.container
             = image_pack_tag('top_card_01.png', size: '1280x960')
         .card-content
           .content
-            h4 Vimコース
-            p Vimコースは初級編・中級編・上級編があります。ランダムで問題が表示されるので、回答のみ入力します。入力を誤った場合は、文字を削除する必要があります。また、1問につき10秒回答時間があります。回答が全く分からなかった場合は、解答一覧を参考にしてください。
+            h4 Vimコース初級編
+            p Vim初級編は移動やインサートなど基本的なコマンドを行います。レッスンに自信がない方は、コマンド一覧を確認してからレッスンを受講することが可能です。ぜひ、初級編をマスターしてVimmerの道を目指しましょう！
             p = link_to 'Vim初級編はこちら', lesson_path('vim-01'), class: 'button is-info w-75 mt-2 text-decoration-none'
     .column.is-4
       .card.has-text-centered
         .card-image
           figure.image.is-4by3
-            = image_pack_tag('top_card_01.png', size: '1280x960')
+            = image_pack_tag('top_card_02.png', size: '1280x960')
         .card-content
           .content
-            h4 Vimrcコース
-            p Vimrcコースは初級編・中級編・上級編があります。操作方法は、Vimコースと同様です。VimrcではVimに関する設定を行います。Vimrcを学ぶことで、Vim全体の理解を深めることができます。また、Vimrcを自分でカスタマイズするようになれると立派なVimmerの仲間入りです。
-            p = link_to 'Vimrc初級編はこちら', lesson_path('vimrc-01'), class: 'button is-info w-75 mt-2 text-decoration-none'
+            h4 Vimコース 中級編
+            p Vim中級編はテキストオブジェクトや検索など知っておくべきなコマンドを行います。初級編と同じく、コマンド一覧を確認することが可能です。中級編までマスターすれば、Vimでの操作が楽しくなってくるはずです！
+            p = link_to 'Vim中級編はこちら', lesson_path('vim-02'), class: 'button is-info w-75 mt-2 text-decoration-none'
+    .column.is-4
+      .card.has-text-centered
+        .card-image
+          figure.image.is-4by3
+            = image_pack_tag('top_card_03.png', size: '1280x960')
+        .card-content
+          .content
+            h4 Vimコース 上級編
+            p Vim上級編を知っていたらVimマスター間違い無し！上級編もコマンド一覧を確認することができます。上級編までマスターすれば、立派なVimmerの仲間入りです。ぜひ、解答率とタイムを上げて、Vimmerランクアップを目指しましょう！
+            p = link_to 'Vim上級編はこちら', lesson_path('vim-03'), class: 'button is-info w-75 mt-2 text-decoration-none'
+  .columns.my-5
     .column.is-4
       .card.has-text-centered
         .card-image
@@ -53,6 +64,29 @@ section.container
             = image_pack_tag('top_card_03.gif', size: '1280x960')
         .card-content
           .content
-            h4 Vimmer診断コース
-            p Vimmer診断コースは、基礎的なキーバインドを使用しゲーム形式でVimmer力を診断するコースです。基礎的な移動から慣れたい方はこちらの初級編をおすすめします。Vimmer診断コースは現在初級編のみリリースしております。順次、中級編・上級編も追加していきますので、暫くお待ちください。
+            h4 Vimmer診断初級編
+            p Vimmer診断コースは、上下左右の基本的なコマンドを使用して、迷路を突破します。全くVimもわからない方からVimmerまで幅広く遊べる内容です。Vimmer診断結果を見て、自分のVimmer力を測ってみましょう！
             p = link_to 'Vimmer診断初級編はこちら', lesson_path('vimmer-01'), class: 'button is-info w-75 mt-2 text-decoration-none'
+    .column.is-4
+      .card.has-text-centered
+        .card-image
+          figure.image.is-4by3
+            = image_pack_tag('top_card_noimage.png', size: '1280x960')
+        .card-content
+          .content
+            h4 Vimmer診断中級編
+            p 近日、リリース予定！
+            button.button.is-info.w-75.mt-2.text-decoration-none disabled="disable" Vimmer診断中級編はこちら
+    .column.is-4
+      .card.has-text-centered
+        .card-image
+          figure.image.is-4by3
+            = image_pack_tag('top_card_noimage.png', size: '1280x960')
+        .card-content
+          .content
+            h4 Vimmer診断上級編
+            p 近日、リリース予定！
+            button.button.is-info.w-75.mt-2.text-decoration-none disabled="disable" Vimmer診断上級編はこちら
+  .column.is-8.is-offset-2.my-5.has-text-centered
+    h2.title.mb-5 マイページで学習状況を確認
+    p.subtitle 勲章やグラフなどモチベーションを上げる要素があります
