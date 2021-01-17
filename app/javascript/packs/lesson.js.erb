@@ -1,4 +1,7 @@
 //定数定義
+//レッスン開始
+const display_answer = document.getElementById('js-display-answer');
+
 //レッスン中
 const question_area = document.getElementById('js-question-area');
 const input_area = document.getElementById('js-input-area');
@@ -32,6 +35,7 @@ let progress_percent = 0;
 let progress_timer;
 let cleartime;
 let point;
+let display_answer_flag = false;
 
 //プログレスバー処理
 const progress_bar = function() {
@@ -53,6 +57,7 @@ function set_question() {
   question = String(questions.splice(0, 1));
   answer = String(answers.splice(0, 1));
   question_area.textContent = question;
+  if (display_answer_flag === true) question_area.textContent += ` (答え : ${answer})`;
   progress_percent = 0;
   progress_timer = setInterval(progress_bar, 100);
 }
@@ -87,6 +92,7 @@ function end_lesson() {
   point = 1;
   if (answer_rate >= 60) point += 1
   if (cleartime < 40) point += 1
+  if (display_answer_flag === true) point -= 1
   result_time.textContent = `クリアタイム: ${cleartime}秒`;
   result_rate.textContent = `正答率: ${answer_rate}%`;
   result_point.textContent = `経験値: ${point}ポイント`;
@@ -168,6 +174,10 @@ document.addEventListener('keydown', e => {
     //スペースのスクロール無効
     e.preventDefault();
     //レッスン開始処理
+    //解答表示モード
+    if (display_answer.checked) {
+      display_answer_flag = true;
+    }
     //レッスン表示
     document.getElementById('js-lesson-start').style.display='none';
     document.getElementById('js-lesson-play').style.display='block';
