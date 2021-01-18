@@ -16,7 +16,7 @@ const result_login = document.getElementById('js-result-login');
 const progress = document.getElementById('js-progress-bar');
 
 //BackSpace + Ctrl + Space以外の不要キーを無効
-const ignore_keys = ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'F13', 'F14', 'F15','Tab', 'Enter', 'Shift', 'Alt', 'PauseBreak', 'CapsLock', 'Esc', 'PageUp', 'PageDown', 'End', 'Home', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Insert', 'Delete', 'NumLock', 'ScrollLock', 'Dead', 'Meta', 'Escape', 'Help', 'Clear', 'Unidentified', 'ContextMenu'];
+const ignore_keys = ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'F13', 'F14', 'F15','Tab', 'Enter', 'Shift', 'Alt', 'PauseBreak', 'CapsLock', 'Esc', 'PageUp', 'PageDown', 'End', 'Home', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Insert', 'Delete', 'NumLock', 'ScrollLock', 'Dead', 'Meta', 'Escape', 'Help', 'Clear', 'Unidentified', 'ContextMenu', 'Pause', 'Control'];
 
 //gon取得
 const questions = [];
@@ -184,12 +184,14 @@ document.addEventListener('keydown', e => {
     playing = true;
     starttime = Date.now();
     set_question();
+  } else if (e.ctrlKey) {
+    //controlキー処理
+    //Windows対策のため、ctrlKeyで判定しイベント無効
+    e.preventDefault();
+    enter_key += `ctrl+${e.key}`;
   } else if (e.key === 'Backspace') {
     //バックスペース処理
   	enter_key = enter_key.slice(0, -1);
-  } else if (e.key === 'Control') {
-    //コントロールキー処理
-  	enter_key += 'ctrl+';
   } else {
     //入力内容追加
   	enter_key += e.key;
