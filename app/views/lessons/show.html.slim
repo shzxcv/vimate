@@ -2,7 +2,7 @@
 
 .container.my-4
   .row
-    .column.is-10.is-offset-1.bg-image-animation.d-flex.justify-content-center.align-items-center style="#{bg_image(@lesson)}"
+    .column.is-10.is-offset-1.bg-image-animation.d-flex.justify-content-center.align-items-center.lesson-up-border style="#{bg_image(@lesson)}"
       #js-lesson-start
         h1.title.has-text-centered.has-text-grey-darker = @lesson.decorate.lesson_name
         h1.title.has-text-centered.has-text-grey-darker スペースキーでスタート
@@ -66,7 +66,7 @@
 
   //プログレスバー
   .row
-    .column.is-10.is-offset-1 style="#{progress_bg_color(@lesson)}"
+    .column.is-10.is-offset-1.lesson-down-border style="#{progress_bg_color(@lesson)}"
       .progress style=("height: 30px;")
         #js-progress-bar.progress-bar.bg-info aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" role="progressbar" style=("width: 0%")
 

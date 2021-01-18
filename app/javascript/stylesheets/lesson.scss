@@ -6,6 +6,12 @@
   margin-left: 70px;
 }
 
+.comment-area {
+  padding: 20px;
+  background-color: #CAE5CD;
+  border-radius: 15px;
+}
+
 #js-question-area::before {
 content: '';
 position: absolute;
@@ -97,4 +103,39 @@ height: 15px;
 .result-box p {
     padding: 15px 20px;
     margin: 0;
+}
+
+.vimmer-start-bg {
+  height: 640px;
+  width: 960px;
+  background-image: url('../images/stage/stage04.png');
+  background-size: cover;
+  border: 2px solid #dfdfdf;
+  border-radius: 10px;
+}
+
+.vimmer-result-bg {
+  height: 640px;
+  width: 960px;
+  background-image: url('../images/stage/stage05.jpg');
+  background-size: cover;
+  border: 2px solid #dfdfdf;
+  border-radius: 10px;
+}
+
+.vimmer-canvas {
+  border: 2px solid #dfdfdf;
+  border-radius: 10px;
+}
+
+.lesson-up-border {
+  border: 2px solid #dfdfdf;
+  border-bottom: 0;
+  border-radius: 10px 10px 0 0;
+}
+
+.lesson-down-border {
+  border: 2px solid #dfdfdf;
+  border-top: 0;
+  border-radius: 0 0 10px 10px;
 }
