@@ -3,15 +3,17 @@
 .container.my-4
   .has-text-centered
     canvas#js-canvas.d-none
+
   #js-start-frame
-    .d-flex.justify-content-center.align-items-center style='height: 640px; background-color: #CAE5CD;'
+    .d-flex.justify-content-center.align-items-center.mx-auto style='height: 640px; width: 960px; background-image: url(#{asset_pack_path 'media/images/stage/stage04.png'}); background-size: 100% 65vh; background-size: cover;'
       .has-text-centered
         h1.title.has-text-grey-darker = @lesson.decorate.lesson_name
-        h1.title.has-text-grey-darker スペースキーでスタート
+        //h1.subtitle.has-text-grey-darker びむ太は、エディタ宗教戦争の森に迷い込んだようです。一刻も早く助け出しましょう。
+        h1.title.has-text-grey-darker.mt-2 スペースキーでスタート
         p.is-size-8 使用できるキーは[H]で[左移動], [J]で[下移動], [K]で[上移動], [L]で[右移動]です。
         p.text-muted.is-size-8 ※Vimmer診断の結果は保存されません。
   #js-result-frame.d-none
-    .d-flex.justify-content-center.align-items-center style='height: 640px; background-color: #CAE5CD;'
+    .d-flex.justify-content-center.align-items-center.mx-auto style='height: 640px; width: 960px; background-image: url(#{asset_pack_path 'media/images/stage/stage04.jpg'}); background-size: 100% 65vh; background-size: cover;'
       .has-text-centered
         h1.title.has-text-centered.has-text-grey-darker.mt-5 = @lesson.decorate.lesson_name
 

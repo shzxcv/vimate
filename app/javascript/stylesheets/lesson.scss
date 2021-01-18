@@ -75,13 +75,18 @@ height: 15px;
 
 .result-box {
   margin: 2em 0;
-  background: #f1f1f1;
+  background: #f8f8f8;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  width: 90%;
 }
 
 .result-box .result-box-title {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     font-size: 1.2em;
-    background: #5fc2f5;
+    background: #3298dc;
     padding: 4px;
     text-align: center;
     color: #FFF;

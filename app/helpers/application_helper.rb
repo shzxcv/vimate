@@ -1,11 +1,11 @@
 module ApplicationHelper
   def default_meta_tags
     {
-      site: 'Vimate',
+      site: 'VIMATE',
       title: 'Vim特化学習サイト',
       reverse: true,
       charset: 'utf-8',
-      description: 'VimateはVimに特化した学習サイトです。ゲーム形式でVimを学び、Vimmerへの道を歩みましょう。',
+      description: 'VIMATEはVimに特化した学習サイトです。ゲーム形式でVimを学び、Vimmerへの道を歩みましょう。',
       keywords: 'vimate, vimatejp, vim 勉強, vim ゲーム, vimmer',
       canonical: request.original_url,
       separator: '|',
@@ -15,7 +15,7 @@ module ApplicationHelper
       ],
       og: {
         site_name: :site,
-        title: 'Vimate',
+        title: 'VIMATE',
         description: :description,
         type: 'website',
         url: request.original_url,
