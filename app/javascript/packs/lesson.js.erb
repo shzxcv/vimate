@@ -187,7 +187,9 @@ document.addEventListener('keydown', e => {
   } else if (e.ctrlKey) {
     //controlキー処理
     //Windows対策のため、ctrlKeyで判定しイベント無効
-    e.preventDefault();
+    if (e.key === 'r' || e.key === 'u' ) {
+      e.preventDefault();
+    }
     enter_key += `ctrl+${e.key}`;
   } else if (e.key === 'Backspace') {
     //バックスペース処理
