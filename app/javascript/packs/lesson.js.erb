@@ -16,7 +16,7 @@ const result_login = document.getElementById('js-result-login');
 const progress = document.getElementById('js-progress-bar');
 
 //BackSpace + Ctrl + Space以外の不要キーを無効
-const ignore_keys = ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'Tab', 'Enter', 'Shift', 'Alt', 'PauseBreak', 'CapsLock', 'Esc', 'PageUp', 'PageDown', 'End', 'Home', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Insert', 'Delete', 'NumLock', 'ScrollLock', 'Dead', 'Meta', 'Escape'];
+const ignore_keys = ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'F13', 'F14', 'F15','Tab', 'Enter', 'Shift', 'Alt', 'PauseBreak', 'CapsLock', 'Esc', 'PageUp', 'PageDown', 'End', 'Home', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Insert', 'Delete', 'NumLock', 'ScrollLock', 'Dead', 'Meta', 'Escape', 'Help', 'Clear', 'Unidentified', 'ContextMenu'];
 
 //gon取得
 const questions = [];
@@ -91,7 +91,7 @@ function end_lesson() {
   const answer_rate = Math.round(answer_count / total_questions * 100)
   point = 1;
   if (answer_rate >= 60) point += 1
-  if (cleartime < 40) point += 1
+  if (cleartime < 60) point += 1
   if (display_answer_flag === true) point -= 1
   result_time.textContent = `クリアタイム: ${cleartime}秒`;
   result_rate.textContent = `正答率: ${answer_rate}%`;
@@ -195,7 +195,7 @@ document.addEventListener('keydown', e => {
   	enter_key += e.key;
   }
   //10文字以上は入力させない
-  if (enter_key.length > 10) {
+  if (enter_key.length > 30) {
     enter_key = "";
     flash_warn();
   }

@@ -1,6 +1,6 @@
 require 'csv'
 
-commands = CSV.read('db/fixtures/commands.csv')
+commands = CSV.read('db/fixtures/vim01_commands.csv')
 
 commands.each do |command|
   Command.seed do |s|
