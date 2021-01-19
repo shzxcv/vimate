@@ -6,7 +6,8 @@ section.container.my-5
         .card
           .card-content
             .d-flex
-              = image_pack_tag("vimuta/vimuta_#{sprintf('%02d', rand(1..12))}.svg", size: '150x150', class: 'is-hidden-mobile')
+              - if request.from_pc?
+                = image_pack_tag("vimuta/vimuta_#{sprintf('%02d', rand(1..12))}.svg", size: '150x150')
               .content.ml-3.mt-3.w-100
                 p.title.is-4.has-text-weight-bold = lesson.decorate.lesson_name
                 p.has-text-weight-normal = lesson.description
