@@ -8,6 +8,7 @@
             tr.border-bottom
               td.has-text-weight-semibold = t('.mail_registration')
               td.has-text-weight-semibold = @user.email
+  .row
     .column.is-6.is-offset-3
       = form_with model: @user, url: password_reset_path(@token), local: true do |f|
         .field

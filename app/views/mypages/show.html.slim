@@ -20,7 +20,7 @@ section.section
             p.has-text-weight-bold = "累計ポイント#{level[3]}"
             - unless level[0] == :taisyou
               .d-flex.justify-content-center
-                = bar_chart [['ポイント', level[2]]], width: '700px', height: '70px', suffix: 'P', max: level[1], min: 0, colors: ['#3298dc']
+                = bar_chart [['ポイント', level[2]]], width: "#{chart_responsive}", height: '70px', suffix: 'P', max: level[1], min: 0, colors: ['#3298dc']
                 small.form-text.text-muted.mt-3 →次の階級へ
         .d-flex.justify-content-center
           h2.subtitle.mt-5.has-text-weight-bold.has-text-centered 終了レッスン
@@ -35,28 +35,36 @@ section.section
 
               .content.my-5
               .has-text-centered.my-4
-                button.button.is-info.is-outlined.w-50 aria-controls="barchart0#{lesson.id}" aria-expanded="false" data-target="#barchart0#{lesson.id}" data-toggle="collapse" type="button"
+                button.button.is-info.is-outlined.w-50.is-hidden-mobile aria-controls="barchart0#{lesson.id}" aria-expanded="false" data-target="#barchart0#{lesson.id}" data-toggle="collapse" type="button"
+                    | 今までの平均正答率をみる
+                button.button.is-info.is-outlined.w-100.is-hidden-tablet aria-controls="barchart0#{lesson.id}" aria-expanded="false" data-target="#barchart0#{lesson.id}" data-toggle="collapse" type="button"
                     | 今までの平均正答率をみる
                 .collapse id="barchart0#{lesson.id}"
                   .content.my-4.mr-5.d-flex.justify-content-center
                     = bar_chart [['あなたの平均正答率', @user.user_average(lesson, :answer_rate)], ['ユーザ全体の平均正答率', UserLesson.all_average(lesson, :answer_rate)]], width: '700px', height: '100px', suffix: '%', max: 100, min: 0, colors: ['#3298dc']
 
               .has-text-centered.my-4
-                button.button.is-info.is-outlined.w-50 aria-controls="linechart0#{lesson.id}" aria-expanded="false" data-target="#linechart0#{lesson.id}" data-toggle="collapse" type="button"
+                button.button.is-info.is-outlined.w-50.is-hidden-mobile aria-controls="linechart0#{lesson.id}" aria-expanded="false" data-target="#linechart0#{lesson.id}" data-toggle="collapse" type="button"
+                    | 日ごとの平均正答率をみる
+                button.button.is-info.is-outlined.w-100.is-hidden-tablet aria-controls="linechart0#{lesson.id}" aria-expanded="false" data-target="#linechart0#{lesson.id}" data-toggle="collapse" type="button"
                     | 日ごとの平均正答率をみる
                 .collapse id="linechart0#{lesson.id}"
                   .content.my-4.mr-5.d-flex.justify-content-center
                     = line_chart @user.user_month(lesson, 'answer_rate'), width: '700px', height: '150px',  colors: ['#3298dc'], xtitle: 'あなたの日別平均正答率の推移', suffix: "%", library: {fontSize: 90}
 
               .has-text-centered.my-4
-                button.button.is-info.is-outlined.w-50 aria-controls="barchart1#{lesson.id}" aria-expanded="false" data-target="#barchart1#{lesson.id}" data-toggle="collapse" type="button"
+                button.button.is-info.is-outlined.w-50.is-hidden-mobile aria-controls="barchart1#{lesson.id}" aria-expanded="false" data-target="#barchart1#{lesson.id}" data-toggle="collapse" type="button"
+                    | 今までの平均タイムをみる
+                button.button.is-info.is-outlined.w-100.is-hidden-tablet aria-controls="barchart1#{lesson.id}" aria-expanded="false" data-target="#barchart1#{lesson.id}" data-toggle="collapse" type="button"
                     | 今までの平均タイムをみる
                 .collapse id="barchart1#{lesson.id}"
                   .content.my-4.mr-5.d-flex.justify-content-center
                     = bar_chart [['あなたの平均タイム', @user.user_average(lesson, :time)], ['ユーザ全体の平均タイム', UserLesson.all_average(lesson, :time)]], width: '700px', height: '100px', suffix: '秒',  colors: ['#3298dc']
 
               .has-text-centered.my-4
-                button.button.is-info.is-outlined.w-50 aria-controls="linechart1#{lesson.id}" aria-expanded="false" data-target="#linechart1#{lesson.id}" data-toggle="collapse" type="button"
+                button.button.is-info.is-outlined.w-50.is-hidden-mobile aria-controls="linechart1#{lesson.id}" aria-expanded="false" data-target="#linechart1#{lesson.id}" data-toggle="collapse" type="button"
+                    | 日ごとの平均タイムをみる
+                button.button.is-info.is-outlined.w-100.is-hidden-tablet aria-controls="linechart1#{lesson.id}" aria-expanded="false" data-target="#linechart1#{lesson.id}" data-toggle="collapse" type="button"
                     | 日ごとの平均タイムをみる
                 .collapse id="linechart1#{lesson.id}"
                   .content.my-4.mr-5.d-flex.justify-content-center
