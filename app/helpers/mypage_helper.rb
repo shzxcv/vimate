@@ -82,6 +82,10 @@ module MypageHelper
   end
 
   def chart_responsive
-    request.from_pc? ? '700px' : '200px'
+    request.from_pc? ? '700px' : '260px'
+  end
+
+  def button_size
+    request.from_pc? ? 'w-50' : 'w-100'
   end
 end
