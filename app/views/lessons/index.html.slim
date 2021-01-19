@@ -8,7 +8,9 @@ section.container.my-5
             .d-flex
               /- if request.from_pc?
               /= image_pack_tag("vimuta/vimuta_#{sprintf('%02d', rand(1..12))}.svg", size: '150x150', class: 'img-fluid')
-              = image_pack_tag("vimuta/vimuta_#{sprintf('%02d', rand(1..12))}.svg", class: 'lesson-image')
+              /= image_pack_tag("vimuta/png/vimuta_#{sprintf('%02d', rand(1..12))}.svg", class: 'lesson-image')
+              /= image_pack_tag("vimuta/png/vimuta_01.png", class: 'lesson-image align-self-center')
+              = image_pack_tag("vimuta/vimuta_#{sprintf('%02d', rand(1..12))}.svg", class: 'lesson-image align-self-center')
               .content.ml-3.mt-3.w-100
                 p.title.is-4.has-text-weight-bold = lesson.decorate.lesson_name
                 p.has-text-weight-normal = lesson.description
