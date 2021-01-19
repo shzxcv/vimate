@@ -14,4 +14,8 @@ module StaticPageHelper
   def submit_button
     request.from_pc? ? 'w-50' : 'w-75'
   end
+
+  def tablet_button
+    'is-small' if request.from_android_tablet? || request.from_ipad?
+  end
 end
