@@ -80,4 +80,8 @@ module MypageHelper
         "color: #DAA520"
     end
   end
+
+  def chart_responsive
+    request.from_pc? ? '700px' : '200px'
+  end
 end

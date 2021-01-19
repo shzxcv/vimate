@@ -2,10 +2,13 @@
 section.hero.is-medium.is-bold style='background-color: #CAE5CD;'
   .hero-body
     .container.has-text-centered
-      .d-flex.justify-content-center.align-items-center
+      .is-flex-tablet.justify-content-center.align-items-center
         ul
           li
-            h1.is-size-1.m-3.add-font-bold
+            h1.is-size-2.m-3.add-font-bold.is-hidden-mobile
+              | Vim特化の学習サイト<br>
+              | VIMATE
+            h1.is-size-4.m-3.add-font-bold.is-hidden-tablet
               | Vim特化の学習サイト<br>
               | VIMATE
           li.add-font-bold
@@ -18,12 +21,15 @@ section.hero.is-medium.is-bold style='background-color: #CAE5CD;'
             li
               = link_to 'ユーザー登録', new_user_path, class: 'button is-info has-text-weight-bold w-50 is-medium mt-4 text-decoration-none'
             li
-               = link_to 'すぐにレッスンを受講', lessons_path, class: 'button is-info w-50 mt-4 text-decoration-none'
+               = link_to 'すぐにレッスンを受講', lessons_path, class: 'button is-info w-50 mt-4 text-decoration-none is-hidden-mobile'
+               = link_to 'すぐにレッスンを受講', lessons_path, class: 'button is-info is-small w-50 mt-3 text-decoration-none is-hidden-tablet'
+               small.form-text.text-muted.mt-2.is-hidden-tablet ※レッスンはPC専用です。
                small.form-text.text-muted.mt-2 ※ログインしない場合は、受講情報が保存されません。
-        = image_pack_tag('vimuta/vimuta.gif', size: '250x250', class: 'mb-1 ml-4')
+        = image_pack_tag('vimuta/vimuta.gif', size: '250x250')
 section.container
   .column.is-8.is-offset-2.my-5.has-text-centered
-    h2.title.mb-5.add-font-regular Vimmerへの道を歩もう
+    h2.title.mb-5.add-font-regular.is-hidden-mobile Vimmerへの道を歩もう
+    h2.title.mb-5.add-font-regular.is-size-4.is-hidden-tablet Vimmerへの道を歩もう
     p.subtitle.add-font-bold VIMATEで0からVimmerへの最短距離を歩みましょう。
   .columns.my-5
     .column.is-4
@@ -88,9 +94,11 @@ section.container
             p 近日、リリース予定！
             button.button.is-info.w-75.mt-2.text-decoration-none disabled="disable" Vimmer診断上級編はこちら
   .column.is-8.is-offset-2.my-5.has-text-centered
-    h2.title.mb-5.add-font-regular ゲーム感覚でVimを学ぶ
+    h2.title.mb-5.add-font-regular.is-hidden-mobile ゲーム感覚でVimを学ぶ
+    h2.title.mb-5.add-font-regular.is-size-4.is-hidden-tablet ゲーム感覚でVimを学ぶ
     p.subtitle.add-font-bold 大将を目指して、ランクアップしましょう。
     = image_pack_tag('top_game_01.png', class: 'my-3')
     p.subtitle.add-font-bold.mt-5 Vimmerへの道をかけ登りましょう！
     = image_pack_tag('top_game_02.png', class: 'my-3')
-    = link_to '無料ユーザー登録はこちら', new_user_path, class: 'button is-primary has-text-weight-bold w-50 is-medium mt-4 text-decoration-none'
+    = link_to '無料ユーザー登録はこちら', new_user_path, class: 'button is-primary has-text-weight-bold w-50 is-medium mt-4 text-decoration-none is-hidden-mobile'
+    = link_to '無料ユーザー登録はこちら', new_user_path, class: 'button is-primary has-text-weight-bold w-75 is-small mt-4 text-decoration-none is-hidden-tablet'

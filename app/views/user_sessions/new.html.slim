@@ -15,7 +15,7 @@
         .field
           .control.has-text-centered
             =f.submit t('.title'), class: 'button is-primary has-text-weight-bold'
-          .control.is-pulled-right
+          .control.is-pulled-right.mt-4
             = link_to auth_at_provider_path(provider: :github), class: 'button is-dark my-2 mr-1 text-decoration-none' do
               i.fab.fa-github.mr-2
               span.has-text-weight-medium Sign in with Github&nbsp;

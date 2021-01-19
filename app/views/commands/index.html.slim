@@ -1,18 +1,20 @@
 - set_meta_tags title: "#{@lesson.decorate.lesson_name} #{t('.title')}"
 .container.my-4
-  h1.title.has-text-centered = "#{@lesson.decorate.lesson_name} #{t('.title')}"
+  h1.title.has-text-centered.is-hidden-mobile = "#{@lesson.decorate.lesson_name} #{t('.title')}"
+  h1.title.has-text-centered.is-size-4.is-hidden-tablet = "#{@lesson.decorate.lesson_name} #{t('.title')}"
   .row
     .column.is-6.is-offset-3
       table.table.is-hoverable
         thead
           tr
-            th scope="col" 問題
-            th scope="col" コマンド
+            th.is-hidden-mobile scope="col" 問題
+            th.is-hidden-mobile scope="col" コマンド
         - @commands.each do |command|
           tbody
             tr
               td.has-text-weight-semibold = command.question
               td.has-text-weight-semibold = command.answer_key
+  .row
     .column.is-6.is-offset-3.has-text-centered
       = link_to lesson_path(@lesson), class: 'button is-primary is-outlined is-rounded text-decoration-none', 'data-turbolinks': false do
         span.mr-1
