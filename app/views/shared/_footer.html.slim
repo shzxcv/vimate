@@ -1,9 +1,8 @@
 section.container.is-fluid.bg-light
   .columns
     .column.is-6.is-offset-3
-      .has-text-centered
-        p.has-text-weight-medium Copyright © VIMATE
-      .has-text-centered.is-flex-tablet.justify-content-center
+      p.has-text-weight-medium.has-text-centered Copyright © VIMATE
+      .has-text-centered.is-flex-tablet.justify-content-center.ml-4
         = link_to '利用規約', terms_path, class: 'dropdown-item'
         = link_to 'プリバシーポリシー', privacy_path, class: 'dropdown-item'
         = link_to 'お問い合わせ', new_inquiry_path, class: 'dropdown-item'
