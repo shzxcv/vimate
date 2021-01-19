@@ -190,7 +190,7 @@ document.addEventListener('keydown', e => {
     if (e.key) {
       e.preventDefault();
     }
-    enter_key += `ctrl+${e.key}`;
+    enter_key += `ctrl-${e.key}`;
   } else if (e.key === 'Backspace') {
     //バックスペース処理
   	enter_key = enter_key.slice(0, -1);
