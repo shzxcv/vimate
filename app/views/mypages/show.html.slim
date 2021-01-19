@@ -41,8 +41,7 @@ section.section
                     | 今までの平均正答率をみる
                 .collapse id="barchart0#{lesson.id}"
                   .content.my-4.mr-5.d-flex.justify-content-center
-                    /= bar_chart [['あなたの平均正答率', @user.user_average(lesson, :answer_rate)], ['ユーザ全体の平均正答率', UserLesson.all_average(lesson, :answer_rate)]], width: '700px', height: '100px', suffix: '%', max: 100, min: 0, colors: ['#3298dc']
-                    = bar_chart [['あなたの平均正答率', @user.user_average(lesson, :answer_rate)], ['ユーザ全体の平均正答率', UserLesson.all_average(lesson, :answer_rate)]], height: '100px', suffix: '%', max: 100, min: 0, colors: ['#3298dc'], responsive: true
+                    = bar_chart [['あなたの平均正答率', @user.user_average(lesson, :answer_rate)], ['全ユーザ平均正答率', UserLesson.all_average(lesson, :answer_rate)]], width: '700px', height: '100px', suffix: '%', max: 100, min: 0, colors: ['#3298dc']
 
               .has-text-centered.my-4
                 button.button.is-info.is-outlined.w-50.is-hidden-mobile aria-controls="linechart0#{lesson.id}" aria-expanded="false" data-target="#linechart0#{lesson.id}" data-toggle="collapse" type="button"
@@ -51,7 +50,7 @@ section.section
                     | 日ごとの平均正答率をみる
                 .collapse id="linechart0#{lesson.id}"
                   .content.my-4.mr-5.d-flex.justify-content-center
-                    = line_chart @user.user_month(lesson, 'answer_rate'), height: '150px',  colors: ['#3298dc'], xtitle: 'あなたの日別平均正答率の推移', suffix: "%", library: {fontSize: 90}, responsive: true
+                    = line_chart @user.user_month(lesson, 'answer_rate'), width: '700px', height: '150px',  colors: ['#3298dc'], xtitle: 'あなたの日別正答率の推移', suffix: "%", library: {fontSize: 90}
 
               .has-text-centered.my-4
                 button.button.is-info.is-outlined.w-50.is-hidden-mobile aria-controls="barchart1#{lesson.id}" aria-expanded="false" data-target="#barchart1#{lesson.id}" data-toggle="collapse" type="button"
@@ -60,7 +59,7 @@ section.section
                     | 今までの平均タイムをみる
                 .collapse id="barchart1#{lesson.id}"
                   .content.my-4.mr-5.d-flex.justify-content-center
-                    = bar_chart [['あなたの平均タイム', @user.user_average(lesson, :time)], ['ユーザ全体の平均タイム', UserLesson.all_average(lesson, :time)]], height: '100px', suffix: '秒',  colors: ['#3298dc'], responsive: true
+                    = bar_chart [['あなたの平均タイム', @user.user_average(lesson, :time)], ['全ユーザの平均タイム', UserLesson.all_average(lesson, :time)]], width: '700px', height: '100px', suffix: '秒',  colors: ['#3298dc']
 
               .has-text-centered.my-4
                 button.button.is-info.is-outlined.w-50.is-hidden-mobile aria-controls="linechart1#{lesson.id}" aria-expanded="false" data-target="#linechart1#{lesson.id}" data-toggle="collapse" type="button"
@@ -69,7 +68,7 @@ section.section
                     | 日ごとの平均タイムをみる
                 .collapse id="linechart1#{lesson.id}"
                   .content.my-4.mr-5.d-flex.justify-content-center
-                    = line_chart @user.user_month(lesson, 'time'), height: '150px',  colors: ['#3298dc'], xtitle: 'あなたの日別平均タイムの推移', suffix: "秒", responsive: true
+                    = line_chart @user.user_month(lesson, 'time'), width: '700px', height: '150px',  colors: ['#3298dc'], xtitle: 'あなたの日別タイムの推移', suffix: "秒"
 
       .column.is-3
         aside.menu style=("margin-top: 150px;")
