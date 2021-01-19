@@ -67,8 +67,7 @@ section.container
           .content
             h4.add-font-bold Vimmer診断初級編
             p Vimmer診断コースは、上下左右の基本的なコマンドを使用して、迷路を突破します。全くVimもわからない方からVimmerまで幅広く遊べる内容です。Vimmer診断結果を見て、自分のVimmer力を測ってみましょう！
-            /p = link_to 'Vimmer診断初級編はこちら', lesson_path('vimmer-01'), class: "button is-info w-100 mt-2 text-decoration-none is-small"
-            p = link_to 'Vimmer診断初級編はこちら', lesson_path('vimmer-01'), class: "btn btn-success w-100 mt-2 text-decoration-none"
+            p = link_to 'Vimmer診断初級編はこちら', lesson_path('vimmer-01'), class: "button is-info w-100 mt-2 text-decoration-none  #{submit_button}"
     .column.is-4
       .card.has-text-centered
         .card-image
