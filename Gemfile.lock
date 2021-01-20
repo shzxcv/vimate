@@ -114,6 +114,11 @@ GEM
       actionmailer (>= 4.0, < 7)
       activesupport (>= 4.0, < 7)
     excon (0.78.1)
+    factory_bot (6.1.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.1.0)
+      factory_bot (~> 6.1.0)
+      railties (>= 5.0.0)
     faraday (1.2.0)
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
@@ -394,6 +399,7 @@ DEPENDENCIES
   draper
   enum_help
   exception_notification
+  factory_bot_rails
   fog-aws
   foreman
   gon
