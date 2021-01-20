@@ -94,4 +94,5 @@ section.container
     = image_pack_tag('top_game_01.png', class: 'my-3')
     p.subtitle.add-font-bold.mt-5 Vimmerへの道をかけ登りましょう！
     = image_pack_tag('top_game_02.png', class: 'my-3')
-    = link_to '無料ユーザー登録はこちら', new_user_path, class: "button is-primary has-text-weight-bold mt-4 text-decoration-none is-size-6 #{submit_button}"
+    - unless logged_in?
+      = link_to '無料ユーザー登録はこちら', new_user_path, class: "button is-primary has-text-weight-bold mt-4 text-decoration-none is-size-6 #{submit_button}"

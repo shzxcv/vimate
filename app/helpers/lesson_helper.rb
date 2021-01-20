@@ -18,4 +18,14 @@ module LessonHelper
       "background-color: #141651"
     end
   end
+
+  def lesson_title_color(lesson)
+    if lesson.url == 'vim-01'
+      "has-text-grey-darker"
+    elsif lesson.url == 'vim-02'
+      "has-text-grey-light"
+    elsif lesson.url == 'vim-03'
+      "has-text-grey-lighter"
+    end
+  end
 end
