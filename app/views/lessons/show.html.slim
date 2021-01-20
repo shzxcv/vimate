@@ -4,10 +4,10 @@
   .row
     .column.is-10.is-offset-1.bg-image-animation.d-flex.justify-content-center.align-items-center.lesson-up-border style="#{bg_image(@lesson)}"
       #js-lesson-start
-        h1.title.has-text-centered.has-text-grey-darker = @lesson.decorate.lesson_name
-        h1.title.has-text-centered.has-text-grey-darker スペースキーでスタート
+        h1.title.has-text-centered class="#{lesson_start_color(@lesson)}" = @lesson.decorate.lesson_name
+        h1.title.has-text-centered class="#{lesson_start_color(@lesson)}" スペースキーでスタート
         .has-text-centered
-          label.checkbox.has-text-grey-darker.has-text-weight-bold.is-size-5
+          label.checkbox.has-text-weight-bold.is-size-5 class="#{lesson_start_color(@lesson)}"
             input.mr-2 type='checkbox' style='transform: scale(1.3);' id='js-display-answer'
             | 解答表示モードでレッスン
 

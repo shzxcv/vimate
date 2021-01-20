@@ -16,5 +16,9 @@ body
               = image_tag current_user.avatar.url, size: '35x35', class: 'rounded-circle mr15'
               span.has-text-weight-normal.has-text-grey-dark.mx-2 = current_user.name
             .dropdown-menu.dropdown-menu-right
-              = link_to 'マイページ', mypage_path, class: 'dropdown-item'
-              = link_to 'ログアウト', logout_path, class: 'dropdown-item', method: :delete
+              = link_to mypage_path, class: 'dropdown-item'
+                i.fas.fa-user-circle.mr-2
+                span.has-text-weight-medium マイページ
+              = link_to logout_path, class: 'dropdown-item', method: :delete
+                i.fas.fa-sign-out-alt.mr-2 style='color: gray;'
+                span.has-text-weight-medium ログアウト
