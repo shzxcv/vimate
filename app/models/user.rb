@@ -46,6 +46,7 @@ class User < ApplicationRecord
     before_level_point = level_list[level_list.index(user_level) - 1][1]
     user_level[1] -= before_level_point
     current_point = sum_point - before_level_point
+    #[階級, レベルアップに必要なポイント, 現在のポイント, 合計ポイント]
     return user_level.push(current_point, sum_point)
   end
 end
