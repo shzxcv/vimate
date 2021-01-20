@@ -57,7 +57,7 @@ function set_question() {
   question = String(questions.splice(0, 1));
   answer = String(answers.splice(0, 1));
   question_area.textContent = question;
-  if (display_answer_flag === true) question_area.textContent += ` (答え : ${answer})`;
+  if (display_answer_flag === true) question_area.textContent += ` 【 ${answer} 】`;
   progress_percent = 0;
   progress_timer = setInterval(progress_bar, 100);
 }
@@ -168,7 +168,7 @@ function flash_warn() {
 }
 
 document.addEventListener('keydown', e => {
-  if (e.key === ' ' && playing === true || e.key !== ' ' && playing === false || ignore_keys.includes(e.key) || typeof cleartime !== 'undefined') {
+  if (e.key !== ' ' && playing === false || ignore_keys.includes(e.key) || typeof cleartime !== 'undefined') {
     return;
   } else if (e.key === ' ' && playing === false) {
     //スペースのスクロール無効
@@ -184,6 +184,9 @@ document.addEventListener('keydown', e => {
     playing = true;
     starttime = Date.now();
     set_question();
+  } else if (e.key === ' ' && playing === true) {
+    //スペース処理
+    enter_key += '_';
   } else if (e.ctrlKey) {
     //controlキー処理
     //Windows対策のため、ctrlKeyで判定しCtrl系のショートカット無効
@@ -204,8 +207,10 @@ document.addEventListener('keydown', e => {
     flash_warn();
   }
   input_area.textContent = enter_key;
+  //スペースを含む問題対策
+  enter_key_result = enter_key.replace('_', ' ')
   //正答判定 入力内容に解答が含まれればOK
-  if (enter_key.includes(answer)) {
+  if (enter_key_result.includes(answer)) {
     flash_next();
     answer_count ++
     if (questions.length === 0) {

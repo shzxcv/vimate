@@ -19,7 +19,7 @@ module LessonHelper
     end
   end
 
-  def lesson_start_color(lesson)
+  def lesson_title_color(lesson)
     if lesson.url == 'vim-01'
       "has-text-grey-darker"
     elsif lesson.url == 'vim-02'
