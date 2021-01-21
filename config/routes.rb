@@ -21,6 +21,15 @@ Rails.application.routes.draw do
   get "oauth/callback" => "oauths#callback"
   get "oauth/:provider" => "oauths#oauth", as: :auth_at_provider
 
+  #admin
+  namespace :admin do
+    root 'dashboards#index'
+    get 'login', to: 'user_sessions#new'
+    post 'login', to: 'user_sessions#create'
+    delete 'logout', to: 'user_sessions#destroy'
+    resources :users, only: %i[index show destroy]
+  end
+
   #Lessons
   resources :lessons, only: %i[index show], param: :url do
     resources :commands, only: %i[index]

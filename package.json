@@ -7,6 +7,7 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
+    "admin-lte": "^3.1.0-rc",
     "bootstrap": "^4.5.3",
     "bulma": "^0.9.1",
     "chart.js": "^2.9.4",

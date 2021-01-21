@@ -28,6 +28,7 @@ gem 'toastr-rails'
 gem 'slack-notifier'
 gem 'exception_notification'
 gem 'rack-user_agent'
+gem 'kaminari'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

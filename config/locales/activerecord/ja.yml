@@ -6,12 +6,15 @@ ja:
       inquiry: 'お問い合わせ'
     attributes:
       user:
+        id: 'ID'
         name: 'ユーザー名'
         avatar: 'プロフィール画像'
         email: 'メールアドレス'
         password: 'パスワード'
         password_confirmation: 'パスワード確認用'
         agreement: '利用規約とプライバシーポリシー'
+        role: '権限'
+        created_at: '作成日時'
       inquiry:
         category: 'カテゴリ'
         name: 'お名前'

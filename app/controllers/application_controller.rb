@@ -18,10 +18,9 @@ class ApplicationController < ActionController::Base
     render file: Rails.root.join('public/404.html'), status: 404, layout: false, content_type: 'text/html'
   end
 
-  protected
+  private
 
   def not_authenticated(msg = t('defaults.require_login'))
     redirect_to login_path, error: msg
   end
-
 end

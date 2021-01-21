@@ -93,3 +93,20 @@ ja:
       error: '外部認証アカウントはパスワード変更できません。'
     update:
       success: 'パスワードを更新しました。'
+  admin:
+    user_sessions:
+      new:
+        title: 'ログイン'
+      create:
+        success: 'ログインしました。'
+        fail: 'メールアドレスもしくはパスワードに誤りがあります。'
+      destroy:
+        success: 'ログアウトしました。'
+    users:
+      index:
+        title: 'ユーザ一覧'
+        confirm: '削除しますか？'
+      destroy:
+        success: 'ユーザを削除しました'
+      show:
+        title: 'ユーザ詳細'

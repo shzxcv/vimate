@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    meta[name="viewport" content="width=device-width, initial-scale=1.0"]
+    = csrf_meta_tags
+    = csp_meta_tag
+    = javascript_pack_tag 'admin', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'admin', 'data-turbolinks-track': 'reload'
+  body.sidebar-collapse.sidebar-mini.fixed
+    = render 'admin/shared/header'
+    = render 'admin/shared/sidebar'
+    = render 'shared/flash_message'
+    = yield
+    = render 'admin/shared/footer'
