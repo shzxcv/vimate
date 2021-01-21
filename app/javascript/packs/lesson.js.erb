@@ -91,7 +91,7 @@ function end_lesson() {
   const answer_rate = Math.round(answer_count / total_questions * 100)
   point = 1;
   if (answer_rate >= 60) point += 1
-  if (cleartime < 60) point += 1
+  if (cleartime < 120) point += 1
   if (display_answer_flag === true) point -= 1
   result_time.textContent = `クリアタイム: ${cleartime}秒`;
   result_rate.textContent = `正答率: ${answer_rate}%`;
