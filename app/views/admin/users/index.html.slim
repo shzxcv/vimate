@@ -11,6 +11,7 @@
             th scope="col" = User.human_attribute_name(:role)
             th scope="col" = User.human_attribute_name(:created_at)
             th scope="col"
+            th scope="col"
         - @users.each do |user|
           tbody
             tr
@@ -19,5 +20,6 @@
               td = user.email
               td = user.role_i18n
               td = l user.created_at, format: :long
+              td = link_to '詳細', admin_user_path(user), class: 'btn btn-info'
               td = link_to '削除', admin_user_path(user), class: 'btn btn-danger', method: :delete, data: { confirm: "#{user.email}を#{t('.confirm')}" }
   = paginate @users

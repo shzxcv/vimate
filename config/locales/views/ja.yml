@@ -108,3 +108,5 @@ ja:
         confirm: '削除しますか？'
       destroy:
         success: 'ユーザを削除しました'
+      show:
+        title: 'ユーザ詳細'
