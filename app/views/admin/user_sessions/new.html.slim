@@ -1,0 +1,11 @@
+.login-box
+  .login-logo
+    h1= t('.title')
+  .card
+    .card-body.login-card-body
+      = form_with url: admin_login_path, local: true do |f|
+        = f.label :email, User.human_attribute_name(:email)
+        = f.email_field :email, class: 'form-control mb-3'
+        = f.label :password, User.human_attribute_name(:password)
+        = f.password_field :password, class: 'form-control'
+        = f.submit (t 'defaults.login'), class: 'btn btn-block btn-primary mt-4'

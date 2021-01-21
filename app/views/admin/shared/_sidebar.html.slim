@@ -1,0 +1,21 @@
+aside.main-sidebar.sidebar-dark-primary.elevation-4
+  = link_to admin_root_path, class: "brand-link" do
+    span.brand-text.font-weight-light VIMATE管理画面
+  .sidebar
+    .user-panel.mt-3.pb-3.mb-3.d-flex
+      .image
+        = image_tag current_user.avatar.url, class: 'img-circle elevation-2'
+      .info
+        = link_to "#{current_user.name}", admin_root_path, class: "d-block"
+    nav.mt-2
+      ul.nav.nav-pills.nav-sidebar.flex-column data-accordion="false" data-widget="treeview" role="menu"
+        li.nav-item
+          = link_to admin_users_path, class: "nav-link" do
+            i.nav-icon.far.fa-user
+            p
+              | ユーザー
+        li.nav-item
+          = link_to '#', class: "nav-link" do
+            i.nav-icon.far.fa-file
+            p
+              | レッスン一覧
