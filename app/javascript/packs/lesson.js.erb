@@ -164,7 +164,7 @@ function flash_warn() {
     "showMethod": "fadeIn",
     "hideMethod": "fadeOut"
   }
-  Command: toastr["warning"]("10文字以上は入力できません。<br>入力はBackspaceで削除できます。")
+  Command: toastr["warning"]("30文字以上は入力できません。<br>入力はBackspaceで削除できます。")
 }
 
 document.addEventListener('keydown', e => {
@@ -187,6 +187,14 @@ document.addEventListener('keydown', e => {
   } else if (e.key === ' ' && playing === true) {
     //スペース処理
     enter_key += '_';
+  } else if (e.key === '/') {
+    //firefoxクイック検索対策
+    enter_key += '/';
+    e.preventDefault();
+  } else if (e.key === "'") {
+    //firefoxクイック検索対策
+    enter_key += "'";
+    e.preventDefault();
   } else if (e.ctrlKey) {
     //controlキー処理
     //Windows対策のため、ctrlKeyで判定しCtrl系のショートカット無効
@@ -197,11 +205,13 @@ document.addEventListener('keydown', e => {
   } else if (e.key === 'Backspace') {
     //バックスペース処理
   	enter_key = enter_key.slice(0, -1);
+    //firefox対策
+    e.preventDefault();
   } else {
     //入力内容追加
   	enter_key += e.key;
   }
-  //10文字以上は入力させない
+  //30文字以上は入力させない
   if (enter_key.length > 30) {
     enter_key = "";
     flash_warn();
