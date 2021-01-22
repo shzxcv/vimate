@@ -5,7 +5,7 @@ module ApplicationHelper
       title: 'Vim特化学習サイト',
       reverse: true,
       charset: 'utf-8',
-      description: 'VIMATEはVimに特化した学習サイトです。ゲーム形式でVimを学び、Vimmerへの道を歩みましょう。',
+      description: 'VIMATEはVimに特化した学習サイトです。ゲーム形式でVimを学び、Vimmerへの道を歩みましょう！',
       keywords: 'vimate, vimatejp, vim 勉強, vim ゲーム, vimmer',
       canonical: request.original_url,
       separator: '|',
