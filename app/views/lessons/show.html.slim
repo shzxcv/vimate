@@ -9,12 +9,13 @@
         .has-text-centered
           label.checkbox.has-text-weight-bold.is-size-5 class="#{lesson_title_color(@lesson)}"
             input.mr-2 type='checkbox' style='transform: scale(1.3);' id='js-display-answer'
-            | 解答表示モードでレッスン
+            | コマンド表示モードでレッスン
 
       //レッスン中
       #js-lesson-play style='display: none;'
-        .d-flex
-          = image_pack_tag('vimuta/vimuta_lesson.gif', size: '150x150', class: 'mr-3')
+        //safari対策
+        .d-flex style='align-items: flex-start;'
+          = image_pack_tag('vimuta/vimuta_lesson.gif', size: '150x150', class: 'mt-2')
           h1#js-question-area.title.has-text-white-ter.is-size-4.my-5
         .input-terminal.has-background-black-bis.my-5.d-flex.align-items-end.justify-content-center
           p#js-input-area.title.has-text-centered.is-size-4.has-text-white-ter

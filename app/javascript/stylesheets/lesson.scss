@@ -83,21 +83,17 @@ height: 15px;
   margin: 2em 0;
   background: #f8f8f8;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
   width: 90%;
 }
 
 .result-box .result-box-title {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    font-size: 1.2em;
-    background: #3298dc;
-    padding: 4px;
-    text-align: center;
-    color: #FFF;
-    font-weight: bold;
-    letter-spacing: 0.05em;
+  font-size: 1.2em;
+  background: #3298dc;
+  padding: 4px;
+  text-align: center;
+  color: #FFF;
+  font-weight: bold;
+  letter-spacing: 0.05em;
 }
 
 .result-box p {
