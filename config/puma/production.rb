@@ -7,7 +7,7 @@ log_path = "#{File.expand_path("../../..", __FILE__)}/log"
 bind "unix://#{tmp_path}/sockets/puma.sock"
 
 # スレッド数とWorker数の指定
-threads 3, 3
+threads 5, 5
 workers 2
 preload_app!
 
