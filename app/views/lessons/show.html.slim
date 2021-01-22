@@ -32,7 +32,7 @@
           p#js-result-point.has-text-weight-bold
 
         .has-text-centered
-          p = link_to "https://twitter.com/intent/tweet?text=#{@lesson.decorate.lesson_name}%0a%0a結果は...%0a%0a回答率%20:%20answer_rate%25%0aタイム%20:%20cleartime秒でした！%0a%0a%23Vimate%20%23Vim%0a\&url=#{request.url}", target: :_blank, rel: 'noopener noreferrer', class: 'button is-info text-decoration-none mr-5', id: 'js-result-twitter' do
+          p = link_to "https://twitter.com/intent/tweet?text=#{@lesson.decorate.lesson_name}%0a%0a結果は...%0a%0a回答率%20:%20answer_rate%25%0aタイム%20:%20cleartime秒でした！%0a%0a%23Vim%20%23VIMATE%0a\&url=#{request.url}", target: :_blank, rel: 'noopener noreferrer', class: 'button is-info text-decoration-none mr-5', id: 'js-result-twitter' do
             i.fab.fa-twitter.fa-fw.mr-1
             span 結果をTwitterでシェア
           p = link_to mypage_path, class: 'button is-info text-decoration-none d-none mr-5', id: 'js-result-mypage'

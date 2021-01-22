@@ -23,7 +23,7 @@
         p#js-result-time.has-text-weight-bold
         p#js-result-comment.has-text-weight-bold
 
-      p = link_to "https://twitter.com/intent/tweet?text=#{@lesson.decorate.lesson_name}%0aタイム%20:%20cleartime秒でした！%0a%0aあなたの診断結果は...%0aresult_comment%0a%0a%23Vimate%20%23Vim%0a\&url=#{request.url}", target: :_blank, rel: 'noopener noreferrer', class: 'button is-info text-decoration-none my-3', id: 'js-result-twitter' do
+      p = link_to "https://twitter.com/intent/tweet?text=#{@lesson.decorate.lesson_name}%0aタイム%20:%20cleartime秒でした！%0a%0aあなたの診断結果は...%0aresult_comment%0a%0a%23Vim%20%23VIMATE%0a\&url=#{request.url}", target: :_blank, rel: 'noopener noreferrer', class: 'button is-info text-decoration-none my-3', id: 'js-result-twitter' do
         i.fab.fa-twitter.mr-1
         span 結果をTwitterでシェア
 
