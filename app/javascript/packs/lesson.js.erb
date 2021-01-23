@@ -187,6 +187,7 @@ document.addEventListener('keydown', e => {
   } else if (e.key === ' ' && playing === true) {
     //スペース処理
     enter_key += '_';
+    e.preventDefault();
   } else if (e.key === '/') {
     //firefoxクイック検索対策
     enter_key += '/';
