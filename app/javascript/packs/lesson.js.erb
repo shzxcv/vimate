@@ -198,6 +198,7 @@ document.addEventListener('keydown', e => {
   } else if (e.ctrlKey) {
     //controlキー処理
     //Windows対策のため、ctrlKeyで判定しCtrl系のショートカット無効
+    e.preventDefault();
     if (e.key) {
       e.preventDefault();
     }
