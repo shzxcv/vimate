@@ -146,45 +146,34 @@ function vimuta_move_count() {
   	if ( key_left_h === true ) {
       let left_block_x = vimuta_x/32 - 1;
       let left_block_y = vimuta_y/32;
-      //if ( map_array[left_block_y][left_block_x] === 1) return;
-      if ( map_array[left_block_y][left_block_x] === 1) {
-        vimuta_x = 32;
-        vimuta_y = 160;
-        return;
-      }
+      if ( map_array[left_block_y][left_block_x] === 1) return;
+      //スタート位置移動無し
+      //if ( map_array[left_block_y][left_block_x] === 1) {
+      //  vimuta_x = 32;
+      //  vimuta_y = 160;
+      //  return;
+      //}
   		vimuta_move = 32;
   		input_key = 'left';
   	}
   	if ( key_up_k === true ) {
       let up_block_x = vimuta_x/32;
       let up_block_y = vimuta_y/32 - 1;
-      if ( map_array[up_block_y][up_block_x] === 1) {
-        vimuta_x = 32;
-        vimuta_y = 160;
-        return;
-      }
+      if ( map_array[up_block_y][up_block_x] === 1) return;
   		vimuta_move = 32;
   		input_key = 'up';
   	}
   	if ( key_right_l === true ) {
       let right_block_x = vimuta_x/32 + 1;
       let right_block_y = vimuta_y/32;
-      if ( map_array[right_block_y][right_block_x] === 1) {
-        vimuta_x = 32;
-        vimuta_y = 160;
-        return;
-      }
+      if ( map_array[right_block_y][right_block_x] === 1) return;
   		vimuta_move = 32;
   		input_key = 'right';
   	}
   	if ( key_down_j === true ) {
       let down_block_x = vimuta_x/32;
       let down_block_y = vimuta_y/32 + 1;
-      if ( map_array[down_block_y][down_block_x] === 1) {
-        vimuta_x = 32;
-        vimuta_y = 160;
-        return;
-      }
+      if ( map_array[down_block_y][down_block_x] === 1) return;
   		vimuta_move = 32;
   		input_key = 'down';
   	}
