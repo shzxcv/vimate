@@ -5,8 +5,8 @@ module ApplicationHelper
       title: 'Vim特化学習サイト',
       reverse: true,
       charset: 'utf-8',
-      description: 'VIMATEはVimに特化した学習サイトです。ゲーム形式でVimを学び、Vimmerへの道を歩みましょう！！',
-      keywords: 'vimate, vimatejp, vim 勉強, vim ゲーム, vimmer',
+      description: 'VIMATEはVimに特化した学習サイトです。ゲーム形式でコマンドの使い方を学び、Vimmerへの道を歩みましょう。',
+      keywords: 'vimate, vim コマンド, vim 使い方, vim ゲーム, vimmer',
       canonical: request.original_url,
       separator: '|',
       icon: [
@@ -19,13 +19,11 @@ module ApplicationHelper
         description: :description,
         type: 'website',
         url: request.original_url,
-        #変更する
         image: asset_pack_url('media/images/ogp_twitter_card.png'),
         locale: 'ja_JP',
       },
       twitter: {
         card: 'summary_large_image',
-        #変更する
         image: asset_pack_url('media/images/ogp_twitter_card.png'),
       }
     }
