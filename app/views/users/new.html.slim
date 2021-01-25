@@ -32,7 +32,7 @@
         .field
           .d-flex.justify-content-start.align-items-center
             =f.check_box :agreement, class: 'mb-2 mr-2'
-            =f.label :agreement, "#{link_to '利用規約', terms_path, class: 'has-text-grey-darker'}と#{link_to 'プライバシーポリシー', privacy_path, class: 'has-text-grey-darker'}に同意する".html_safe, class: 'label'
+            =f.label :agreement, "#{link_to '利用規約', terms_path, class: 'has-text-grey-darker border-bottom border-secondary text-decoration-none'}と#{link_to 'プライバシーポリシー', privacy_path, class: 'has-text-grey-darker border-bottom border-secondary text-decoration-none'}に同意する".html_safe, class: 'label'
         .field
           .control.has-text-centered
             =f.submit t('defaults.register'), class: 'button is-primary has-text-weight-bold',id: 'js-submit'

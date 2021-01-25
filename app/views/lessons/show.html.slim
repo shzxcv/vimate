@@ -63,7 +63,7 @@
                   button.button.is-light data-dismiss="modal" type="button"  閉じる
           p = link_to 'レッスン一覧', lessons_path, class: 'button is-primary text-decoration-none mx-3'
         .has-text-centered
-          p = link_to '結果を保存する場合は、ログインしてください。', login_path, class: 'has-text-grey d-none', id: 'js-result-login'
+          p.mt-1 = link_to '結果を保存する場合は、ログインしてください。', login_path, class: 'has-text-grey d-none border-bottom border-secondary text-decoration-none', id: 'js-result-login'
 
   //プログレスバー
   .row
