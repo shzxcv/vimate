@@ -23,7 +23,7 @@
             = link_to image_tag('btn_google_signin_dark_pressed_web@2x.png', size: '208x48'), auth_at_provider_path(provider: :google)
           .control.is-pulled-right.mt-3
             p.has-text-grey
-              | アカウントをお持ちでない場合は#{link_to t('.here'), new_user_path, class: 'has-text-grey-darker'}
+              | アカウントをお持ちでない場合は#{link_to t('.here'), new_user_path, class: 'has-text-grey-darker border-bottom border-secondary text-decoration-none'}
           .control.is-pulled-right
             p.has-text-grey
-              | パスワードリセットは#{link_to t('.here'), new_password_reset_path, class: 'has-text-grey-darker'}
+              | パスワードリセットは#{link_to t('.here'), new_password_reset_path, class: 'has-text-grey-darker border-bottom border-secondary text-decoration-none'}
