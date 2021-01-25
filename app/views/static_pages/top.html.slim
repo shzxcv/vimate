@@ -18,7 +18,7 @@ section.hero.is-medium.is-bold style='background-color: #CAE5CD;'
             li
               = link_to 'ユーザー登録', new_user_path, class: 'button is-info has-text-weight-bold w-50 is-medium mt-4 text-decoration-none'
             li
-               = link_to 'すぐにレッスンを受講', lessons_path, class: "button is-info w-50 text-decoration-none #{lesson_button}"
+               = link_to 'すぐにレッスンを受講', lessons_path, class: "button is-primary w-50 text-decoration-none #{lesson_button}"
                small.form-text.text-muted.mt-2.is-hidden-tablet ※レッスンはPC専用です。
                small.form-text.text-muted.mt-2 ※ログインしない場合は、受講情報が保存されません。
         = image_pack_tag('vimuta/vimuta.gif', size: '250x250')
@@ -31,30 +31,30 @@ section.container
       .card.has-text-centered
         .card-image
           figure.image.is-4by3
-            = image_pack_tag('top_card_01.png', size: '1280x960')
+            = link_to image_pack_tag('top_card_01.png', size: '1280x960'), lesson_path('vim-01')
         .card-content
           .content
-            h4.add-font-bold Vimコース初級編
+            h4.add-font-bold = link_to 'Vimコース初級編', lesson_path('vim-01'), class: 'has-text-grey-darker'
             p Vim初級編は移動やインサートなどVimの基本的なコマンドが出題されます。コマンド一覧やコマンド表示モードを使用して、まずはVimに慣れていきましょう！初級編をマスターすれば、Vimmerへの大きな一歩です！
             p = link_to 'Vim初級編はこちら', lesson_path('vim-01'), class: "button is-info w-100 mt-2 text-decoration-none #{tablet_button}"
     .column.is-4
       .card.has-text-centered
         .card-image
           figure.image.is-4by3
-            = image_pack_tag('top_card_02.png', size: '1280x960')
+            = link_to image_pack_tag('top_card_02.png', size: '1280x960'), lesson_path('vim-02')
         .card-content
           .content
-            h4.add-font-bold Vimコース中級編
+            h4.add-font-bold = link_to 'Vimコース中級編', lesson_path('vim-02'), class: 'has-text-grey-darker'
             p Vim中級編はテキストオブジェクトや検索などのコマンドが出題されます。初級編と同様、コマンド一覧やコマンド表示モードが使用可能です。中級編までマスターすれば、Vimでの操作が楽しくなってくるはずです！
             p = link_to 'Vim中級編はこちら', lesson_path('vim-02'), class: "button is-info w-100 mt-2 text-decoration-none #{tablet_button}"
     .column.is-4
       .card.has-text-centered
         .card-image
           figure.image.is-4by3
-            = image_pack_tag('top_card_03.png', size: '1280x960')
+            = link_to image_pack_tag('top_card_03.png', size: '1280x960'), lesson_path('vim-03')
         .card-content
           .content
-            h4.add-font-bold Vimコース上級編
+            h4.add-font-bold = link_to 'Vimコース上級編', lesson_path('vim-03'), class: 'has-text-grey-darker'
             p Vim上級編を知っていたらVimマスター間違い無し！これまでの問題よりも大幅に難易度が上がります。上級編もコマンド一覧やコマンド表示モードを使用することができます。上級編までマスターすれば、立派なVimmerの仲間入りです！
             p = link_to 'Vim上級編はこちら', lesson_path('vim-03'), class: "button is-info w-100 mt-2 text-decoration-none #{tablet_button}"
   .columns.my-5
@@ -62,10 +62,10 @@ section.container
       .card.has-text-centered
         .card-image
           figure.image.is-4by3
-            = image_pack_tag('top_card_04.gif', size: '1280x960')
+            = link_to image_pack_tag('top_card_04.gif', size: '1280x960'), lesson_path('vimmer-01')
         .card-content
           .content
-            h4.add-font-bold Vimmer診断初級編
+            h4.add-font-bold = link_to 'Vimmer診断初級編', lesson_path('vimmer-01'), class: 'has-text-grey-darker'
             p Vimmer診断初級編は、上下左右の基本的なコマンドを使用して、迷路を突破します。Vim初心者の方からVimmerまで幅広く遊べる内容です。Vimmer診断で、自分のVimmer力を測ってみましょう！
             p = link_to 'Vimmer診断初級編はこちら', lesson_path('vimmer-01'), class: "button is-info w-100 mt-2 text-decoration-none #{tablet_button}"
     .column.is-4
