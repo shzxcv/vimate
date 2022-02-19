@@ -9,20 +9,24 @@ default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
+
+local: &local
+  <<: *default
   host: <%= Rails.application.credentials.db[:host] %>
   password: <%= Rails.application.credentials.db[:password] %>
 
 development:
-  <<: *default
+  <<: *local
   database: vimate_development
   username: root
 
 test:
-  <<: *default
+  <<: *local
   database: vimate_test
   username: root
 
 production:
   <<: *default
-  database: vimate_production
-  username: admin
+  # database: vimate_production
+  # username: admin
+  url: <%= ENV['DATABASE_URL'] %>
