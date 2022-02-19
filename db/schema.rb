@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2021_01_09_083728) do
 
-  create_table "authentications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "authentications", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "provider", null: false
     t.string "uid", null: false
@@ -21,7 +24,7 @@ ActiveRecord::Schema.define(version: 2021_01_09_083728) do
     t.index ["provider", "uid"], name: "index_authentications_on_provider_and_uid"
   end
 
-  create_table "commands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "commands", force: :cascade do |t|
     t.bigint "lesson_id", null: false
     t.string "answer_key", null: false
     t.string "question", null: false
@@ -30,7 +33,7 @@ ActiveRecord::Schema.define(version: 2021_01_09_083728) do
     t.index ["lesson_id"], name: "index_commands_on_lesson_id"
   end
 
-  create_table "inquiries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "inquiries", force: :cascade do |t|
     t.string "email"
     t.string "name"
     t.integer "category", default: 0, null: false
@@ -39,7 +42,7 @@ ActiveRecord::Schema.define(version: 2021_01_09_083728) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "lessons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "lessons", force: :cascade do |t|
     t.string "name", null: false
     t.string "description"
     t.integer "category", default: 0, null: false
@@ -49,7 +52,7 @@ ActiveRecord::Schema.define(version: 2021_01_09_083728) do
     t.index ["name", "category"], name: "index_lessons_on_name_and_category", unique: true
   end
 
-  create_table "user_lessons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "user_lessons", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "lesson_id", null: false
     t.integer "time", null: false
@@ -61,7 +64,7 @@ ActiveRecord::Schema.define(version: 2021_01_09_083728) do
     t.index ["user_id"], name: "index_user_lessons_on_user_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "avatar"
     t.string "email", null: false
