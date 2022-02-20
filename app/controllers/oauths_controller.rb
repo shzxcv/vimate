@@ -16,9 +16,21 @@ class OauthsController < ApplicationController
         reset_session
         auto_login(@user)
         redirect_to root_path, success: "#{provider.titleize}アカウントでログインしました。"
-      rescue
+      rescue => error
+        slack_notifier(error)
         redirect_to root_path, error: "#{provider.titleize}アカウントでのログインに失敗しました。"
       end
     end
+  end
+
+  private
+
+  def slack_notifier(error)
+    notifier = Slack::Notifier.new Rails.application.credentials.slack[:error_url]
+    attachments = {
+        title: "Github Login Errors"
+        error: error,
+    }
+    notifier.post attachments: [attachments]
   end
 end
