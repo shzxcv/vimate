@@ -29,7 +29,7 @@ class OauthsController < ApplicationController
     notifier = Slack::Notifier.new Rails.application.credentials.slack[:error_url]
     attachments = {
         title: "Github Login Errors",
-        error: "#{error}",
+        text: "#{error}",
     }
     notifier.post attachments: [attachments]
   end
