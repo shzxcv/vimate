@@ -1,35 +1,8 @@
 # ViMate
+- Vim web lessons
 
-## サービス概要
-駆け出しVimmerに向けた、駆け出しVimmerによる
-Vim基礎力を付けるための、Vim専門教育サービスです！
+## URL
+https://vimate.jp
 
-## 登場人物
-- エンドユーザー
-- - 新卒入社の未経験者
-  - 駆け出しVimmer
-  - Vimに移行したい方
-
-## ユーザーが抱える課題
-現在、Vimについての学習サービスが日本にあまり存在せず、基本的に海外サイトもしくはVim公式のチュートリアルしか手かがりがありません。
-そのため、気軽に勉強を始める様な雰囲気がなく、Vimに対するハードルが上がっています。
-
-## 解決方法
-分かりやすいUIをベースに初学者にも触りやすい環境を作る
-
-## プロダクト
-Vim教育サイト。クイズ形式やゲーム形式でVimについて学ぶことができます。
-
-## マーケット
-新卒入社の未経験者
-駆け出しVimmer
-Vimに移行したい方
-
-## 画面遷移図（プロトタイプ）
-https://xd.adobe.com/view/63c177c0-1dc8-4174-a374-29546c62c75b-3692
-
-## ER図
+## Database
 ![VimateER図](https://user-images.githubusercontent.com/68991732/103157178-bc7f0c80-47f3-11eb-8318-06ebac3ee09e.png)
-
-## インフラ構成図
-![ViMateインフラ構成図](https://user-images.githubusercontent.com/68991732/103259945-f2ccaf80-49de-11eb-835d-70ca06660cf8.png)
