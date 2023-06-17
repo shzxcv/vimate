@@ -1,4 +1,4 @@
-# ViMate
+# VIMATE
 - Vim web lessons
 
 ## URL

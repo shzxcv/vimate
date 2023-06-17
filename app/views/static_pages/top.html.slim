@@ -68,26 +68,6 @@ section.container
             h4.add-font-bold = link_to 'Vimmer診断初級編', lesson_path('vimmer-01'), class: 'has-text-grey-darker'
             p Vimmer診断初級編は、上下左右の基本的なコマンドを使用して、迷路を突破します。Vim初心者の方からVimmerまで幅広く遊べる内容です。Vimmer診断で、自分のVimmer力を測ってみましょう！
             p = link_to 'Vimmer診断初級編はこちら', lesson_path('vimmer-01'), class: "button is-info w-100 mt-2 text-decoration-none #{tablet_button}"
-    .column.is-4
-      .card.has-text-centered
-        .card-image
-          figure.image.is-4by3
-            = image_pack_tag('top_card_noimage.png', size: '1280x960')
-        .card-content
-          .content
-            h4.add-font-bold Vimmer診断中級編
-            p 近日、リリース予定！
-            button.button.is-info.w-100.mt-2.text-decoration-none class="#{tablet_button}" disabled="disable" Vimmer診断中級編はこちら
-    .column.is-4
-      .card.has-text-centered
-        .card-image
-          figure.image.is-4by3
-            = image_pack_tag('top_card_noimage.png', size: '1280x960')
-        .card-content
-          .content
-            h4.add-font-bold Vimmer診断上級編
-            p 近日、リリース予定！
-            button.button.is-info.w-100.mt-2.text-decoration-none class="#{tablet_button}" disabled="disable" Vimmer診断上級編はこちら
   .column.is-8.is-offset-2.my-5.has-text-centered
     h2.title.mb-5.add-font-regular class="#{sub_title_size}" ゲーム感覚でVimを学ぶ
     p.subtitle.add-font-bold 大将を目指して、ランクアップしましょう。
