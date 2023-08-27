@@ -2,7 +2,9 @@ class InquiriesController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
 
   def new
-    @inquiry = Inquiry.new
+    redirect_to root_path
+    # Memo: お問い合わせ機能は一旦停止 Bot対策のため
+    # @inquiry = Inquiry.new
   end
 
   def create
